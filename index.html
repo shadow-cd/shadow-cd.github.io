@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f7f5ef" />
+    <title>名栖 - 手机取名</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app" aria-label="名栖手机取名工具">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">有出处的手机取名</p>
+          <h1>名栖</h1>
+        </div>
+        <button class="ghost-icon" type="button" aria-label="打开候选名字" id="openFavorites">
+          <span id="favoriteCount">0</span>
+        </button>
+      </header>
+
+      <section class="intro-panel">
+        <p>按五行、典籍、诗词、寓意与音律一起筛选，生成能解释清楚的候选名。</p>
+        <div class="trust-row" aria-label="取名支撑点">
+          <span>可复选依据</span>
+          <span>单字/双字</span>
+          <span>家人投票</span>
+        </div>
+      </section>
+
+      <form class="naming-form" id="namingForm">
+        <section class="form-section">
+          <div class="section-title">
+            <h2>基础信息</h2>
+            <span>必填</span>
+          </div>
+          <label class="field">
+            <span>姓氏</span>
+            <input id="surname" maxlength="3" value="林" placeholder="例如：林" required />
+          </label>
+
+          <div class="field">
+            <span>性别偏向</span>
+            <div class="segmented" data-group="gender">
+              <button type="button" class="active" data-value="neutral">不限定</button>
+              <button type="button" data-value="female">女孩</button>
+              <button type="button" data-value="male">男孩</button>
+            </div>
+          </div>
+
+          <div class="field">
+            <span>名字字数</span>
+            <div class="segmented" data-group="length">
+              <button type="button" data-value="1">单字名</button>
+              <button type="button" class="active" data-value="2">双字名</button>
+              <button type="button" data-value="all">都可以</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="form-section">
+          <div class="section-title">
+            <h2>取名依据</h2>
+            <span>可复选</span>
+          </div>
+          <div class="basis-grid" id="basisGrid" aria-label="选择取名依据">
+            <button type="button" class="basis active" data-basis="wuxing">
+              <strong>五行喜用</strong>
+              <small>按木火土金水补偏向</small>
+            </button>
+            <button type="button" class="basis active" data-basis="classic">
+              <strong>典籍诗词</strong>
+              <small>诗经楚辞唐宋文脉</small>
+            </button>
+            <button type="button" class="basis active" data-basis="meaning">
+              <strong>寓意祝愿</strong>
+              <small>平安聪慧清朗远志</small>
+            </button>
+            <button type="button" class="basis" data-basis="sound">
+              <strong>音律搭配</strong>
+              <small>声调顺口避谐音</small>
+            </button>
+            <button type="button" class="basis" data-basis="shape">
+              <strong>字形易写</strong>
+              <small>结构平衡不生僻</small>
+            </button>
+            <button type="button" class="basis" data-basis="season">
+              <strong>生肖节气</strong>
+              <small>从出生时令取意象</small>
+            </button>
+          </div>
+        </section>
+
+        <section class="form-section compact" id="wuxingPanel">
+          <div class="section-title">
+            <h2>五行偏向</h2>
+            <span>民俗参考</span>
+          </div>
+          <div class="chip-row" data-chip-group="element">
+            <button type="button" class="chip active" data-value="auto">自动平衡</button>
+            <button type="button" class="chip" data-value="木">补木</button>
+            <button type="button" class="chip" data-value="火">补火</button>
+            <button type="button" class="chip" data-value="土">补土</button>
+            <button type="button" class="chip" data-value="金">补金</button>
+            <button type="button" class="chip" data-value="水">补水</button>
+          </div>
+        </section>
+
+        <section class="form-section compact">
+          <div class="section-title">
+            <h2>风格与寓意</h2>
+            <span>推荐填写</span>
+          </div>
+          <div class="field">
+            <span>名字气质</span>
+            <div class="chip-row multi" id="styleChips">
+              <button type="button" class="chip active" data-value="书卷气">书卷气</button>
+              <button type="button" class="chip active" data-value="清朗">清朗</button>
+              <button type="button" class="chip" data-value="温润">温润</button>
+              <button type="button" class="chip" data-value="大气">大气</button>
+              <button type="button" class="chip" data-value="现代">现代</button>
+              <button type="button" class="chip" data-value="少见不生僻">少见不生僻</button>
+            </div>
+          </div>
+
+          <label class="field">
+            <span>希望寄托</span>
+            <select id="wish">
+              <option value="平安">平安顺遂</option>
+              <option value="聪慧">聪慧明达</option>
+              <option value="远志">胸怀远志</option>
+              <option value="仁爱">仁爱温厚</option>
+              <option value="自由">自由开阔</option>
+              <option value="清雅">清雅从容</option>
+            </select>
+          </label>
+        </section>
+
+        <section class="form-section compact">
+          <div class="section-title">
+            <h2>高级偏好</h2>
+            <span>可选</span>
+          </div>
+          <label class="field">
+            <span>出生时间</span>
+            <input id="birthday" type="datetime-local" />
+          </label>
+          <div class="double-field">
+            <label class="field">
+              <span>喜欢的字</span>
+              <input id="likeChars" maxlength="6" placeholder="如：知 安" />
+            </label>
+            <label class="field">
+              <span>忌用字</span>
+              <input id="avoidChars" maxlength="8" placeholder="如：梓 子" />
+            </label>
+          </div>
+          <label class="field">
+            <span>方言/地区提醒</span>
+            <select id="region">
+              <option value="普通话">普通话优先</option>
+              <option value="粤语">粤语需留意</option>
+              <option value="吴语">吴语需留意</option>
+              <option value="闽南语">闽南语需留意</option>
+              <option value="四川话">四川话需留意</option>
+            </select>
+          </label>
+        </section>
+      </form>
+
+      <section class="results-section" id="resultsSection" aria-live="polite">
+        <div class="results-empty">
+          <strong>先生成一组候选名</strong>
+          <span>结果会展示名字、出处、五行、寓意、音律和提醒。</span>
+        </div>
+      </section>
+
+      <section class="compare-panel" id="comparePanel" aria-label="候选名字对比">
+        <div class="compare-head">
+          <div>
+            <p class="eyebrow">家人一起选</p>
+            <h2>候选对比</h2>
+          </div>
+          <button type="button" class="text-button" id="closeFavorites">收起</button>
+        </div>
+        <div class="compare-list" id="compareList"></div>
+        <button type="button" class="primary secondary" id="makePoll">生成投票文案</button>
+        <textarea id="pollText" readonly placeholder="收藏名字后可生成分享给家人的投票文案"></textarea>
+      </section>
+
+      <div class="bottom-action">
+        <button type="submit" form="namingForm" class="primary" id="generateBtn">生成有依据的名字</button>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
