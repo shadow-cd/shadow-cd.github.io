@@ -248,6 +248,14 @@ h2 {
   margin-bottom: 12px;
 }
 
+.section-tags {
+  display: flex;
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
 .section-title span {
   flex: 0 0 auto;
   padding: 4px 8px;

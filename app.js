@@ -723,14 +723,14 @@ function resetPreferences() {
   setActiveButton('[data-group="gender"]', "neutral");
   setActiveButton('[data-group="length"]', "2");
 
-  const defaultBasis = new Set(["wuxing", "classic", "meaning"]);
+  const defaultBasis = new Set(["wuxing"]);
   document.querySelectorAll(".basis").forEach((button) => {
     button.classList.toggle("active", defaultBasis.has(button.dataset.basis));
   });
   wuxingPanel.hidden = false;
 
   setActiveButton('[data-chip-group="element"]', "auto");
-  const defaultStyles = new Set(["书卷气", "清朗"]);
+  const defaultStyles = new Set(["书卷气"]);
   document.querySelectorAll("#styleChips .chip").forEach((button) => {
     button.classList.toggle("active", defaultStyles.has(button.dataset.value));
   });

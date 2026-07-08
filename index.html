@@ -64,18 +64,21 @@
         <section class="form-section">
           <div class="section-title">
             <h2>取名依据</h2>
-            <span>可复选</span>
+            <div class="section-tags" aria-label="填写提示">
+              <span>推荐填写</span>
+              <span>可多选</span>
+            </div>
           </div>
           <div class="basis-grid" id="basisGrid" aria-label="选择取名依据">
             <button type="button" class="basis active" data-basis="wuxing">
               <strong>五行喜用</strong>
               <small>按木火土金水补偏向</small>
             </button>
-            <button type="button" class="basis active" data-basis="classic">
+            <button type="button" class="basis" data-basis="classic">
               <strong>典籍诗词</strong>
               <small>诗经楚辞唐宋文脉</small>
             </button>
-            <button type="button" class="basis active" data-basis="meaning">
+            <button type="button" class="basis" data-basis="meaning">
               <strong>寓意祝愿</strong>
               <small>平安聪慧清朗远志</small>
             </button>
@@ -112,13 +115,16 @@
         <section class="form-section compact">
           <div class="section-title">
             <h2>风格与寓意</h2>
-            <span>推荐填写</span>
+            <div class="section-tags" aria-label="填写提示">
+              <span>推荐填写</span>
+              <span>可多选</span>
+            </div>
           </div>
           <div class="field">
             <span>名字气质</span>
             <div class="chip-row multi" id="styleChips">
               <button type="button" class="chip active" data-value="书卷气">书卷气</button>
-              <button type="button" class="chip active" data-value="清朗">清朗</button>
+              <button type="button" class="chip" data-value="清朗">清朗</button>
               <button type="button" class="chip" data-value="温润">温润</button>
               <button type="button" class="chip" data-value="大气">大气</button>
               <button type="button" class="chip" data-value="现代">现代</button>
