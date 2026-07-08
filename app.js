@@ -605,6 +605,11 @@ const lunarYearList = document.querySelector("#lunarYearList");
 const lunarMonthList = document.querySelector("#lunarMonthList");
 const lunarDayList = document.querySelector("#lunarDayList");
 const lunarHourList = document.querySelector("#lunarHourList");
+const choicePicker = document.querySelector("#choicePicker");
+const closeChoicePickerButton = document.querySelector("#closeChoicePicker");
+const choicePickerEyebrow = document.querySelector("#choicePickerEyebrow");
+const choicePickerTitle = document.querySelector("#choicePickerTitle");
+const choicePickerList = document.querySelector("#choicePickerList");
 const favorites = new Map();
 let lastResults = [];
 let resultRound = 0;
@@ -612,10 +617,14 @@ let lastPreferenceKey = "";
 let shownResultNames = new Set();
 let lockedPreferences = null;
 let isGenerating = false;
+let activeChoiceSelect = null;
+let activeChoiceTrigger = null;
 const lunarYearCache = new Map();
 
 const today = new Date();
 const baseYear = today.getFullYear();
+const pickerYearStart = Math.max(1901, baseYear - 80);
+const pickerYearEnd = Math.min(2099, baseYear + 4);
 const solarPickerState = {
   year: baseYear,
   month: today.getMonth() + 1,
@@ -628,6 +637,17 @@ const lunarPickerState = {
   monthKey: "1-regular",
   day: 1,
   hour: 0
+};
+
+const choicePickerLabels = {
+  wish: {
+    eyebrow: "希望寄托",
+    title: "选择希望寄托"
+  },
+  region: {
+    eyebrow: "谐音检查",
+    title: "选择方言谐音检查"
+  }
 };
 
 function selectSingle(groupSelector, button) {
@@ -692,6 +712,10 @@ birthdayLunarInput.addEventListener("keydown", (event) => {
   }
 });
 
+document.querySelectorAll(".choice-trigger").forEach((button) => {
+  button.addEventListener("click", () => openChoicePicker(button.dataset.selectTarget, button));
+});
+
 solarPicker.addEventListener("click", (event) => {
   if (event.target === solarPicker) closeSolarPicker();
 
@@ -718,8 +742,21 @@ lunarPicker.addEventListener("click", (event) => {
   renderLunarPicker();
 });
 
+choicePicker.addEventListener("click", (event) => {
+  if (event.target === choicePicker) closeChoicePicker();
+
+  const option = event.target.closest("[data-choice-value]");
+  if (!option || !activeChoiceSelect) return;
+
+  activeChoiceSelect.value = option.dataset.choiceValue;
+  activeChoiceSelect.dispatchEvent(new Event("change", { bubbles: true }));
+  syncChoiceTrigger(activeChoiceSelect.id);
+  closeChoicePicker({ restoreFocus: true });
+});
+
 closeSolarPickerButton.addEventListener("click", closeSolarPicker);
 closeLunarPickerButton.addEventListener("click", closeLunarPicker);
+closeChoicePickerButton.addEventListener("click", () => closeChoicePicker({ restoreFocus: true }));
 
 clearSolarPickerButton.addEventListener("click", () => {
   setSolarBirthdayValue("");
@@ -744,6 +781,7 @@ confirmLunarPickerButton.addEventListener("click", () => {
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && !solarPicker.hidden) closeSolarPicker();
   if (event.key === "Escape" && !lunarPicker.hidden) closeLunarPicker();
+  if (event.key === "Escape" && !choicePicker.hidden) closeChoicePicker({ restoreFocus: true });
 });
 
 document.querySelector("#openFavorites").addEventListener("click", () => {
@@ -811,6 +849,62 @@ function setActiveButton(containerSelector, value) {
   });
 }
 
+function getSelectLabel(select) {
+  return select.selectedOptions[0]?.textContent.trim() || "";
+}
+
+function syncChoiceTrigger(selectId) {
+  const select = document.querySelector(`#${selectId}`);
+  const triggerText = document.querySelector(`#${selectId}TriggerText`);
+  if (!select || !triggerText) return;
+  triggerText.textContent = getSelectLabel(select);
+}
+
+function syncChoiceTriggers() {
+  ["wish", "region"].forEach(syncChoiceTrigger);
+}
+
+function renderChoiceOptions(select) {
+  choicePickerList.innerHTML = "";
+  [...select.options].forEach((selectOption) => {
+    const option = document.createElement("button");
+    option.type = "button";
+    option.dataset.choiceValue = selectOption.value;
+    option.classList.toggle("active", selectOption.value === select.value);
+    option.textContent = selectOption.textContent;
+    choicePickerList.append(option);
+  });
+}
+
+function openChoicePicker(selectId, trigger) {
+  const select = document.querySelector(`#${selectId}`);
+  if (!select || select.disabled) return;
+
+  if (!solarPicker.hidden) closeSolarPicker();
+  if (!lunarPicker.hidden) closeLunarPicker();
+
+  activeChoiceSelect = select;
+  activeChoiceTrigger = trigger || document.querySelector(`[data-select-target="${selectId}"]`);
+
+  const labels = choicePickerLabels[selectId] || { eyebrow: "选项", title: "选择内容" };
+  choicePickerEyebrow.textContent = labels.eyebrow;
+  choicePickerTitle.textContent = labels.title;
+  renderChoiceOptions(select);
+  choicePicker.hidden = false;
+  document.body.classList.add("picker-open");
+  closeChoicePickerButton.focus();
+}
+
+function closeChoicePicker(options = {}) {
+  const trigger = activeChoiceTrigger;
+  const shouldRestoreFocus = options.restoreFocus && trigger && !trigger.disabled;
+  choicePicker.hidden = true;
+  document.body.classList.remove("picker-open");
+  activeChoiceSelect = null;
+  activeChoiceTrigger = null;
+  if (shouldRestoreFocus) trigger.focus();
+}
+
 function readPreferencesFromForm() {
   const calendarType = getActiveValue('[data-group="calendarType"]') || "solar";
   const lunarBirthday = calendarType === "lunar" ? getLunarBirthdayValue() : null;
@@ -861,6 +955,8 @@ function unlockPreferences() {
 function resetPreferences() {
   if (isGenerating) return;
   closeSolarPicker();
+  closeLunarPicker();
+  closeChoicePicker();
   unlockPreferences();
 
   document.querySelector("#surname").value = "";
@@ -894,6 +990,7 @@ function resetPreferences() {
   document.querySelector("#likeChars").value = "";
   document.querySelector("#avoidChars").value = "";
   document.querySelector("#region").value = "普通话优先";
+  syncChoiceTriggers();
 
   resultRound = 0;
   lastPreferenceKey = "";
@@ -925,7 +1022,7 @@ function daysInMonth(year, month) {
 }
 
 function yearOptions() {
-  const values = range(baseYear - 8, baseYear + 4);
+  const values = range(pickerYearStart, pickerYearEnd);
   if (!values.includes(solarPickerState.year)) values.push(solarPickerState.year);
   return values.sort((a, b) => a - b);
 }
@@ -1092,7 +1189,7 @@ function currentLunarInfo() {
 }
 
 function lunarYearOptions() {
-  const values = range(Math.max(1901, baseYear - 80), Math.min(2099, baseYear + 4));
+  const values = range(pickerYearStart, pickerYearEnd);
   if (!values.includes(lunarPickerState.year)) values.push(lunarPickerState.year);
   return values.sort((a, b) => a - b);
 }
@@ -2230,4 +2327,5 @@ function toast(message) {
 
 resetLunarControls();
 syncCalendarFields();
+syncChoiceTriggers();
 renderFavorites();

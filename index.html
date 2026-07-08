@@ -140,9 +140,9 @@
             </div>
           </div>
 
-          <label class="field select-field">
+          <div class="field select-field">
             <span>希望寄托</span>
-            <select id="wish">
+            <select id="wish" class="native-select-value" aria-hidden="true" tabindex="-1">
               <option value="平安">平安顺遂</option>
               <option value="聪慧">聪慧明达</option>
               <option value="远志">胸怀远志</option>
@@ -150,7 +150,11 @@
               <option value="自由">自由开阔</option>
               <option value="清雅">清雅从容</option>
             </select>
-          </label>
+            <button type="button" class="calendar-input calendar-trigger choice-trigger" id="wishTrigger" data-select-target="wish" aria-haspopup="dialog" aria-controls="choicePicker">
+              <span class="calendar-value" id="wishTriggerText">平安顺遂</span>
+              <span class="calendar-arrow" aria-hidden="true"></span>
+            </button>
+          </div>
         </section>
 
         <section class="form-section compact">
@@ -203,16 +207,20 @@
               <input id="avoidChars" maxlength="8" placeholder="例：梓、子" />
             </label>
           </div>
-          <label class="field select-field">
+          <div class="field select-field">
             <span>方言谐音检查</span>
-            <select id="region">
+            <select id="region" class="native-select-value" aria-hidden="true" tabindex="-1">
               <option value="普通话优先">普通话优先</option>
               <option value="粤语检查">粤语检查</option>
               <option value="吴语检查">吴语检查</option>
               <option value="闽南语检查">闽南语检查</option>
               <option value="四川话检查">四川话检查</option>
             </select>
-          </label>
+            <button type="button" class="calendar-input calendar-trigger choice-trigger" id="regionTrigger" data-select-target="region" aria-haspopup="dialog" aria-controls="choicePicker">
+              <span class="calendar-value" id="regionTriggerText">普通话优先</span>
+              <span class="calendar-arrow" aria-hidden="true"></span>
+            </button>
+          </div>
         </section>
       </form>
 
@@ -313,6 +321,20 @@
             <button type="button" class="outline" id="clearLunarPicker">清空</button>
             <button type="button" class="primary" id="confirmLunarPicker">确认时间</button>
           </div>
+        </section>
+      </div>
+
+      <div class="picker-mask" id="choicePicker" hidden>
+        <section class="picker-sheet choice-sheet" role="dialog" aria-modal="true" aria-labelledby="choicePickerTitle">
+          <div class="picker-grip" aria-hidden="true"></div>
+          <div class="picker-head">
+            <div>
+              <p class="eyebrow" id="choicePickerEyebrow">选项</p>
+              <h2 id="choicePickerTitle">选择内容</h2>
+            </div>
+            <button type="button" class="picker-close" id="closeChoicePicker" aria-label="关闭选择器">×</button>
+          </div>
+          <div class="choice-list" id="choicePickerList"></div>
         </section>
       </div>
 

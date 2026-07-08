@@ -154,6 +154,7 @@ h2 {
 }
 
 .ghost-icon {
+  position: relative;
   display: grid;
   width: 40px;
   height: 40px;
@@ -167,21 +168,29 @@ h2 {
 }
 
 .ghost-icon::before {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  place-items: center;
   content: "候";
   font-size: 12px;
+  line-height: 1;
 }
 
 .ghost-icon span {
   position: absolute;
-  transform: translate(13px, -13px);
+  top: -5px;
+  right: -5px;
+  display: grid;
   min-width: 18px;
   height: 18px;
+  place-items: center;
   padding: 0 5px;
   border-radius: 999px;
   background: var(--cinnabar);
   color: #fff;
   font-size: 11px;
-  line-height: 18px;
+  line-height: 1;
 }
 
 .intro-panel {
@@ -333,48 +342,8 @@ textarea:focus {
   gap: 7px;
 }
 
-.select-field select {
-  height: 48px;
-  min-height: 48px;
-  padding: 0 46px 0 12px;
-  appearance: none;
-  background:
-    linear-gradient(180deg, rgba(255, 253, 248, 0.98), rgba(248, 239, 224, 0.9)),
-    #fffdf8;
-  color: #25302d;
-  font-size: 15px;
-  font-weight: 620;
-  line-height: 48px;
-  cursor: pointer;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.72),
-    0 8px 18px rgba(34, 29, 21, 0.05);
-}
-
-.select-field::before {
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
-  width: 28px;
-  height: 28px;
-  border: 1px solid rgba(8, 118, 109, 0.2);
-  border-radius: 8px;
-  background: rgba(227, 242, 237, 0.68);
-  content: "";
-  pointer-events: none;
-}
-
-.select-field::after {
-  position: absolute;
-  right: 20px;
-  bottom: 20px;
-  width: 7px;
-  height: 7px;
-  border-right: 2px solid var(--jade);
-  border-bottom: 2px solid var(--jade);
-  content: "";
-  pointer-events: none;
-  transform: rotate(45deg);
+.native-select-value {
+  display: none;
 }
 
 .segmented {
@@ -449,9 +418,11 @@ textarea:focus {
 
 .calendar-arrow {
   position: relative;
+  display: grid;
   flex: 0 0 28px;
   width: 28px;
   height: 28px;
+  place-items: center;
   border: 1px solid rgba(8, 118, 109, 0.2);
   border-radius: 8px;
   background: rgba(227, 242, 237, 0.68);
@@ -459,18 +430,22 @@ textarea:focus {
 
 .calendar-arrow::before {
   position: absolute;
-  top: 8px;
-  left: 9px;
+  top: 50%;
+  left: 50%;
   width: 7px;
   height: 7px;
   border-right: 2px solid var(--jade);
   border-bottom: 2px solid var(--jade);
   content: "";
-  transform: rotate(45deg);
+  transform: translate(-50%, -62%) rotate(45deg);
 }
 
 .calendar-input[hidden] {
   display: none;
+}
+
+.choice-trigger {
+  margin-top: 0;
 }
 
 .segmented button {
@@ -1081,7 +1056,12 @@ body.picker-open {
   gap: 12px;
 }
 
+.choice-sheet {
+  padding-bottom: calc(18px + env(safe-area-inset-bottom));
+}
+
 .picker-close {
+  position: relative;
   display: grid;
   flex: 0 0 38px;
   width: 38px;
@@ -1090,9 +1070,88 @@ body.picker-open {
   border: 1px solid var(--line);
   border-radius: 8px;
   background: rgba(255, 253, 248, 0.78);
-  color: var(--ink);
-  font-size: 24px;
-  line-height: 1;
+  color: transparent;
+  font-size: 0;
+  line-height: 0;
+}
+
+.picker-close::before,
+.picker-close::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--ink);
+  content: "";
+  transform-origin: center;
+}
+
+.picker-close::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.picker-close::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.choice-list {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+  padding: 10px;
+  border: 1px solid #dfd1bb;
+  border-radius: 8px;
+  background: rgba(248, 239, 224, 0.6);
+}
+
+.choice-list button {
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 0 12px;
+  border: 1px solid #e1d1ba;
+  border-radius: 7px;
+  background: rgba(255, 253, 248, 0.74);
+  color: #59635c;
+  text-align: left;
+  font-size: 15px;
+  font-weight: 760;
+  box-shadow: none;
+}
+
+.choice-list button::after {
+  flex: 0 0 14px;
+  width: 14px;
+  height: 14px;
+  border: 1px solid rgba(89, 99, 92, 0.24);
+  border-radius: 999px;
+  background: rgba(255, 253, 248, 0.56);
+  content: "";
+  transform: none;
+}
+
+.choice-list button.active {
+  border-color: transparent;
+  background: linear-gradient(180deg, #202a26, #141918);
+  color: #fffaf1;
+  box-shadow: 0 8px 16px rgba(24, 33, 40, 0.16);
+}
+
+.choice-list button.active::after {
+  border-color: rgba(255, 250, 241, 0.8);
+  background:
+    radial-gradient(circle at center, #fffaf1 0 3px, transparent 3.5px),
+    rgba(255, 250, 241, 0.14);
+}
+
+.choice-list button:focus {
+  outline: none;
+  border-color: var(--jade);
+  box-shadow: 0 0 0 3px rgba(8, 118, 109, 0.14);
 }
 
 .picker-wheel-group {
