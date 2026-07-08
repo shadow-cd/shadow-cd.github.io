@@ -223,8 +223,83 @@ const basisLabels = {
   meaning: "寓意",
   sound: "音律",
   shape: "字形",
-  season: "时令"
+  season: "时令",
+  bazi: "八字",
+  yijing: "周易"
 };
+
+const fiveElements = ["木", "火", "土", "金", "水"];
+const heavenlyStems = ["甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸"];
+const earthlyBranches = ["子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"];
+const stemElements = {
+  甲: "木",
+  乙: "木",
+  丙: "火",
+  丁: "火",
+  戊: "土",
+  己: "土",
+  庚: "金",
+  辛: "金",
+  壬: "水",
+  癸: "水"
+};
+const branchElements = {
+  子: "水",
+  丑: "土",
+  寅: "木",
+  卯: "木",
+  辰: "土",
+  巳: "火",
+  午: "火",
+  未: "土",
+  申: "金",
+  酉: "金",
+  戌: "土",
+  亥: "水"
+};
+
+const yijingImagesByElement = {
+  木: [
+    { trigram: "震", image: "雷", virtue: "生发奋起", tags: ["远志", "清朗", "大气"] },
+    { trigram: "巽", image: "风", virtue: "谦和入理", tags: ["书卷气", "温润", "仁爱"] }
+  ],
+  火: [
+    { trigram: "离", image: "火", virtue: "文明照见", tags: ["聪慧", "清朗", "书卷气"] }
+  ],
+  土: [
+    { trigram: "坤", image: "地", virtue: "厚德承载", tags: ["仁爱", "平安", "温润"] },
+    { trigram: "艮", image: "山", virtue: "笃定止正", tags: ["大气", "平安", "远志"] }
+  ],
+  金: [
+    { trigram: "乾", image: "天", virtue: "刚健有为", tags: ["大气", "远志", "清朗"] },
+    { trigram: "兑", image: "泽", virtue: "和悦有度", tags: ["仁爱", "清雅", "温润"] }
+  ],
+  水: [
+    { trigram: "坎", image: "水", virtue: "通达守正", tags: ["清雅", "自由", "聪慧"] }
+  ]
+};
+
+const lunarMonthNames = ["正月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "腊月"];
+const lunarHourOptions = [
+  { branch: "子", label: "子时", range: "23:00-00:59", hour: 0 },
+  { branch: "丑", label: "丑时", range: "01:00-02:59", hour: 2 },
+  { branch: "寅", label: "寅时", range: "03:00-04:59", hour: 4 },
+  { branch: "卯", label: "卯时", range: "05:00-06:59", hour: 6 },
+  { branch: "辰", label: "辰时", range: "07:00-08:59", hour: 8 },
+  { branch: "巳", label: "巳时", range: "09:00-10:59", hour: 10 },
+  { branch: "午", label: "午时", range: "11:00-12:59", hour: 12 },
+  { branch: "未", label: "未时", range: "13:00-14:59", hour: 14 },
+  { branch: "申", label: "申时", range: "15:00-16:59", hour: 16 },
+  { branch: "酉", label: "酉时", range: "17:00-18:59", hour: 18 },
+  { branch: "戌", label: "戌时", range: "19:00-20:59", hour: 20 },
+  { branch: "亥", label: "亥时", range: "21:00-22:59", hour: 22 }
+];
+
+const lunarDateFormatter = new Intl.DateTimeFormat("zh-CN-u-ca-chinese", {
+  year: "numeric",
+  month: "long",
+  day: "numeric"
+});
 
 const nameCharacters = [
   { char: "知", element: "火", sourceType: "classic", source: "取“知者不惑”的明达意象。", tags: ["书卷气", "聪慧", "清朗"], meaning: "知礼明理，心中有判断。", tone: 1, strokes: 8, gender: "neutral", zodiac: ["蛇", "马"], season: ["春", "夏"] },
@@ -510,6 +585,7 @@ const generationCharInput = document.querySelector("#generationChar");
 const birthdaySolarInput = document.querySelector("#birthdaySolar");
 const birthdaySolarText = document.querySelector("#birthdaySolarText");
 const birthdayLunarInput = document.querySelector("#birthdayLunar");
+const birthdayLunarText = document.querySelector("#birthdayLunarText");
 const solarPicker = document.querySelector("#solarPicker");
 const closeSolarPickerButton = document.querySelector("#closeSolarPicker");
 const clearSolarPickerButton = document.querySelector("#clearSolarPicker");
@@ -520,12 +596,23 @@ const solarMonthList = document.querySelector("#solarMonthList");
 const solarDayList = document.querySelector("#solarDayList");
 const solarHourList = document.querySelector("#solarHourList");
 const solarMinuteList = document.querySelector("#solarMinuteList");
+const lunarPicker = document.querySelector("#lunarPicker");
+const closeLunarPickerButton = document.querySelector("#closeLunarPicker");
+const clearLunarPickerButton = document.querySelector("#clearLunarPicker");
+const confirmLunarPickerButton = document.querySelector("#confirmLunarPicker");
+const lunarPickerPreview = document.querySelector("#lunarPickerPreview");
+const lunarYearList = document.querySelector("#lunarYearList");
+const lunarMonthList = document.querySelector("#lunarMonthList");
+const lunarDayList = document.querySelector("#lunarDayList");
+const lunarHourList = document.querySelector("#lunarHourList");
 const favorites = new Map();
 let lastResults = [];
 let resultRound = 0;
 let lastPreferenceKey = "";
 let shownResultNames = new Set();
 let lockedPreferences = null;
+let isGenerating = false;
+const lunarYearCache = new Map();
 
 const today = new Date();
 const baseYear = today.getFullYear();
@@ -535,6 +622,12 @@ const solarPickerState = {
   day: today.getDate(),
   hour: today.getHours(),
   minute: Math.floor(today.getMinutes() / 5) * 5
+};
+const lunarPickerState = {
+  year: baseYear,
+  monthKey: "1-regular",
+  day: 1,
+  hour: 0
 };
 
 function selectSingle(groupSelector, button) {
@@ -590,6 +683,15 @@ birthdaySolarInput.addEventListener("keydown", (event) => {
   }
 });
 
+birthdayLunarInput.addEventListener("click", openLunarPicker);
+
+birthdayLunarInput.addEventListener("keydown", (event) => {
+  if (event.key === "Enter" || event.key === " ") {
+    event.preventDefault();
+    openLunarPicker();
+  }
+});
+
 solarPicker.addEventListener("click", (event) => {
   if (event.target === solarPicker) closeSolarPicker();
 
@@ -601,7 +703,23 @@ solarPicker.addEventListener("click", (event) => {
   renderSolarPicker();
 });
 
+lunarPicker.addEventListener("click", (event) => {
+  if (event.target === lunarPicker) closeLunarPicker();
+
+  const option = event.target.closest("[data-lunar-part]");
+  if (!option) return;
+
+  if (option.dataset.lunarPart === "monthKey") {
+    lunarPickerState.monthKey = option.dataset.lunarValue;
+  } else {
+    lunarPickerState[option.dataset.lunarPart] = Number(option.dataset.lunarValue);
+  }
+  normalizeLunarPickerState();
+  renderLunarPicker();
+});
+
 closeSolarPickerButton.addEventListener("click", closeSolarPicker);
+closeLunarPickerButton.addEventListener("click", closeLunarPicker);
 
 clearSolarPickerButton.addEventListener("click", () => {
   setSolarBirthdayValue("");
@@ -613,8 +731,19 @@ confirmSolarPickerButton.addEventListener("click", () => {
   closeSolarPicker();
 });
 
+clearLunarPickerButton.addEventListener("click", () => {
+  setLunarBirthdayValue(null);
+  closeLunarPicker();
+});
+
+confirmLunarPickerButton.addEventListener("click", () => {
+  setLunarBirthdayValue(getLunarPickerValue());
+  closeLunarPicker();
+});
+
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && !solarPicker.hidden) closeSolarPicker();
+  if (event.key === "Escape" && !lunarPicker.hidden) closeLunarPicker();
 });
 
 document.querySelector("#openFavorites").addEventListener("click", () => {
@@ -632,8 +761,19 @@ document.querySelector("#makePoll").addEventListener("click", async () => {
     toast("先收藏几个候选名");
     return;
   }
-  const lines = names.map((item, index) => `${index + 1}. ${item.fullName}：${item.meaning}`);
-  pollText.value = `帮宝宝选个名字，你更喜欢哪一个？\n${lines.join("\n")}\n\n我比较看重：出处清楚、读音顺口、寓意耐看。`;
+  const lines = names.map((item, index) => {
+    const given = item.displayGiven || item.given || "";
+    const reminder = `${item.risk}${given.length === 1 ? " 单字名建议重点看重名风险。" : ""}`;
+    return [
+      `${index + 1}. ${item.fullName}`,
+      `寓意：${item.meaning}`,
+      `出处：${item.source}`,
+      `五行：${item.element}`,
+      `音律：${item.tone}${item.writing || ""}`,
+      `提醒：${reminder}`
+    ].join("\n");
+  });
+  pollText.value = `帮宝宝选个名字，你更喜欢哪一个？\n\n${lines.join("\n\n")}`;
   try {
     await navigator.clipboard.writeText(pollText.value);
   } catch (error) {
@@ -672,6 +812,8 @@ function setActiveButton(containerSelector, value) {
 }
 
 function readPreferencesFromForm() {
+  const calendarType = getActiveValue('[data-group="calendarType"]') || "solar";
+  const lunarBirthday = calendarType === "lunar" ? getLunarBirthdayValue() : null;
   return {
     surname: document.querySelector("#surname").value.trim(),
     gender: getActiveValue('[data-group="gender"]') || "neutral",
@@ -680,8 +822,9 @@ function readPreferencesFromForm() {
     element: getActiveValue('[data-chip-group="element"]') || "auto",
     styles: getSelectedStyles(),
     wish: document.querySelector("#wish").value,
-    calendarType: getActiveValue('[data-group="calendarType"]') || "solar",
-    birthday: getActiveValue('[data-group="calendarType"]') === "lunar" ? birthdayLunarInput.value.trim() : getSolarBirthdayValue(),
+    calendarType,
+    birthday: calendarType === "lunar" ? lunarBirthday?.solarValue || "" : getSolarBirthdayValue(),
+    lunarBirthday: lunarBirthday?.display || "",
     region: document.querySelector("#region").value,
     generationChar: generationPanel.hidden ? "" : firstChar(generationCharInput.value),
     generationPosition: getActiveValue('[data-group="generationPosition"]') || "first",
@@ -716,6 +859,7 @@ function unlockPreferences() {
 }
 
 function resetPreferences() {
+  if (isGenerating) return;
   closeSolarPicker();
   unlockPreferences();
 
@@ -738,7 +882,7 @@ function resetPreferences() {
 
   setActiveButton('[data-group="calendarType"]', "solar");
   setSolarBirthdayValue("");
-  birthdayLunarInput.value = "";
+  resetLunarControls();
   syncCalendarFields();
 
   generationPanel.hidden = true;
@@ -803,8 +947,8 @@ function renderWheel(list, part, values, suffix) {
     .join("");
 }
 
-function centerActiveWheelItems() {
-  [solarYearList, solarMonthList, solarDayList, solarHourList, solarMinuteList].forEach((list) => {
+function centerActiveWheelItems(lists = [solarYearList, solarMonthList, solarDayList, solarHourList, solarMinuteList]) {
+  lists.forEach((list) => {
     const active = list.querySelector(".active");
     if (active) active.scrollIntoView({ block: "center" });
   });
@@ -883,7 +1027,225 @@ function syncCalendarFields() {
   const isLunar = getActiveValue('[data-group="calendarType"]') === "lunar";
   birthdaySolarInput.hidden = isLunar;
   birthdayLunarInput.hidden = !isLunar;
-  if (isLunar) closeSolarPicker();
+  if (isLunar) {
+    closeSolarPicker();
+  } else {
+    closeLunarPicker();
+  }
+}
+
+function isoDateFromDate(date) {
+  return `${date.getFullYear()}-${padNumber(date.getMonth() + 1)}-${padNumber(date.getDate())}`;
+}
+
+function parseLunarDate(date) {
+  const parts = Object.fromEntries(lunarDateFormatter.formatToParts(date).map((part) => [part.type, part.value]));
+  const rawMonth = parts.month || "";
+  const isLeap = rawMonth.startsWith("闰");
+  const monthName = rawMonth.replace(/^闰/, "");
+  const month = lunarMonthNames.indexOf(monthName) + 1;
+  return {
+    year: Number(parts.relatedYear),
+    month,
+    leap: isLeap,
+    day: Number(parts.day),
+    yearName: parts.yearName || "",
+    isoDate: isoDateFromDate(date)
+  };
+}
+
+function buildLunarYearData(year) {
+  if (lunarYearCache.has(year)) return lunarYearCache.get(year);
+
+  const months = [];
+  const monthMap = new Map();
+  const cursor = new Date(year, 0, 1, 12, 0, 0);
+  const end = new Date(year + 1, 2, 1, 12, 0, 0);
+
+  while (cursor <= end) {
+    const info = parseLunarDate(cursor);
+    if (info.year === year && info.month) {
+      const key = `${info.month}-${info.leap ? "leap" : "regular"}`;
+      if (!monthMap.has(key)) {
+        const monthInfo = {
+          key,
+          month: info.month,
+          leap: info.leap,
+          label: `${info.leap ? "闰" : ""}${lunarMonthNames[info.month - 1]}`,
+          days: []
+        };
+        monthMap.set(key, monthInfo);
+        months.push(monthInfo);
+      }
+      monthMap.get(key).days.push({ day: info.day, isoDate: info.isoDate });
+    }
+    cursor.setDate(cursor.getDate() + 1);
+  }
+
+  const data = { year, months };
+  lunarYearCache.set(year, data);
+  return data;
+}
+
+function currentLunarInfo() {
+  return parseLunarDate(new Date(baseYear, today.getMonth(), today.getDate(), 12, 0, 0));
+}
+
+function lunarYearOptions() {
+  const values = range(Math.max(1901, baseYear - 80), Math.min(2099, baseYear + 4));
+  if (!values.includes(lunarPickerState.year)) values.push(lunarPickerState.year);
+  return values.sort((a, b) => a - b);
+}
+
+function lunarMonthOptions(year = lunarPickerState.year) {
+  return buildLunarYearData(Number(year)).months;
+}
+
+function lunarDayOptions(year = lunarPickerState.year, monthKey = lunarPickerState.monthKey) {
+  const month = lunarMonthOptions(year).find((item) => item.key === monthKey) || lunarMonthOptions(year)[0];
+  return month?.days || [];
+}
+
+function normalizeLunarPickerState() {
+  const years = lunarYearOptions();
+  lunarPickerState.year = Math.max(years[0], Math.min(years[years.length - 1], Number(lunarPickerState.year) || baseYear));
+  const months = lunarMonthOptions(lunarPickerState.year);
+  if (!months.some((month) => month.key === lunarPickerState.monthKey)) {
+    lunarPickerState.monthKey = months[0]?.key || "1-regular";
+  }
+  const days = lunarDayOptions(lunarPickerState.year, lunarPickerState.monthKey);
+  if (!days.some((day) => day.day === Number(lunarPickerState.day))) {
+    lunarPickerState.day = days[0]?.day || 1;
+  }
+  if (!lunarHourOptions.some((hour) => hour.hour === Number(lunarPickerState.hour))) {
+    lunarPickerState.hour = 0;
+  }
+}
+
+function renderLunarWheel(list, part, values, labelOf) {
+  list.innerHTML = values
+    .map((item) => {
+      const value = part === "monthKey" ? item.key : item.value;
+      const activeValue = part === "monthKey" ? lunarPickerState.monthKey : lunarPickerState[part];
+      const activeClass = value === activeValue ? ' class="active"' : "";
+      return `<button type="button"${activeClass} data-lunar-part="${part}" data-lunar-value="${value}">${labelOf(item)}</button>`;
+    })
+    .join("");
+}
+
+function getLunarPickerValue() {
+  normalizeLunarPickerState();
+  const month = lunarMonthOptions().find((item) => item.key === lunarPickerState.monthKey) || lunarMonthOptions()[0];
+  const day = lunarDayOptions().find((item) => item.day === Number(lunarPickerState.day)) || month?.days[0];
+  const hour = lunarHourOptions.find((item) => item.hour === Number(lunarPickerState.hour)) || lunarHourOptions[0];
+  if (!month || !day || !hour) return null;
+  return {
+    solarValue: `${day.isoDate}T${padNumber(hour.hour)}:00`,
+    display: `${lunarPickerState.year}年${month.label}${day.day}日 ${hour.label}`,
+    hourBranch: hour.branch,
+    year: lunarPickerState.year,
+    monthKey: lunarPickerState.monthKey,
+    day: day.day,
+    hour: hour.hour
+  };
+}
+
+function renderLunarPicker() {
+  normalizeLunarPickerState();
+  renderLunarWheel(lunarYearList, "year", lunarYearOptions().map((value) => ({ value })), (item) => `${item.value}年`);
+  renderLunarWheel(lunarMonthList, "monthKey", lunarMonthOptions(), (item) => item.label);
+  renderLunarWheel(lunarDayList, "day", lunarDayOptions().map((item) => ({ value: item.day })), (item) => `${item.value}日`);
+  renderLunarWheel(lunarHourList, "hour", lunarHourOptions.map((item) => ({ value: item.hour, label: item.label, range: item.range })), (item) => `${item.label} ${item.range}`);
+  const value = getLunarPickerValue();
+  lunarPickerPreview.textContent = value
+    ? `${value.display}，换算为公历${formatSolarDisplay(value.solarValue)}`
+    : "请选择农历出生时间";
+  requestAnimationFrame(() => centerActiveWheelItems([lunarYearList, lunarMonthList, lunarDayList, lunarHourList]));
+}
+
+function setLunarPickerToCurrent() {
+  const current = currentLunarInfo();
+  lunarPickerState.year = current.year;
+  const monthKey = `${current.month}-${current.leap ? "leap" : "regular"}`;
+  lunarPickerState.monthKey = monthKey;
+  lunarPickerState.day = current.day;
+  const currentHour = lunarHourOptions.reduce((best, item) => {
+    const distance = Math.abs(item.hour - today.getHours());
+    return distance < best.distance ? { value: item.hour, distance } : best;
+  }, { value: 0, distance: 24 });
+  lunarPickerState.hour = currentHour.value;
+  normalizeLunarPickerState();
+}
+
+function setLunarPickerFromValue() {
+  const value = getLunarBirthdayValue();
+  if (value) {
+    lunarPickerState.year = Number(value.year);
+    lunarPickerState.monthKey = value.monthKey;
+    lunarPickerState.day = Number(value.day);
+    lunarPickerState.hour = Number(value.hour);
+    normalizeLunarPickerState();
+    return;
+  }
+
+  setLunarPickerToCurrent();
+}
+
+function resetLunarControls() {
+  setLunarPickerToCurrent();
+  setLunarBirthdayValue(null);
+}
+
+function getLunarBirthdayValue() {
+  if (!birthdayLunarInput.dataset.value) return null;
+  return {
+    solarValue: birthdayLunarInput.dataset.value,
+    display: birthdayLunarInput.dataset.display || "",
+    hourBranch: birthdayLunarInput.dataset.hourBranch || "",
+    year: birthdayLunarInput.dataset.year,
+    monthKey: birthdayLunarInput.dataset.monthKey,
+    day: birthdayLunarInput.dataset.day,
+    hour: birthdayLunarInput.dataset.hour
+  };
+}
+
+function setLunarBirthdayValue(value) {
+  if (!value) {
+    birthdayLunarInput.dataset.value = "";
+    birthdayLunarInput.dataset.display = "";
+    birthdayLunarInput.dataset.hourBranch = "";
+    birthdayLunarInput.dataset.year = "";
+    birthdayLunarInput.dataset.monthKey = "";
+    birthdayLunarInput.dataset.day = "";
+    birthdayLunarInput.dataset.hour = "";
+    birthdayLunarText.textContent = "选择农历出生时间";
+    birthdayLunarText.classList.add("placeholder");
+    return;
+  }
+
+  birthdayLunarInput.dataset.value = value.solarValue;
+  birthdayLunarInput.dataset.display = value.display;
+  birthdayLunarInput.dataset.hourBranch = value.hourBranch;
+  birthdayLunarInput.dataset.year = value.year;
+  birthdayLunarInput.dataset.monthKey = value.monthKey;
+  birthdayLunarInput.dataset.day = value.day;
+  birthdayLunarInput.dataset.hour = value.hour;
+  birthdayLunarText.textContent = value.display;
+  birthdayLunarText.classList.remove("placeholder");
+}
+
+function openLunarPicker() {
+  if (getActiveValue('[data-group="calendarType"]') !== "lunar") return;
+  setLunarPickerFromValue();
+  renderLunarPicker();
+  lunarPicker.hidden = false;
+  document.body.classList.add("picker-open");
+  closeLunarPickerButton.focus();
+}
+
+function closeLunarPicker() {
+  lunarPicker.hidden = true;
+  document.body.classList.remove("picker-open");
 }
 
 function birthdaySeason(value) {
@@ -900,6 +1262,151 @@ function birthdayZodiac(value) {
   if (!year) return "";
   const animals = ["鼠", "牛", "虎", "兔", "龙", "蛇", "马", "羊", "猴", "鸡", "狗", "猪"];
   return animals[(year - 4) % 12];
+}
+
+function positiveModulo(value, modulo) {
+  return ((value % modulo) + modulo) % modulo;
+}
+
+const solarTermJieBoundaries = [
+  { term: "小寒", month: 1, branch: 1, c: 5.4055, fallbackDay: 6 },
+  { term: "立春", month: 2, branch: 2, c: 3.87, fallbackDay: 4 },
+  { term: "惊蛰", month: 3, branch: 3, c: 5.63, fallbackDay: 6 },
+  { term: "清明", month: 4, branch: 4, c: 4.81, fallbackDay: 5 },
+  { term: "立夏", month: 5, branch: 5, c: 5.52, fallbackDay: 6 },
+  { term: "芒种", month: 6, branch: 6, c: 5.678, fallbackDay: 6 },
+  { term: "小暑", month: 7, branch: 7, c: 7.108, fallbackDay: 7 },
+  { term: "立秋", month: 8, branch: 8, c: 7.5, fallbackDay: 8 },
+  { term: "白露", month: 9, branch: 9, c: 7.646, fallbackDay: 8 },
+  { term: "寒露", month: 10, branch: 10, c: 8.318, fallbackDay: 8 },
+  { term: "立冬", month: 11, branch: 11, c: 7.438, fallbackDay: 7 },
+  { term: "大雪", month: 12, branch: 0, c: 7.18, fallbackDay: 7 }
+];
+
+function solarTermDay(year, term) {
+  const boundary = solarTermJieBoundaries.find((item) => item.term === term);
+  if (!boundary) return 1;
+  if (year < 1901 || year > 2099) return boundary.fallbackDay;
+
+  const y = year % 100;
+  return Math.floor(y * 0.2422 + boundary.c) - Math.floor((y - 1) / 4);
+}
+
+function sexagenaryFromIndex(index) {
+  return {
+    stem: heavenlyStems[positiveModulo(index, 10)],
+    branch: earthlyBranches[positiveModulo(index, 12)]
+  };
+}
+
+function pillarElements(pillar) {
+  if (!pillar) return [];
+  return [stemElements[pillar.stem], branchElements[pillar.branch]].filter(Boolean);
+}
+
+function gregorianJdn(year, month, day) {
+  let y = year;
+  let m = month;
+  if (m <= 2) {
+    y -= 1;
+    m += 12;
+  }
+  const century = Math.floor(y / 100);
+  const correction = 2 - century + Math.floor(century / 4);
+  return Math.floor(365.25 * (y + 4716)) + Math.floor(30.6001 * (m + 1)) + day + correction - 1524;
+}
+
+function yearPillar(year, month, day) {
+  const liChunDay = solarTermDay(year, "立春");
+  const effectiveYear = month > 2 || (month === 2 && day >= liChunDay) ? year : year - 1;
+  return sexagenaryFromIndex(effectiveYear - 4);
+}
+
+function monthBranchIndex(year, month, day) {
+  let branch = 0;
+  solarTermJieBoundaries.forEach((item) => {
+    const termDay = solarTermDay(year, item.term);
+    if (month > item.month || (month === item.month && day >= termDay)) branch = item.branch;
+  });
+  return branch;
+}
+
+function monthPillar(yearPillarValue, year, month, day) {
+  const branchIndex = monthBranchIndex(year, month, day);
+  const yearStemIndex = heavenlyStems.indexOf(yearPillarValue.stem);
+  const startStemMap = [2, 4, 6, 8, 0];
+  const startStem = startStemMap[yearStemIndex % 5];
+  const monthOffset = positiveModulo(branchIndex - 2, 12);
+  return {
+    stem: heavenlyStems[positiveModulo(startStem + monthOffset, 10)],
+    branch: earthlyBranches[branchIndex]
+  };
+}
+
+function dayPillar(year, month, day) {
+  return sexagenaryFromIndex(gregorianJdn(year, month, day) + 49);
+}
+
+function hourPillar(dayPillarValue, hour) {
+  const branchIndex = Math.floor((hour + 1) / 2) % 12;
+  const dayStemIndex = heavenlyStems.indexOf(dayPillarValue.stem);
+  const startStemMap = [0, 2, 4, 6, 8];
+  const startStem = startStemMap[dayStemIndex % 5];
+  return {
+    stem: heavenlyStems[positiveModulo(startStem + branchIndex, 10)],
+    branch: earthlyBranches[branchIndex]
+  };
+}
+
+function elementCountsFromPillars(pillars) {
+  const counts = Object.fromEntries(fiveElements.map((element) => [element, 0]));
+  pillars.forEach((pillar) => {
+    pillarElements(pillar).forEach((element) => {
+      counts[element] += 1;
+    });
+  });
+  return counts;
+}
+
+function favorableElementsFromCounts(counts) {
+  const ranked = fiveElements
+    .map((element) => ({ element, count: counts[element] || 0 }))
+    .sort((a, b) => a.count - b.count || fiveElements.indexOf(a.element) - fiveElements.indexOf(b.element));
+  return ranked.slice(0, 2).map((item) => item.element);
+}
+
+function buildBaziProfile(preferences) {
+  if (!preferences.basis.includes("bazi") || !preferences.birthday) return null;
+
+  const matched = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})/.exec(preferences.birthday);
+  if (!matched) return null;
+
+  const year = Number(matched[1]);
+  const month = Number(matched[2]);
+  const day = Number(matched[3]);
+  const hour = Number(matched[4]);
+  const yearValue = yearPillar(year, month, day);
+  const monthValue = monthPillar(yearValue, year, month, day);
+  const dayValue = dayPillar(year, month, day);
+  const hourValue = hourPillar(dayValue, hour);
+  const pillars = [
+    { label: "年柱", ...yearValue },
+    { label: "月柱", ...monthValue },
+    { label: "日柱", ...dayValue },
+    { label: "时柱", ...hourValue }
+  ];
+  const counts = elementCountsFromPillars(pillars);
+  const favorableElements = favorableElementsFromCounts(counts);
+
+  return {
+    mode: preferences.calendarType,
+    pillars,
+    counts,
+    favorableElements,
+    solarValue: preferences.birthday,
+    lunarDisplay: preferences.lunarBirthday || "",
+    summary: `${pillars.map((item) => `${item.label}${item.stem}${item.branch}`).join("、")}；按立春与节气分年分月，五行偏弱参考${favorableElements.join("、")}。`
+  };
 }
 
 function seasonalElements(season) {
@@ -1227,6 +1734,28 @@ function scoreCandidate(item, preferences) {
     if (["season", "poetry"].includes(item.sourceType)) score += 4;
   }
 
+  if (preferences.basis.includes("bazi")) {
+    const favorable = preferences.bazi?.favorableElements || [];
+    const baziFit = favorable.some((element) => elements.includes(element));
+    if (baziFit) {
+      score += 15;
+      reasons.push(`八字轻参补${favorable.join("、")}`);
+    } else if (favorable.length) {
+      score -= 4;
+    } else if (preferences.birthday) {
+      score += 2;
+      reasons.push("八字信息已记录，按轻量参考处理");
+    }
+  }
+
+  if (preferences.basis.includes("yijing")) {
+    const images = yijingImagesForItem(item);
+    const styleFit = images.some((image) => image.tags.some((tag) => item.tags.includes(tag) || preferences.styles.includes(tag)));
+    score += styleFit ? 10 : 5;
+    if (["classic", "poetry"].includes(item.sourceType)) score += 4;
+    if (images.length) reasons.push(`周易取${images.map((image) => image.trigram).join("、")}象`);
+  }
+
   preferences.styles.forEach((style) => {
     if (item.tags.includes(style)) score += 5;
   });
@@ -1270,12 +1799,74 @@ function preferenceKey(preferences) {
     wish: preferences.wish,
     calendarType: preferences.calendarType,
     birthday: preferences.birthday,
+    lunarBirthday: preferences.lunarBirthday,
     region: preferences.region,
     generationChar: preferences.generationChar,
     generationPosition: preferences.generationPosition,
     likes: preferences.likes,
     avoids: preferences.avoids
   });
+}
+
+function wait(ms) {
+  return new Promise((resolve) => window.setTimeout(resolve, ms));
+}
+
+function generationDelayMs(preferences) {
+  let delay = 5000;
+  delay += Math.max(0, preferences.basis.length - 1) * 2200;
+  delay += Math.max(0, preferences.styles.length - 1) * 650;
+  if (preferences.basis.includes("bazi")) delay += preferences.calendarType === "solar" ? 5200 : 3200;
+  if (preferences.basis.includes("yijing")) delay += 2200;
+  if (preferences.birthday) delay += 1200;
+  if (preferences.generationChar) delay += 2400;
+  if (preferences.element && preferences.element !== "auto") delay += 800;
+  if (preferences.gender !== "neutral") delay += 600;
+  if (preferences.length === "all") delay += 700;
+  if (preferences.region && preferences.region !== "普通话优先") delay += 1100;
+  delay += Math.min(2200, preferences.likes.length * 420);
+  delay += Math.min(2600, preferences.avoids.length * 520);
+  delay += Math.round(Math.random() * 1200);
+  return Math.max(5000, Math.min(30000, delay));
+}
+
+function renderGeneratingState(preferences, delay) {
+  const selected = preferences.basis.map((basis) => basisLabels[basis]).join("、") || "基础条件";
+  const steps = [
+    `合参${selected}`,
+    preferences.basis.includes("bazi") ? "推演生辰八字与五行偏弱" : "",
+    preferences.basis.includes("yijing") ? "校验周易卦象与名义" : "",
+    preferences.generationChar ? "校对家族字辈位置" : "",
+    preferences.likes.length || preferences.avoids.length ? "筛选喜欢字与忌用字" : "",
+    preferences.region !== "普通话优先" ? "检查地区连读提醒" : ""
+  ].filter(Boolean);
+
+  resultsSection.setAttribute("aria-busy", "true");
+  resultsSection.innerHTML = `
+    <div class="thinking-card">
+      <div class="thinking-mark" aria-hidden="true"></div>
+      <strong>正在推演名字</strong>
+      <span>${steps.join(" · ")}</span>
+      <small>约 ${Math.ceil(delay / 1000)} 秒后生成候选</small>
+    </div>
+  `;
+  resultsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function setGeneratingState(active, preferences = null, delay = 0) {
+  isGenerating = active;
+  generateBtn.disabled = active;
+  resetPreferencesBtn.disabled = active;
+  document.body.classList.toggle("is-generating", active);
+
+  if (active && preferences) {
+    generateBtn.textContent = "正在推演...";
+    renderGeneratingState(preferences, delay);
+    return;
+  }
+
+  resultsSection.removeAttribute("aria-busy");
+  updateBottomAction(Boolean(lockedPreferences));
 }
 
 function getNameChars(item) {
@@ -1336,7 +1927,8 @@ function selectDiverseResults(items, preferences, size) {
   return selected.slice(0, size);
 }
 
-function generateNames() {
+async function generateNames() {
+  if (isGenerating) return;
   const preferences = lockedPreferences ? clonePreferences(lockedPreferences) : readPreferencesFromForm();
   const surname = preferences.surname;
 
@@ -1347,6 +1939,11 @@ function generateNames() {
 
   if (!preferences.basis.length) {
     toast("至少选择一个取名依据");
+    return;
+  }
+
+  if (preferences.basis.includes("bazi") && !preferences.birthday) {
+    toast("选择生辰八字需先填写出生时间");
     return;
   }
 
@@ -1361,32 +1958,79 @@ function generateNames() {
   const zodiac = preferences.calendarType === "solar" ? birthdayZodiac(preferences.birthday) : "";
   preferences.season = season;
   preferences.zodiac = zodiac;
+  preferences.bazi = buildBaziProfile(preferences);
 
-  const matchedResults = buildGeneratedCandidates(preferences)
-    .map((item) => {
-      const scored = scoreCandidate(item, preferences);
-      return {
-        ...item,
-        score: scored.score,
-        supportReasons: scored.reasons,
-        displayGiven: item.given,
-        fullName: `${surname}${item.given}`,
-        season,
-        zodiac
-      };
-    })
-    .filter((item) => item.score > 35)
-    .sort((a, b) => b.score - a.score);
+  const wasLocked = Boolean(lockedPreferences);
+  if (!lockedPreferences) lockPreferences(preferences);
+  else updateBottomAction(true);
 
-  lastResults = selectDiverseResults(matchedResults, preferences, 6);
-  if (lastResults.length) {
-    resultRound += 1;
-    if (!lockedPreferences) lockPreferences(preferences);
-    else updateBottomAction(true);
+  const delay = generationDelayMs(preferences);
+  setGeneratingState(true, preferences, delay);
+
+  try {
+    await wait(delay);
+    const matchedResults = buildGeneratedCandidates(preferences)
+      .map((item) => {
+        const scored = scoreCandidate(item, preferences);
+        return {
+          ...item,
+          score: scored.score,
+          supportReasons: scored.reasons,
+          displayGiven: item.given,
+          fullName: `${surname}${item.given}`,
+          season,
+          zodiac
+        };
+      })
+      .filter((item) => item.score > 35)
+      .sort((a, b) => b.score - a.score);
+
+    lastResults = selectDiverseResults(matchedResults, preferences, 6);
+    if (lastResults.length) {
+      resultRound += 1;
+    } else if (!wasLocked) {
+      unlockPreferences();
+    }
+
+    renderResults(preferences);
+    document.querySelector("#resultsSection").scrollIntoView({ behavior: "smooth", block: "start" });
+  } finally {
+    setGeneratingState(false);
+  }
+}
+
+function yijingImagesForItem(item) {
+  const elements = item.elements || [item.element];
+  const images = [];
+  elements.forEach((element) => {
+    (yijingImagesByElement[element] || []).forEach((image) => {
+      if (!images.some((itemImage) => itemImage.trigram === image.trigram)) images.push(image);
+    });
+  });
+  return images.slice(0, 3);
+}
+
+function yijingSupportText(item, preferences) {
+  if (!preferences.basis.includes("yijing")) return "";
+  const images = yijingImagesForItem(item);
+  if (!images.length) return "";
+  const imageText = images
+    .map((image) => `${image.trigram}卦${image.image}象，取${image.virtue}`)
+    .join("；");
+  return `周易/易经取象参考${imageText}，与名字寓意、五行气质合参。`;
+}
+
+function baziSupportText(item, preferences) {
+  if (!preferences.basis.includes("bazi")) return "";
+  const profile = preferences.bazi;
+  if (!profile) return "";
+
+  const elementText = item.elements?.join("、") || item.element;
+  if (profile.mode === "lunar") {
+    return `生辰八字按农历“${profile.lunarDisplay}”换算为公历${formatSolarDisplay(profile.solarValue)}后推演：${profile.summary}此名含${elementText}意象，用作民俗参考。`;
   }
 
-  renderResults(preferences);
-  document.querySelector("#resultsSection").scrollIntoView({ behavior: "smooth", block: "start" });
+  return `生辰八字按公历推演：${profile.summary}此名含${elementText}意象，用作民俗参考。`;
 }
 
 function supportText(item, preferences) {
@@ -1399,7 +2043,9 @@ function supportText(item, preferences) {
     ? `出生时令取${item.season}季气息作参考${item.zodiac ? `，生肖按公历年份粗略取${item.zodiac}作轻量辅助` : ""}。`
     : "";
   const calendarPart = preferences.birthday
-    ? `出生时间按${preferences.calendarType === "lunar" ? "农历" : "公历"}记录。`
+    ? preferences.calendarType === "lunar"
+      ? `出生时间按农历${preferences.lunarBirthday}记录，已换算为公历${formatSolarDisplay(preferences.birthday)}。`
+      : `出生时间按公历${formatSolarDisplay(preferences.birthday)}记录。`
     : "";
   const generationPart = preferences.generationChar
     ? `家族字辈取“${preferences.generationChar}”，置于${preferences.generationPosition === "first" ? "名首" : "名末"}。`
@@ -1407,7 +2053,9 @@ function supportText(item, preferences) {
   const dialectPart = preferences.region && preferences.region !== "普通话优先"
     ? `已标记${preferences.region}，建议重点复读全名连读谐音。`
     : "";
-  return `本次依据包含${selected}。${calendarPart}${generationPart}${dialectPart}${elementPart}${seasonPart}${item.source}`;
+  const baziPart = baziSupportText(item, preferences);
+  const yijingPart = yijingSupportText(item, preferences);
+  return `本次依据包含${selected}。${calendarPart}${generationPart}${dialectPart}${elementPart}${seasonPart}${baziPart}${yijingPart}${item.source}`;
 }
 
 function clearGeneratedResults() {
@@ -1437,6 +2085,9 @@ function renderResults(preferences) {
       const given = item.displayGiven || item.given;
       const tags = [
         `五行 ${item.element}`,
+        ...(preferences.basis.includes("bazi") && preferences.bazi?.favorableElements?.length ? [`八字 ${preferences.bazi.favorableElements.join("、")}`] : []),
+        ...(preferences.basis.includes("bazi") && !preferences.bazi?.favorableElements?.length ? ["八字参考"] : []),
+        ...(preferences.basis.includes("yijing") ? [`周易 ${yijingImagesForItem(item).map((image) => image.trigram).join("、")}`] : []),
         ...(preferences.generationChar ? [`字辈 ${preferences.generationChar}`] : []),
         ...item.tags.slice(0, 3),
         given.length === 1 ? "单字名" : "双字名"
@@ -1577,4 +2228,6 @@ function toast(message) {
   node.timer = setTimeout(() => node.classList.remove("show"), 1600);
 }
 
+resetLunarControls();
+syncCalendarFields();
 renderFavorites();

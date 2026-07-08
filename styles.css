@@ -650,6 +650,63 @@ textarea:focus {
   line-height: 1.45;
 }
 
+.thinking-card {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  padding: 22px 18px;
+  border: 1px solid rgba(8, 118, 109, 0.24);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(255, 253, 248, 0.96), rgba(227, 242, 237, 0.72)),
+    var(--surface);
+  color: var(--muted);
+  text-align: center;
+  box-shadow: 0 14px 30px rgba(34, 29, 21, 0.09);
+}
+
+.thinking-mark {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  border: 2px solid rgba(8, 118, 109, 0.16);
+  border-top-color: var(--jade);
+  border-radius: 50%;
+  animation: thinking-spin 1s linear infinite;
+}
+
+.thinking-mark::after {
+  position: absolute;
+  inset: 11px;
+  border-radius: 50%;
+  background: var(--gold);
+  content: "";
+}
+
+.thinking-card strong {
+  color: var(--ink);
+  font-size: 17px;
+  font-weight: 880;
+}
+
+.thinking-card span {
+  max-width: 25em;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.thinking-card small {
+  color: var(--jade);
+  font-size: 12px;
+  font-weight: 820;
+}
+
+@keyframes thinking-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .name-card {
   padding: 14px;
   border: 1px solid var(--line);
@@ -874,6 +931,12 @@ textarea {
   box-shadow: 0 12px 24px rgba(24, 33, 40, 0.18);
 }
 
+.primary:disabled,
+.reset-preferences:disabled {
+  cursor: wait;
+  opacity: 0.82;
+}
+
 .reset-preferences {
   width: 100%;
   min-height: 50px;
@@ -998,6 +1061,10 @@ body.picker-open {
 
 .time-wheel {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.lunar-time-wheel {
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .wheel-column {

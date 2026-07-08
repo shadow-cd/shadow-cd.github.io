@@ -94,6 +94,14 @@
               <strong>生肖节气</strong>
               <small>从出生时令取意象</small>
             </button>
+            <button type="button" class="basis" data-basis="bazi">
+              <strong>生辰八字</strong>
+              <small>四柱干支与喜用合参</small>
+            </button>
+            <button type="button" class="basis" data-basis="yijing">
+              <strong>周易取象</strong>
+              <small>易经八卦象意相参</small>
+            </button>
           </div>
         </section>
 
@@ -160,7 +168,10 @@
               <span id="birthdaySolarText" class="calendar-value placeholder">选择公历出生时间</span>
               <span class="calendar-arrow" aria-hidden="true"></span>
             </button>
-            <input id="birthdayLunar" class="calendar-input" placeholder="例：二〇二六年五月初三 子时" hidden />
+            <button type="button" id="birthdayLunar" class="calendar-input calendar-trigger" data-value="" aria-haspopup="dialog" aria-controls="lunarPicker" hidden>
+              <span id="birthdayLunarText" class="calendar-value placeholder">选择农历出生时间</span>
+              <span class="calendar-arrow" aria-hidden="true"></span>
+            </button>
           </div>
           <div class="optional-block">
             <button type="button" class="add-option" id="toggleGeneration" aria-expanded="false">
@@ -263,6 +274,44 @@
           <div class="picker-actions">
             <button type="button" class="outline" id="clearSolarPicker">清空</button>
             <button type="button" class="primary" id="confirmSolarPicker">确认时间</button>
+          </div>
+        </section>
+      </div>
+
+      <div class="picker-mask" id="lunarPicker" hidden>
+        <section class="picker-sheet" role="dialog" aria-modal="true" aria-labelledby="lunarPickerTitle">
+          <div class="picker-grip" aria-hidden="true"></div>
+          <div class="picker-head">
+            <div>
+              <p class="eyebrow">农历时间</p>
+              <h2 id="lunarPickerTitle">选择出生时间</h2>
+            </div>
+            <button type="button" class="picker-close" id="closeLunarPicker" aria-label="关闭农历时间选择器">×</button>
+          </div>
+          <div class="picker-wheel-group date-wheel" aria-label="选择农历日期">
+            <div class="wheel-column">
+              <span>年</span>
+              <div class="wheel-list" id="lunarYearList"></div>
+            </div>
+            <div class="wheel-column">
+              <span>月</span>
+              <div class="wheel-list" id="lunarMonthList"></div>
+            </div>
+            <div class="wheel-column">
+              <span>日</span>
+              <div class="wheel-list" id="lunarDayList"></div>
+            </div>
+          </div>
+          <div class="picker-wheel-group lunar-time-wheel" aria-label="选择时辰">
+            <div class="wheel-column">
+              <span>时辰</span>
+              <div class="wheel-list" id="lunarHourList"></div>
+            </div>
+          </div>
+          <div class="picker-preview" id="lunarPickerPreview"></div>
+          <div class="picker-actions">
+            <button type="button" class="outline" id="clearLunarPicker">清空</button>
+            <button type="button" class="primary" id="confirmLunarPicker">确认时间</button>
           </div>
         </section>
       </div>
