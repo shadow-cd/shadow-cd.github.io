@@ -1414,7 +1414,7 @@ function clearGeneratedResults() {
   lastResults = [];
   resultsSection.innerHTML = `
     <div class="results-empty">
-      <strong>先生成一组候选名</strong>
+      <strong>生成一组候选名</strong>
       <span>结果会展示名字、出处、五行、寓意、音律和提醒。</span>
     </div>
   `;
