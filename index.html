@@ -3,16 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="theme-color" content="#f7f5ef" />
-    <title>名栖 - 手机取名</title>
+    <meta name="theme-color" content="#f4efe6" />
+    <title>予名 - 有据取名</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <main class="app" aria-label="名栖手机取名工具">
+    <main class="app" aria-label="予名手机取名工具">
       <header class="topbar">
-        <div>
-          <p class="eyebrow">有出处的手机取名</p>
-          <h1>名栖</h1>
+        <div class="brand-lockup">
+          <span class="brand-mark" aria-hidden="true">予</span>
+          <div>
+            <p class="eyebrow">有出处的手机取名</p>
+            <h1>予名</h1>
+          </div>
         </div>
         <button class="ghost-icon" type="button" aria-label="打开候选名字" id="openFavorites">
           <span id="favoriteCount">0</span>
@@ -20,7 +23,7 @@
       </header>
 
       <section class="intro-panel">
-        <p>按五行、典籍、诗词、寓意与音律一起筛选，生成能解释清楚的候选名。</p>
+        <p>按五行、典籍、诗词、寓意与音律一起筛选，给孩子一个说得清、念得顺、看得久的名字。</p>
         <div class="trust-row" aria-label="取名支撑点">
           <span>可复选依据</span>
           <span>单字/双字</span>
@@ -145,7 +148,7 @@
             <span>出生时间</span>
             <input id="birthday" type="datetime-local" />
           </label>
-          <div class="double-field">
+          <div class="double-field aligned-fields">
             <label class="field">
               <span>喜欢的字</span>
               <input id="likeChars" maxlength="6" placeholder="如：知 安" />
