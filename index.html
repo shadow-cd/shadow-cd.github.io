@@ -11,10 +11,10 @@
     <main class="app" aria-label="予名手机取名工具">
       <header class="topbar">
         <div class="brand-lockup">
-          <span class="brand-mark" aria-hidden="true">予</span>
-          <div>
-            <p class="eyebrow">循典取意，因愿成名</p>
+          <img class="brand-icon" src="./assets/logo-yuming-icon.png" alt="" aria-hidden="true" />
+          <div class="brand-copy">
             <h1>予名</h1>
+            <p class="eyebrow">循典取意，因愿成名</p>
           </div>
         </div>
         <button class="ghost-icon" type="button" aria-label="打开候选名字" id="openFavorites">
@@ -39,7 +39,7 @@
           </div>
           <label class="field">
             <span>姓氏</span>
-            <input id="surname" maxlength="3" value="林" placeholder="例如：林" required />
+            <input id="surname" maxlength="3" autocomplete="off" />
           </label>
 
           <div class="field">
@@ -144,10 +144,38 @@
             <h2>高级偏好</h2>
             <span>可选</span>
           </div>
-          <label class="field">
+          <div class="field calendar-field">
             <span>出生时间</span>
-            <input id="birthday" type="datetime-local" />
-          </label>
+            <div class="segmented two calendar-switch" data-group="calendarType">
+              <button type="button" class="active" data-value="solar">公历</button>
+              <button type="button" data-value="lunar">农历</button>
+            </div>
+            <button type="button" id="birthdaySolar" class="calendar-input calendar-trigger" data-value="" aria-haspopup="dialog" aria-controls="solarPicker">
+              <span id="birthdaySolarText" class="calendar-value placeholder">选择公历出生时间</span>
+              <span class="calendar-arrow" aria-hidden="true"></span>
+            </button>
+            <input id="birthdayLunar" class="calendar-input" placeholder="例：二〇二六年五月初三 子时" hidden />
+          </div>
+          <div class="optional-block">
+            <button type="button" class="add-option" id="toggleGeneration" aria-expanded="false">
+              添加字辈
+            </button>
+            <div class="generation-panel" id="generationPanel" hidden>
+              <div class="generation-grid">
+                <label class="field generation-char-field">
+                  <span>字辈用字</span>
+                  <input id="generationChar" maxlength="1" placeholder="例：承" />
+                </label>
+                <div class="field">
+                  <span>字辈位置</span>
+                  <div class="segmented two" data-group="generationPosition">
+                    <button type="button" class="active" data-value="first">首字</button>
+                    <button type="button" data-value="second">末字</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="double-field aligned-fields">
             <label class="field">
               <span>喜欢的字</span>
@@ -159,13 +187,13 @@
             </label>
           </div>
           <label class="field">
-            <span>方言/地区提醒</span>
+            <span>方言谐音检查</span>
             <select id="region">
-              <option value="普通话">普通话优先</option>
-              <option value="粤语">粤语需留意</option>
-              <option value="吴语">吴语需留意</option>
-              <option value="闽南语">闽南语需留意</option>
-              <option value="四川话">四川话需留意</option>
+              <option value="普通话优先">普通话优先</option>
+              <option value="粤语检查">粤语检查</option>
+              <option value="吴语检查">吴语检查</option>
+              <option value="闽南语检查">闽南语检查</option>
+              <option value="四川话检查">四川话检查</option>
             </select>
           </label>
         </section>
@@ -187,12 +215,55 @@
           <button type="button" class="text-button" id="closeFavorites">收起</button>
         </div>
         <div class="compare-list" id="compareList"></div>
-        <button type="button" class="primary secondary" id="makePoll">生成投票文案</button>
+        <button type="button" class="primary secondary" id="makePoll">生成投票文案并复制</button>
         <textarea id="pollText" readonly placeholder="收藏名字后可生成分享给家人的投票文案"></textarea>
       </section>
 
+      <div class="picker-mask" id="solarPicker" hidden>
+        <section class="picker-sheet" role="dialog" aria-modal="true" aria-labelledby="solarPickerTitle">
+          <div class="picker-grip" aria-hidden="true"></div>
+          <div class="picker-head">
+            <div>
+              <p class="eyebrow">公历时间</p>
+              <h2 id="solarPickerTitle">选择出生时间</h2>
+            </div>
+            <button type="button" class="picker-close" id="closeSolarPicker" aria-label="关闭时间选择器">×</button>
+          </div>
+          <div class="picker-wheel-group date-wheel" aria-label="选择日期">
+            <div class="wheel-column">
+              <span>年</span>
+              <div class="wheel-list" id="solarYearList"></div>
+            </div>
+            <div class="wheel-column">
+              <span>月</span>
+              <div class="wheel-list" id="solarMonthList"></div>
+            </div>
+            <div class="wheel-column">
+              <span>日</span>
+              <div class="wheel-list" id="solarDayList"></div>
+            </div>
+          </div>
+          <div class="picker-wheel-group time-wheel" aria-label="选择时间">
+            <div class="wheel-column">
+              <span>时</span>
+              <div class="wheel-list" id="solarHourList"></div>
+            </div>
+            <div class="wheel-column">
+              <span>分</span>
+              <div class="wheel-list" id="solarMinuteList"></div>
+            </div>
+          </div>
+          <div class="picker-preview" id="solarPickerPreview"></div>
+          <div class="picker-actions">
+            <button type="button" class="outline" id="clearSolarPicker">清空</button>
+            <button type="button" class="primary" id="confirmSolarPicker">确认时间</button>
+          </div>
+        </section>
+      </div>
+
       <div class="bottom-action">
         <button type="submit" form="namingForm" class="primary" id="generateBtn">生成有依据的名字</button>
+        <button type="button" class="reset-preferences" id="resetPreferencesBtn" hidden>重新选择</button>
       </div>
     </main>
 
