@@ -1014,6 +1014,14 @@ textarea {
   position: relative;
 }
 
+.naming-form.locked::after {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  cursor: not-allowed;
+  content: "";
+}
+
 .naming-form.locked input:disabled,
 .naming-form.locked select:disabled,
 .naming-form.locked textarea:disabled,

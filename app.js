@@ -800,6 +800,491 @@ const compoundSurnames = new Set([
 ]);
 ["闫", "肖", "付"].forEach((surname) => singleSurnames.add(surname));
 
+const surnameWholePinyinMap = {
+  "艾": "ai",
+  "安": "an",
+  "敖": "ao",
+  "巴": "ba",
+  "白": "bai",
+  "百里": "baili",
+  "柏": "bai",
+  "班": "ban",
+  "包": "bao",
+  "薄": "bo",
+  "鲍": "bao",
+  "暴": "bao",
+  "贝": "bei",
+  "毕": "bi",
+  "边": "bian",
+  "卞": "bian",
+  "别": "bie",
+  "邴": "bing",
+  "伯赏": "boshang",
+  "卜": "bu",
+  "步": "bu",
+  "蔡": "cai",
+  "苍": "cang",
+  "曹": "cao",
+  "岑": "cen",
+  "曾": "zeng",
+  "查": "cha",
+  "柴": "chai",
+  "昌": "chang",
+  "常": "chang",
+  "晁": "chao",
+  "巢": "chao",
+  "车": "che",
+  "陈": "chen",
+  "成": "cheng",
+  "程": "cheng",
+  "池": "chi",
+  "充": "chong",
+  "仇": "qiu",
+  "储": "chu",
+  "褚": "chu",
+  "淳于": "chunyu",
+  "从": "cong",
+  "崔": "cui",
+  "戴": "dai",
+  "单": "shan",
+  "单于": "chanyu",
+  "澹台": "tantai",
+  "党": "dang",
+  "邓": "deng",
+  "狄": "di",
+  "翟": "zhai",
+  "第五": "diwu",
+  "刁": "diao",
+  "丁": "ding",
+  "东": "dong",
+  "东方": "dongfang",
+  "东郭": "dongguo",
+  "东门": "dongmen",
+  "董": "dong",
+  "都": "du",
+  "窦": "dou",
+  "堵": "du",
+  "杜": "du",
+  "端木": "duanmu",
+  "段": "duan",
+  "段干": "duangan",
+  "鄂": "e",
+  "范": "fan",
+  "方": "fang",
+  "房": "fang",
+  "费": "fei",
+  "丰": "feng",
+  "封": "feng",
+  "酆": "feng",
+  "冯": "feng",
+  "凤": "feng",
+  "伏": "fu",
+  "扶": "fu",
+  "符": "fu",
+  "付": "fu",
+  "傅": "fu",
+  "富": "fu",
+  "盖": "gai",
+  "甘": "gan",
+  "干": "gan",
+  "高": "gao",
+  "郜": "gao",
+  "戈": "ge",
+  "葛": "ge",
+  "耿": "geng",
+  "弓": "gong",
+  "公": "gong",
+  "公良": "gongliang",
+  "公孙": "gongsun",
+  "公西": "gongxi",
+  "公羊": "gongyang",
+  "公冶": "gongye",
+  "宫": "gong",
+  "龚": "gong",
+  "巩": "gong",
+  "贡": "gong",
+  "勾": "gou",
+  "缑亢": "goukang",
+  "古": "gu",
+  "谷": "gu",
+  "谷梁": "guliang",
+  "顾": "gu",
+  "关": "guan",
+  "管": "guan",
+  "广": "guang",
+  "归海": "guihai",
+  "桂": "gui",
+  "郭": "guo",
+  "国": "guo",
+  "韩": "han",
+  "杭": "hang",
+  "郝": "hao",
+  "何": "he",
+  "和": "he",
+  "贺": "he",
+  "赫连": "helian",
+  "衡": "heng",
+  "弘": "hong",
+  "红": "hong",
+  "洪": "hong",
+  "侯": "hou",
+  "后": "hou",
+  "呼延": "huyan",
+  "胡": "hu",
+  "扈": "hu",
+  "花": "hua",
+  "华": "hua",
+  "怀": "huai",
+  "桓": "huan",
+  "宦": "huan",
+  "皇甫": "huangfu",
+  "黄": "huang",
+  "惠": "hui",
+  "霍": "huo",
+  "姬": "ji",
+  "吉": "ji",
+  "汲": "ji",
+  "籍": "ji",
+  "计": "ji",
+  "纪": "ji",
+  "季": "ji",
+  "蓟": "ji",
+  "暨": "ji",
+  "冀": "ji",
+  "夹谷": "jiagu",
+  "家": "jia",
+  "贾": "jia",
+  "简": "jian",
+  "江": "jiang",
+  "姜": "jiang",
+  "蒋": "jiang",
+  "焦": "jiao",
+  "解": "xie",
+  "金": "jin",
+  "晋楚": "jinchu",
+  "靳": "jin",
+  "经": "jing",
+  "荆": "jing",
+  "井": "jing",
+  "景": "jing",
+  "居": "ju",
+  "鞠": "ju",
+  "阚": "kan",
+  "康": "kang",
+  "柯": "ke",
+  "空": "kong",
+  "孔": "kong",
+  "寇": "kou",
+  "蒯": "kuai",
+  "匡": "kuang",
+  "况后": "kuanghou",
+  "夔": "kui",
+  "赖": "lai",
+  "蓝": "lan",
+  "郎": "lang",
+  "劳": "lao",
+  "乐": "yue",
+  "乐正": "yuezheng",
+  "雷": "lei",
+  "冷": "leng",
+  "黎": "li",
+  "李": "li",
+  "厉": "li",
+  "利": "li",
+  "郦": "li",
+  "连": "lian",
+  "廉": "lian",
+  "梁": "liang",
+  "梁丘": "liangqiu",
+  "廖": "liao",
+  "林": "lin",
+  "蔺": "lin",
+  "凌": "ling",
+  "令狐": "linghu",
+  "刘": "liu",
+  "柳": "liu",
+  "龙": "long",
+  "隆": "long",
+  "娄": "lou",
+  "卢": "lu",
+  "鲁": "lu",
+  "陆": "lu",
+  "逯": "lu",
+  "禄": "lu",
+  "路": "lu",
+  "闾丘": "lvqiu",
+  "吕": "lu",
+  "栾": "luan",
+  "罗": "luo",
+  "骆": "luo",
+  "麻": "ma",
+  "马": "ma",
+  "满": "man",
+  "毛": "mao",
+  "梅": "mei",
+  "蒙": "meng",
+  "孟": "meng",
+  "糜": "mi",
+  "米": "mi",
+  "宓": "mi",
+  "苗": "miao",
+  "乜": "mie",
+  "闵": "min",
+  "明": "ming",
+  "莫": "mo",
+  "墨哈": "moha",
+  "缪": "miao",
+  "牧": "mu",
+  "慕": "mu",
+  "慕容": "murong",
+  "穆": "mu",
+  "那": "na",
+  "南宫": "nangong",
+  "南门": "nanmen",
+  "能": "nai",
+  "倪": "ni",
+  "年爱": "nianai",
+  "聂": "nie",
+  "宁": "ning",
+  "牛": "niu",
+  "农": "nong",
+  "欧": "ou",
+  "欧阳": "ouyang",
+  "潘": "pan",
+  "庞": "pang",
+  "逄": "pang",
+  "裴": "pei",
+  "彭": "peng",
+  "蓬": "peng",
+  "皮": "pi",
+  "平": "ping",
+  "蒲": "pu",
+  "濮": "pu",
+  "濮阳": "puyang",
+  "浦": "pu",
+  "戚": "qi",
+  "漆雕": "qidiao",
+  "亓官": "qiguan",
+  "祁": "qi",
+  "齐": "qi",
+  "钱": "qian",
+  "强": "qiang",
+  "乔": "qiao",
+  "谯笪": "qiaoda",
+  "秦": "qin",
+  "邱": "qiu",
+  "秋": "qiu",
+  "裘": "qiu",
+  "曲": "qu",
+  "屈": "qu",
+  "璩": "qu",
+  "瞿": "qu",
+  "全": "quan",
+  "权": "quan",
+  "阙": "que",
+  "却": "que",
+  "冉": "ran",
+  "壤驷": "xiangsi",
+  "饶": "rao",
+  "任": "ren",
+  "戎": "rong",
+  "荣": "rong",
+  "容": "rong",
+  "融": "rong",
+  "茹": "ru",
+  "汝鄢": "ruyan",
+  "阮": "ruan",
+  "芮": "rui",
+  "桑": "sang",
+  "沙": "sha",
+  "山": "shan",
+  "商牟": "shangmou",
+  "上官": "shangguan",
+  "尚": "shang",
+  "韶": "shao",
+  "邵": "shao",
+  "佘佴": "she er",
+  "厍": "she",
+  "申": "shen",
+  "申屠": "shentu",
+  "莘": "shen",
+  "沈": "shen",
+  "慎": "shen",
+  "盛": "sheng",
+  "师": "shi",
+  "施": "shi",
+  "石": "shi",
+  "时": "shi",
+  "史": "shi",
+  "寿": "shou",
+  "殳": "shu",
+  "舒": "shu",
+  "束": "shu",
+  "双": "shuang",
+  "水": "shui",
+  "司": "si",
+  "司空": "sikong",
+  "司寇": "sikou",
+  "司马": "sima",
+  "司徒": "situ",
+  "松": "song",
+  "宋": "song",
+  "苏": "su",
+  "宿": "su",
+  "孙": "sun",
+  "索": "suo",
+  "拓跋": "tuoba",
+  "台": "tai",
+  "太叔": "taishu",
+  "谈": "tan",
+  "谭": "tan",
+  "汤": "tang",
+  "唐": "tang",
+  "陶": "tao",
+  "滕": "teng",
+  "田": "tian",
+  "通": "tong",
+  "童": "tong",
+  "涂钦": "tuqin",
+  "屠": "tu",
+  "万": "wan",
+  "万俟": "moqi",
+  "汪": "wang",
+  "王": "wang",
+  "危": "wei",
+  "微生": "weisheng",
+  "韦": "wei",
+  "隗": "wei",
+  "卫": "wei",
+  "尉迟": "yuchi",
+  "蔚": "wei",
+  "魏": "wei",
+  "温": "wen",
+  "文": "wen",
+  "闻": "wen",
+  "闻人": "wenren",
+  "翁": "weng",
+  "沃": "wo",
+  "乌": "wu",
+  "邬": "wu",
+  "巫": "wu",
+  "巫马": "wuma",
+  "毋": "wu",
+  "吴": "wu",
+  "伍": "wu",
+  "武": "wu",
+  "西门": "ximen",
+  "郗": "xi",
+  "奚": "xi",
+  "习": "xi",
+  "席": "xi",
+  "夏": "xia",
+  "夏侯": "xiahou",
+  "鲜于": "xianyu",
+  "咸": "xian",
+  "相": "xiang",
+  "向": "xiang",
+  "项": "xiang",
+  "萧": "xiao",
+  "肖": "xiao",
+  "斜": "xie",
+  "谢": "xie",
+  "辛": "xin",
+  "邢": "xing",
+  "幸": "xing",
+  "熊": "xiong",
+  "胥": "xu",
+  "须": "xu",
+  "徐": "xu",
+  "许": "xu",
+  "轩辕": "xuanyuan",
+  "宣": "xuan",
+  "薛": "xue",
+  "荀": "xun",
+  "闫": "yan",
+  "闫法": "yanfa",
+  "严": "yan",
+  "言福": "yanfu",
+  "阎": "yan",
+  "颜": "yan",
+  "晏": "yan",
+  "燕": "yan",
+  "羊": "yang",
+  "羊舌": "yangshe",
+  "阳佟": "yangtong",
+  "杨": "yang",
+  "仰": "yang",
+  "养": "yang",
+  "姚": "yao",
+  "叶": "ye",
+  "伊": "yi",
+  "易": "yi",
+  "羿": "yi",
+  "益": "yi",
+  "阴": "yin",
+  "殷": "yin",
+  "尹": "yin",
+  "印": "yin",
+  "应": "ying",
+  "雍": "yong",
+  "尤": "you",
+  "游": "you",
+  "有琴": "youqin",
+  "于": "yu",
+  "余": "yu",
+  "於": "yu",
+  "鱼": "yu",
+  "俞": "yu",
+  "虞": "yu",
+  "宇文": "yuwen",
+  "禹": "yu",
+  "庾": "yu",
+  "郁": "yu",
+  "喻": "yu",
+  "元": "yuan",
+  "袁": "yuan",
+  "岳帅": "yueshuai",
+  "越": "yue",
+  "云": "yun",
+  "宰": "zai",
+  "宰父": "zaifu",
+  "昝": "zan",
+  "臧": "zang",
+  "詹": "zhan",
+  "湛": "zhan",
+  "张": "zhang",
+  "章": "zhang",
+  "仉督": "zhangdu",
+  "长孙": "zhangsun",
+  "赵": "zhao",
+  "甄": "zhen",
+  "郑": "zheng",
+  "支": "zhi",
+  "终": "zhong",
+  "钟": "zhong",
+  "钟离": "zhongli",
+  "仲": "zhong",
+  "仲孙": "zhongsun",
+  "周": "zhou",
+  "朱": "zhu",
+  "诸": "zhu",
+  "诸葛": "zhuge",
+  "竺": "zhu",
+  "祝": "zhu",
+  "颛孙": "zhuansun",
+  "庄": "zhuang",
+  "卓": "zhuo",
+  "子车": "ziche",
+  "訾": "zi",
+  "宗": "zong",
+  "宗政": "zongzheng",
+  "邹": "zou",
+  "祖": "zu",
+  "左": "zuo",
+  "左丘": "zuoqiu"
+};
+
+
 const today = new Date();
 const baseYear = today.getFullYear();
 const pickerYearStart = Math.max(1901, baseYear - 80);
@@ -859,6 +1344,12 @@ document.querySelectorAll(".basis").forEach((button) => {
     wuxingPanel.hidden = !hasWuxing;
   });
 });
+
+form.addEventListener("click", (event) => {
+  if (!lockedPreferences) return;
+  event.preventDefault();
+  toast("条件已锁定，如需更改请点击下方重新选择");
+}, true);
 
 surnameInput.addEventListener("input", () => {
   const normalized = normalizeSurname(surnameInput.value);
@@ -984,15 +1475,13 @@ document.querySelector("#makePoll").addEventListener("click", async () => {
     return;
   }
   const lines = names.map((item, index) => {
-    const given = item.displayGiven || item.given || "";
-    const reminder = `${item.risk}${given.length === 1 ? " 单字名建议重点看重名风险。" : ""}`;
     return [
       `${index + 1}. ${formatNameWithPinyin(item)}`,
       `寓意：${item.meaning}`,
       `出处：${sourceForItem(item)}`,
       `五行：${item.element}`,
       `音律：${item.tone}${item.writing || ""}`,
-      `提醒：${reminder}`
+      `提醒：${reminderText(item)}`
     ].join("\n");
   });
   pollText.value = `帮宝宝选个名字，你更喜欢哪一个？\n\n${lines.join("\n\n")}`;
@@ -1059,10 +1548,13 @@ function fullNamePinyin(item) {
   const givenChars = [...(item.displayGiven || item.given || "")];
   const surnameLength = Math.max(0, fullChars.length - givenChars.length);
   const surnameChars = fullChars.slice(0, surnameLength);
+  const surnameText = surnameChars.join("");
   const missing = new Set();
+  const surnameParts = surnameChars.map((char) => pinyinForSurnameChar(char));
+  const givenParts = givenChars.map((char) => pinyinForNameChar(char) || (missing.add(char), "?"));
   const parts = [
-    ...surnameChars.map((char) => pinyinForSurnameChar(char) || (missing.add(char), "?")),
-    ...givenChars.map((char) => pinyinForNameChar(char) || (missing.add(char), "?"))
+    ...(surnameParts.every(Boolean) ? surnameParts : [surnameWholePinyinMap[surnameText] || surnameChars.map((char, index) => surnameParts[index] || (missing.add(char), "?")).join(" ")]),
+    ...givenParts
   ].filter(Boolean);
 
   if (!parts.length) return "";
@@ -1963,9 +2455,12 @@ const surnamePinyinMap = {
   高: "gāo",
   刘: "liú",
   邓: "dèng",
+  莫: "mò",
   叶: "yè",
   曾: "zēng",
   肖: "xiāo",
+  闫: "yán",
+  付: "fù",
   欧: "ōu",
   阳: "yáng",
   司: "sī",
@@ -2145,6 +2640,7 @@ const namePinyinMap = {
   沂: "yí",
   沫: "mò",
   溪: "xī",
+  亭: "tíng",
   漾: "yàng",
   沄: "yún",
   沣: "fēng",
@@ -2440,8 +2936,8 @@ function riskLabel(chars, given) {
   const rare = chars.filter((item) => item.tags.includes("少见不生僻")).map((item) => item.char);
   const heavy = chars.filter((item) => item.strokes >= 15).map((item) => item.char);
   const notes = [];
-  if (given.length === 1) notes.push("单字名建议重点看重名风险。");
-  if (rare.length) notes.push(`“${rare.join("、")}”辨识度较高，建议确认长辈读写接受度。`);
+  if (given.length === 1) notes.push("单字名建议重点关注重名风险。");
+  if (rare.length) notes.push(`“${rare.join("、")}”字形有记忆点，但不属于高频常用字，建议确认长辈读写接受度。`);
   if (heavy.length) notes.push(`“${heavy.join("、")}”笔画稍重，需看姓氏整体是否过密。`);
   return notes.join("") || "建议把全名连续读三遍，确认没有突兀谐音或拗口停顿。";
 }
@@ -2456,7 +2952,7 @@ function buildNameItem(chars, preferences) {
     : `${chars.map((item) => item.source).join(" ")}两字合看，兼取${tags.slice(0, 2).join("与")}之意。`;
   const meaning = chars.length === 1
     ? chars[0].meaning
-    : `${chars.map((item) => `${item.char}取“${item.meaning}”`).join("，")}，合成一个${tags.slice(0, 2).join("、")}的名字方向。`;
+    : `${chars.map((item) => `${item.char}取“${item.meaning}”`).join("；")}。合成一个${tags.slice(0, 2).join("、")}的名字方向。`;
 
   return {
     given,
@@ -2909,17 +3405,17 @@ function yijingSupportText(item, preferences) {
   return `周易/易经取象参考${imageText}，与名字寓意、五行气质合参。`;
 }
 
-function baziSupportText(item, preferences) {
+function baziSupportText(item, preferences, includeElement = true) {
   if (!preferences.basis.includes("bazi")) return "";
   const profile = preferences.bazi;
   if (!profile) return "";
 
-  const elementText = item.elements?.join("、") || item.element;
+  const elementText = includeElement ? elementSupportText(item) : "";
   if (profile.mode === "lunar") {
-    return `生辰八字按农历“${profile.lunarDisplay}”换算为公历${formatSolarDisplay(profile.solarValue)}后推演：${profile.summary}此名含${elementText}意象，用作民俗参考。`;
+    return completeSentence(`生辰八字按农历“${profile.lunarDisplay}”换算为公历${formatSolarDisplay(profile.solarValue)}后推演：${profile.summary}${elementText}${includeElement ? "用作民俗参考" : ""}`);
   }
 
-  return `生辰八字按公历推演：${profile.summary}此名含${elementText}意象，用作民俗参考。`;
+  return completeSentence(`生辰八字按公历推演：${profile.summary}${elementText}${includeElement ? "用作民俗参考" : ""}`);
 }
 
 function sourceForItem(item, preferences = null) {
@@ -2929,9 +3425,8 @@ function sourceForItem(item, preferences = null) {
 
 function supportText(item, preferences) {
   const selected = preferences.basis.map((basis) => basisLabels[basis]).join("、");
-  const elementText = item.elements?.join("、") || item.element;
   const elementPart = preferences.basis.includes("wuxing")
-    ? `五行按${preferences.element === "auto" ? "出生季节与平衡" : `补${preferences.element}`}处理，此名含${elementText}意象。`
+    ? completeSentence(`五行按${preferences.element === "auto" ? "出生季节与平衡" : `补${preferences.element}`}处理，${elementSupportText(item)}`)
     : "";
   const seasonPart = preferences.basis.includes("season") && item.season
     ? `出生时令取${item.season}季气息作参考${item.zodiac ? `，生肖按公历年份粗略取${item.zodiac}作轻量辅助` : ""}。`
@@ -2945,11 +3440,57 @@ function supportText(item, preferences) {
     ? `家族字辈取“${preferences.generationChar}”，置于${preferences.generationPosition === "first" ? "名首" : "名末"}。`
     : "";
   const dialectPart = preferences.region && preferences.region !== "普通话优先"
-    ? `已标记${preferences.region}，建议重点复读全名连读谐音。`
+    ? `已标记${preferences.region}，建议重点听读全名，确认是否有连读谐音。`
     : "";
-  const baziPart = baziSupportText(item, preferences);
+  const baziPart = baziSupportText(item, preferences, !preferences.basis.includes("wuxing"));
   const yijingPart = yijingSupportText(item, preferences);
-  return `本次依据包含${selected}。${calendarPart}${generationPart}${dialectPart}${elementPart}${seasonPart}${baziPart}${yijingPart}`;
+  return joinSentences(`本次依据包含${selected}`, calendarPart, generationPart, dialectPart, elementPart, seasonPart, baziPart, yijingPart);
+}
+
+function completeSentence(value) {
+  const text = String(value || "").trim().replace(/[，,；;：:]+$/u, "");
+  if (!text) return "";
+  return /[。！？]$/u.test(text) ? text : `${text}。`;
+}
+
+function joinSentences(...parts) {
+  return parts
+    .map((part) => completeSentence(part))
+    .filter(Boolean)
+    .join("")
+    .replace(/。{2,}/g, "。")
+    .replace(/，。/g, "。")
+    .replace(/；。/g, "。");
+}
+
+function reminderText(item) {
+  const given = item.displayGiven || item.given || "";
+  const notes = [item.risk || ""];
+  if (given.length === 1 && !notes.join("").includes("单字名")) notes.push("单字名建议重点关注重名风险。");
+  return joinSentences(...notes);
+}
+
+function elementSupportText(item) {
+  const chars = item.chars?.length
+    ? item.chars
+    : [...(item.displayGiven || item.given || "")].map((char) => findCharacterMeta(char)).filter(Boolean);
+  const details = chars
+    .map((char) => {
+      const source = (char.source || char.meaning || "").replaceAll("{char}", char.char);
+      let shortSource = source.replace(/[。！？].*$/u, "").trim();
+      shortSource = shortSource
+        .replace(/^“[^”]+”/, "")
+        .replace(new RegExp(`^${char.char}`), "")
+        .trim();
+      return shortSource
+        ? `“${char.char}”${shortSource}，归${char.element}`
+        : `“${char.char}”归${char.element}`;
+    })
+    .filter(Boolean);
+  if (details.length) return `${details.join("；")}。`;
+
+  const elementText = item.elements?.join("、") || item.element;
+  return `名中五行参考为${elementText}。`;
 }
 
 function clearGeneratedResults() {
@@ -3015,7 +3556,7 @@ function renderResults(preferences) {
             </div>
             <div class="reason">
               <b>提醒</b>
-              <p>${item.risk}${given.length === 1 ? " 单字名建议重点看重名风险。" : ""}</p>
+              <p>${reminderText(item)}</p>
             </div>
           </div>
           <div class="card-actions">
