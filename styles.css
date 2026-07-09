@@ -748,10 +748,20 @@ textarea:focus {
 }
 
 .name-title strong {
-  display: block;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 8px;
   font-size: 31px;
   line-height: 1.08;
   font-weight: 900;
+}
+
+.name-pinyin {
+  color: #657269;
+  font-size: 13px;
+  font-weight: 760;
+  line-height: 1.2;
 }
 
 .name-title span {
@@ -897,7 +907,17 @@ textarea:focus {
 }
 
 .compare-item strong {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 3px 6px;
   font-size: 19px;
+}
+
+.compare-item .name-pinyin {
+  color: #657269;
+  font-size: 12px;
+  font-weight: 720;
 }
 
 .compare-item span {

@@ -569,6 +569,169 @@ const supplementalNameCharacters = [
   }
 ].flatMap(expandCharacterGroup);
 
+const literarySeedCharacters = [
+  { char: "驰", element: "火", sourceType: "poetry", source: "取自王勃《滕王阁序》“俊采星驰”。", tags: ["书卷气", "大气", "远志"], meaning: "才华如星光奔涌，明亮而有速度感。", tone: 2, strokes: 6, gender: "neutral", zodiac: ["马", "龙"], season: ["春", "夏"] },
+  { char: "风", element: "木", sourceType: "poetry", source: "取自柳永《雨霖铃》“杨柳岸，晓风残月”。", tags: ["清朗", "自由", "诗意"], meaning: "有清晨风意，轻盈通达。", tone: 1, strokes: 4, gender: "neutral", zodiac: ["虎", "兔"], season: ["春", "秋"] },
+  { char: "兰", element: "木", sourceType: "poetry", source: "取自屈原《九歌·湘夫人》“沅有芷兮澧有兰”。", tags: ["清雅", "温润", "书卷气"], meaning: "兰有幽芳，取高洁清雅之意。", tone: 2, strokes: 5, gender: "female", zodiac: ["兔", "羊"], season: ["春"] },
+  { char: "齐", element: "金", sourceType: "classic", source: "取自《论语·里仁》“见贤思齐焉”。", tags: ["书卷气", "仁爱", "聪慧"], meaning: "见贤而向善，有自我修正的力量。", tone: 2, strokes: 6, gender: "neutral", zodiac: ["鸡", "牛"], season: ["秋"] }
+];
+
+const literaryNameSeeds = [
+  {
+    given: "星驰",
+    source: "取自王勃《滕王阁序》“俊采星驰”。",
+    meaning: "星光驰动，寓意才华明亮、气象开阔。",
+    tags: ["书卷气", "大气", "远志"],
+    element: "火",
+    elements: ["火"],
+    gender: "neutral"
+  },
+  {
+    given: "怀瑾",
+    source: "取自屈原《九章·怀沙》“怀瑾握瑜兮”。",
+    meaning: "心怀美玉，重品格、守本心，气质端正。",
+    tags: ["书卷气", "仁爱", "大气"],
+    element: "金",
+    elements: ["水", "金"],
+    gender: "neutral"
+  },
+  {
+    given: "景行",
+    source: "取自《诗经·小雅·车辖》“高山仰止，景行行止”。",
+    meaning: "向高处看，往正道走，有格局也有约束感。",
+    tags: ["书卷气", "大气", "仁爱"],
+    element: "木",
+    elements: ["木", "水"],
+    gender: "male"
+  },
+  {
+    given: "云帆",
+    source: "取自李白《行路难》“长风破浪会有时，直挂云帆济沧海”。",
+    meaning: "胸怀远方，敢于出发，有向上突破的力量。",
+    tags: ["大气", "自由", "远志"],
+    element: "水",
+    elements: ["水"],
+    gender: "male"
+  },
+  {
+    given: "清扬",
+    source: "取自《诗经·郑风·野有蔓草》“有美一人，清扬婉兮”。",
+    meaning: "清澈明亮，温柔但不弱，有清正向上的气息。",
+    tags: ["清朗", "清雅", "书卷气"],
+    element: "水",
+    elements: ["水", "火"],
+    gender: "female"
+  },
+  {
+    given: "明德",
+    source: "取自《礼记·大学》“大学之道，在明明德”。",
+    meaning: "明亮其德，寓意心性清明、品格可靠。",
+    tags: ["书卷气", "仁爱", "聪慧"],
+    element: "火",
+    elements: ["火", "木"],
+    gender: "neutral"
+  },
+  {
+    given: "修远",
+    source: "取自屈原《离骚》“路漫漫其修远兮”。",
+    meaning: "修身而行远，寓意有恒心、有远志。",
+    tags: ["书卷气", "远志", "仁爱"],
+    element: "金",
+    elements: ["金", "土"],
+    gender: "male"
+  },
+  {
+    given: "望舒",
+    source: "取自屈原《离骚》“前望舒使先驱兮”。",
+    meaning: "望舒为神话中为月驾车之神，名字清雅而有光。",
+    tags: ["清雅", "书卷气", "自由"],
+    element: "水",
+    elements: ["水", "金"],
+    gender: "female"
+  },
+  {
+    given: "沅芷",
+    source: "取自屈原《九歌·湘夫人》“沅有芷兮澧有兰”。",
+    meaning: "沅水与香草并取，寓意清润、有源、品性芬芳。",
+    tags: ["清雅", "温润", "书卷气"],
+    element: "水",
+    elements: ["水", "木"],
+    gender: "female"
+  },
+  {
+    given: "澄江",
+    source: "取自谢朓《晚登三山还望京邑》“澄江静如练”。",
+    meaning: "江水澄明，寓意心性清朗、处事澄澈。",
+    tags: ["清朗", "大气", "清雅"],
+    element: "水",
+    elements: ["水"],
+    gender: "neutral"
+  },
+  {
+    given: "晴川",
+    source: "取自崔颢《黄鹤楼》“晴川历历汉阳树”。",
+    meaning: "晴日江川，画面开阔，名字明朗清新。",
+    tags: ["清朗", "大气", "自由"],
+    element: "火",
+    elements: ["火", "水"],
+    gender: "neutral"
+  },
+  {
+    given: "溪亭",
+    source: "取自李清照《如梦令》“常记溪亭日暮”。",
+    meaning: "溪边小亭，清雅有画面，适合温润从容的方向。",
+    tags: ["清雅", "温润", "诗意"],
+    element: "水",
+    elements: ["水", "火"],
+    gender: "female"
+  },
+  {
+    given: "晓风",
+    source: "取自柳永《雨霖铃》“杨柳岸，晓风残月”。",
+    meaning: "晓色与清风并取，名字轻盈、清朗、有余韵。",
+    tags: ["清朗", "自由", "诗意"],
+    element: "火",
+    elements: ["火", "木"],
+    gender: "neutral"
+  },
+  {
+    given: "霁月",
+    source: "取自黄庭坚《濂溪诗序》“光风霁月”。",
+    meaning: "雨后明月，寓意胸襟清明、气质开阔。",
+    tags: ["清雅", "清朗", "书卷气"],
+    element: "水",
+    elements: ["水", "木"],
+    gender: "female"
+  },
+  {
+    given: "允文",
+    source: "取自《诗经·鲁颂·泮水》“允文允武”。",
+    meaning: "文质兼备，寓意可信、明理、有章法。",
+    tags: ["书卷气", "仁爱", "聪慧"],
+    element: "土",
+    elements: ["土", "木"],
+    gender: "neutral"
+  },
+  {
+    given: "思齐",
+    source: "取自《论语·里仁》“见贤思齐焉”。",
+    meaning: "见贤而思齐，寓意向善好学、不断自省。",
+    tags: ["书卷气", "聪慧", "仁爱"],
+    element: "水",
+    elements: ["水", "金"],
+    gender: "neutral"
+  },
+  {
+    given: "芷兰",
+    source: "取自屈原《九歌·湘夫人》“沅有芷兮澧有兰”。",
+    meaning: "芷与兰皆为香草，寓意品性清雅、内在芬芳。",
+    tags: ["清雅", "温润", "书卷气"],
+    element: "木",
+    elements: ["木"],
+    gender: "female"
+  }
+];
+
 const form = document.querySelector("#namingForm");
 const resultsSection = document.querySelector("#resultsSection");
 const generateBtn = document.querySelector("#generateBtn");
@@ -803,9 +966,9 @@ document.querySelector("#makePoll").addEventListener("click", async () => {
     const given = item.displayGiven || item.given || "";
     const reminder = `${item.risk}${given.length === 1 ? " 单字名建议重点看重名风险。" : ""}`;
     return [
-      `${index + 1}. ${item.fullName}`,
+      `${index + 1}. ${formatNameWithPinyin(item)}`,
       `寓意：${item.meaning}`,
-      `出处：${item.source}`,
+      `出处：${sourceForItem(item)}`,
       `五行：${item.element}`,
       `音律：${item.tone}${item.writing || ""}`,
       `提醒：${reminder}`
@@ -847,6 +1010,53 @@ function setActiveButton(containerSelector, value) {
   document.querySelectorAll(`${containerSelector} button`).forEach((button) => {
     button.classList.toggle("active", button.dataset.value === value);
   });
+}
+
+function escapeHtml(value) {
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
+}
+
+function escapeAttribute(value) {
+  return escapeHtml(value).replaceAll("`", "&#96;");
+}
+
+function pinyinForSurnameChar(char) {
+  return surnamePinyinMap[char] || namePinyinMap[char] || "";
+}
+
+function pinyinForNameChar(char) {
+  return namePinyinMap[char] || surnamePinyinMap[char] || "";
+}
+
+function fullNamePinyin(item) {
+  const fullChars = [...(item.fullName || "")];
+  const givenChars = [...(item.displayGiven || item.given || "")];
+  const surnameLength = Math.max(0, fullChars.length - givenChars.length);
+  const surnameChars = fullChars.slice(0, surnameLength);
+  const missing = new Set();
+  const parts = [
+    ...surnameChars.map((char) => pinyinForSurnameChar(char) || (missing.add(char), "?")),
+    ...givenChars.map((char) => pinyinForNameChar(char) || (missing.add(char), "?"))
+  ].filter(Boolean);
+
+  if (!parts.length) return "";
+  return missing.size ? `${parts.join(" ")}；${[...missing].join("、")}读音待核` : parts.join(" ");
+}
+
+function formatNameWithPinyin(item) {
+  const pinyin = fullNamePinyin(item);
+  return pinyin ? `${item.fullName}（${pinyin}）` : item.fullName;
+}
+
+function renderNameWithPinyin(item) {
+  const pinyin = fullNamePinyin(item);
+  const pinyinPart = pinyin ? `<small class="name-pinyin">（${escapeHtml(pinyin)}）</small>` : "";
+  return `${escapeHtml(item.fullName)}${pinyinPart}`;
 }
 
 function getSelectLabel(select) {
@@ -1617,6 +1827,494 @@ const surnameToneMap = {
   邓: 4
 };
 
+const surnamePinyinMap = {
+  赵: "zhào",
+  钱: "qián",
+  孙: "sūn",
+  李: "lǐ",
+  周: "zhōu",
+  吴: "wú",
+  郑: "zhèng",
+  王: "wáng",
+  冯: "féng",
+  陈: "chén",
+  褚: "chǔ",
+  卫: "wèi",
+  蒋: "jiǎng",
+  沈: "shěn",
+  韩: "hán",
+  杨: "yáng",
+  朱: "zhū",
+  秦: "qín",
+  尤: "yóu",
+  许: "xǔ",
+  何: "hé",
+  吕: "lǚ",
+  施: "shī",
+  张: "zhāng",
+  孔: "kǒng",
+  曹: "cáo",
+  严: "yán",
+  华: "huà",
+  金: "jīn",
+  魏: "wèi",
+  陶: "táo",
+  姜: "jiāng",
+  戚: "qī",
+  谢: "xiè",
+  邹: "zōu",
+  喻: "yù",
+  柏: "bǎi",
+  水: "shuǐ",
+  窦: "dòu",
+  章: "zhāng",
+  云: "yún",
+  苏: "sū",
+  潘: "pān",
+  葛: "gě",
+  奚: "xī",
+  范: "fàn",
+  彭: "péng",
+  郎: "láng",
+  鲁: "lǔ",
+  韦: "wéi",
+  昌: "chāng",
+  马: "mǎ",
+  苗: "miáo",
+  凤: "fèng",
+  花: "huā",
+  方: "fāng",
+  俞: "yú",
+  任: "rèn",
+  袁: "yuán",
+  柳: "liǔ",
+  鲍: "bào",
+  史: "shǐ",
+  唐: "táng",
+  费: "fèi",
+  廉: "lián",
+  岑: "cén",
+  薛: "xuē",
+  雷: "léi",
+  贺: "hè",
+  倪: "ní",
+  汤: "tāng",
+  滕: "téng",
+  殷: "yīn",
+  罗: "luó",
+  毕: "bì",
+  郝: "hǎo",
+  安: "ān",
+  常: "cháng",
+  傅: "fù",
+  卞: "biàn",
+  齐: "qí",
+  元: "yuán",
+  顾: "gù",
+  孟: "mèng",
+  平: "píng",
+  黄: "huáng",
+  和: "hé",
+  穆: "mù",
+  萧: "xiāo",
+  尹: "yǐn",
+  林: "lín",
+  梁: "liáng",
+  宋: "sòng",
+  徐: "xú",
+  胡: "hú",
+  郭: "guō",
+  高: "gāo",
+  刘: "liú",
+  邓: "dèng",
+  叶: "yè",
+  曾: "zēng",
+  肖: "xiāo",
+  欧: "ōu",
+  阳: "yáng",
+  司: "sī",
+  上: "shàng",
+  官: "guān",
+  诸: "zhū",
+  夏: "xià",
+  侯: "hóu",
+  邱: "qiū",
+  钟: "zhōng",
+  廖: "liào",
+  熊: "xióng",
+  黎: "lí",
+  贾: "jiǎ",
+  邵: "shào",
+  万: "wàn",
+  丁: "dīng",
+  于: "yú",
+  陆: "lù",
+  崔: "cuī",
+  石: "shí",
+  龙: "lóng",
+  龚: "gōng",
+  白: "bái",
+  邢: "xíng"
+};
+
+const namePinyinMap = {
+  知: "zhī",
+  安: "ān",
+  宁: "níng",
+  遥: "yáo",
+  怀: "huái",
+  瑾: "jǐn",
+  瑜: "yú",
+  清: "qīng",
+  扬: "yáng",
+  云: "yún",
+  帆: "fān",
+  星: "xīng",
+  驰: "chí",
+  澜: "lán",
+  明: "míng",
+  棠: "táng",
+  砚: "yàn",
+  书: "shū",
+  景: "jǐng",
+  行: "xíng",
+  若: "ruò",
+  承: "chéng",
+  岳: "yuè",
+  栖: "qī",
+  月: "yuè",
+  澈: "chè",
+  昀: "yún",
+  珩: "héng",
+  芮: "ruì",
+  衡: "héng",
+  沐: "mù",
+  禾: "hé",
+  初: "chū",
+  晏: "yàn",
+  庭: "tíng",
+  修: "xiū",
+  远: "yuǎn",
+  言: "yán",
+  礼: "lǐ",
+  允: "yǔn",
+  穆: "mù",
+  然: "rán",
+  一: "yī",
+  之: "zhī",
+  沅: "yuán",
+  汀: "tīng",
+  洲: "zhōu",
+  林: "lín",
+  森: "sēn",
+  桐: "tóng",
+  槿: "jǐn",
+  竹: "zhú",
+  乔: "qiáo",
+  微: "wēi",
+  熙: "xī",
+  昭: "zhāo",
+  晗: "hán",
+  曜: "yào",
+  煦: "xù",
+  钧: "jūn",
+  铭: "míng",
+  钰: "yù",
+  铎: "duó",
+  宸: "chén",
+  垚: "yáo",
+  屿: "yǔ",
+  岚: "lán",
+  予: "yǔ",
+  乐: "lè",
+  善: "shàn",
+  祺: "qí",
+  望: "wàng",
+  舒: "shū",
+  念: "niàn",
+  柏: "bǎi",
+  杉: "shān",
+  柳: "liǔ",
+  桢: "zhēn",
+  榆: "yú",
+  楠: "nán",
+  樾: "yuè",
+  棣: "dì",
+  楷: "kǎi",
+  楚: "chǔ",
+  榕: "róng",
+  榛: "zhēn",
+  樵: "qiáo",
+  梧: "wú",
+  柯: "kē",
+  栩: "xǔ",
+  杭: "háng",
+  枫: "fēng",
+  风: "fēng",
+  檀: "tán",
+  榭: "xiè",
+  芷: "zhǐ",
+  芊: "qiān",
+  芃: "péng",
+  萱: "xuān",
+  菀: "wǎn",
+  蔓: "màn",
+  蕴: "yùn",
+  蕙: "huì",
+  荷: "hé",
+  菡: "hàn",
+  蓁: "zhēn",
+  葭: "jiā",
+  蘅: "héng",
+  兰: "lán",
+  莞: "wǎn",
+  荀: "xún",
+  茗: "míng",
+  茉: "mò",
+  苒: "rǎn",
+  芙: "fú",
+  筠: "yún",
+  笙: "shēng",
+  简: "jiǎn",
+  策: "cè",
+  箴: "zhēn",
+  篇: "piān",
+  籍: "jí",
+  蓝: "lán",
+  菁: "jīng",
+  英: "yīng",
+  苑: "yuàn",
+  苏: "sū",
+  荣: "róng",
+  茂: "mào",
+  秉: "bǐng",
+  程: "chéng",
+  稚: "zhì",
+  稷: "jì",
+  涵: "hán",
+  淳: "chún",
+  润: "rùn",
+  泽: "zé",
+  沛: "pèi",
+  泓: "hóng",
+  洵: "xún",
+  洺: "míng",
+  浚: "jùn",
+  淇: "qí",
+  洛: "luò",
+  湘: "xiāng",
+  渝: "yú",
+  澄: "chéng",
+  澍: "shù",
+  沂: "yí",
+  沫: "mò",
+  溪: "xī",
+  漾: "yàng",
+  沄: "yún",
+  沣: "fēng",
+  泠: "líng",
+  沁: "qìn",
+  溶: "róng",
+  渊: "yuān",
+  源: "yuán",
+  泊: "bó",
+  瀚: "hàn",
+  霁: "jì",
+  霖: "lín",
+  雨: "yǔ",
+  霏: "fēi",
+  雪: "xuě",
+  露: "lù",
+  霄: "xiāo",
+  航: "háng",
+  舟: "zhōu",
+  川: "chuān",
+  江: "jiāng",
+  河: "hé",
+  识: "shí",
+  悟: "wù",
+  敏: "mǐn",
+  慧: "huì",
+  聪: "cōng",
+  睿: "ruì",
+  思: "sī",
+  想: "xiǎng",
+  慕: "mù",
+  惠: "huì",
+  恬: "tián",
+  怡: "yí",
+  悦: "yuè",
+  恒: "héng",
+  恪: "kè",
+  晨: "chén",
+  曦: "xī",
+  旭: "xù",
+  昕: "xīn",
+  晟: "shèng",
+  晖: "huī",
+  暄: "xuān",
+  煜: "yù",
+  烨: "yè",
+  炜: "wěi",
+  焕: "huàn",
+  煊: "xuān",
+  熠: "yì",
+  灿: "càn",
+  烁: "shuò",
+  朗: "lǎng",
+  晴: "qíng",
+  晓: "xiǎo",
+  昶: "chǎng",
+  昱: "yù",
+  晋: "jìn",
+  卓: "zhuó",
+  昊: "hào",
+  晁: "cháo",
+  晔: "yè",
+  暘: "yáng",
+  炫: "xuàn",
+  焱: "yàn",
+  燊: "shēn",
+  炯: "jiǒng",
+  烜: "xuǎn",
+  照: "zhào",
+  昌: "chāng",
+  映: "yìng",
+  旻: "mín",
+  晞: "xī",
+  暖: "nuǎn",
+  熹: "xī",
+  和: "hé",
+  炘: "xīn",
+  曈: "tóng",
+  暻: "jǐng",
+  晤: "wù",
+  昉: "fǎng",
+  玥: "yuè",
+  玮: "wěi",
+  珺: "jùn",
+  琛: "chēn",
+  琦: "qí",
+  琨: "kūn",
+  璟: "jǐng",
+  璇: "xuán",
+  璐: "lù",
+  琪: "qí",
+  瑶: "yáo",
+  瑄: "xuān",
+  璋: "zhāng",
+  琮: "cóng",
+  珏: "jué",
+  珂: "kē",
+  璞: "pú",
+  琬: "wǎn",
+  锦: "jǐn",
+  铄: "shuò",
+  铮: "zhēng",
+  锐: "ruì",
+  锋: "fēng",
+  钦: "qīn",
+  铠: "kǎi",
+  锴: "kǎi",
+  镕: "róng",
+  镇: "zhèn",
+  鉴: "jiàn",
+  钊: "zhāo",
+  铉: "xuàn",
+  钺: "yuè",
+  素: "sù",
+  真: "zhēn",
+  诚: "chéng",
+  信: "xìn",
+  诗: "shī",
+  词: "cí",
+  诵: "sòng",
+  叙: "xù",
+  序: "xù",
+  则: "zé",
+  谨: "jǐn",
+  逊: "xùn",
+  辞: "cí",
+  章: "zhāng",
+  齐: "qí",
+  翰: "hàn",
+  坤: "kūn",
+  垣: "yuán",
+  培: "péi",
+  城: "chéng",
+  均: "jūn",
+  坦: "tǎn",
+  域: "yù",
+  基: "jī",
+  堂: "táng",
+  峻: "jùn",
+  嵘: "róng",
+  峰: "fēng",
+  岑: "cén",
+  岩: "yán",
+  峤: "qiáo",
+  峥: "zhēng",
+  崧: "sōng",
+  峦: "luán",
+  宇: "yǔ",
+  容: "róng",
+  宥: "yòu",
+  宣: "xuān",
+  宜: "yí",
+  寅: "yín",
+  辰: "chén",
+  央: "yāng",
+  佑: "yòu",
+  轩: "xuān",
+  维: "wéi",
+  惟: "wéi",
+  恩: "ēn",
+  宛: "wǎn",
+  宓: "mì",
+  寰: "huán",
+  宴: "yàn",
+  宵: "xiāo",
+  山: "shān",
+  岫: "xiù",
+  岱: "dài",
+  岭: "lǐng",
+  岸: "àn",
+  坡: "pō",
+  原: "yuán",
+  野: "yě",
+  越: "yuè",
+  逾: "yú",
+  逸: "yì",
+  屹: "yì",
+  岐: "qí",
+  仁: "rén",
+  义: "yì",
+  德: "dé",
+  谦: "qiān",
+  敬: "jìng",
+  恭: "gōng",
+  慎: "shèn",
+  学: "xué",
+  文: "wén",
+  雅: "yǎ",
+  彦: "yàn",
+  贤: "xián",
+  启: "qǐ",
+  开: "kāi",
+  觉: "jué",
+  津: "jīn",
+  渡: "dù",
+  迈: "mài",
+  途: "tú",
+  逍: "xiāo",
+  游: "yóu",
+  溯: "sù",
+  寻: "xún",
+  观: "guān",
+  临: "lín",
+  归: "guī"
+};
+
 function getSurnameTone(surname) {
   const first = [...(surname || "")][0];
   return surnameToneMap[first] || 0;
@@ -1742,11 +2440,57 @@ function buildNameItem(chars, preferences) {
   };
 }
 
+function characterMetaMap() {
+  return new Map([...nameCharacters, ...supplementalNameCharacters, ...literarySeedCharacters].map((item) => [item.char, item]));
+}
+
+function literarySeedCandidates(preferences) {
+  if (!preferences.basis.includes("classic")) return [];
+
+  const charMap = characterMetaMap();
+  return literaryNameSeeds.map((seed) => {
+    const chars = [...seed.given].map((char) => {
+      const meta = charMap.get(char) || {
+        char,
+        element: seed.element,
+        sourceType: "classic",
+        source: seed.source,
+        tags: seed.tags,
+        meaning: `${char}字取自${seed.source.replace(/^取自/, "")}`,
+        tone: 2,
+        strokes: 8,
+        gender: seed.gender || "neutral",
+        zodiac: [],
+        season: []
+      };
+      return {
+        ...meta,
+        sourceType: ["classic", "poetry"].includes(meta.sourceType) ? meta.sourceType : "classic"
+      };
+    });
+    const item = buildNameItem(chars, preferences);
+    return {
+      ...item,
+      element: seed.element || item.element,
+      elements: seed.elements || item.elements,
+      gender: seed.gender || item.gender,
+      sourceType: "poetry",
+      source: seed.source,
+      displaySource: seed.source,
+      literarySource: seed.source,
+      literarySeed: true,
+      tags: joinUnique([...seed.tags, ...item.tags]),
+      meaning: seed.meaning,
+      risk: `${item.risk} 典籍诗词出处明确，建议家人重点听读全名音律。`
+    };
+  });
+}
+
 function buildGeneratedCandidates(preferences) {
   const chars = uniqueCharacters();
   const allowSingle = preferences.length === "1" || preferences.length === "all";
   const allowDouble = preferences.length === "2" || preferences.length === "all" || Boolean(preferences.generationChar);
-  const generated = [];
+  const generated = preferences.generationChar ? [] : literarySeedCandidates(preferences);
 
   if (allowSingle && !preferences.generationChar) {
     chars.forEach((item) => generated.push(buildNameItem([item], preferences)));
@@ -1814,7 +2558,16 @@ function scoreCandidate(item, preferences) {
     }
   }
 
-  if (preferences.basis.includes("classic") && ["classic", "poetry"].includes(item.sourceType)) score += 11;
+  if (preferences.basis.includes("classic")) {
+    if (item.literarySource) {
+      score += 34;
+      reasons.push("典籍诗词出处明确");
+    } else if (["classic", "poetry"].includes(item.sourceType)) {
+      score += 8;
+    } else {
+      score -= 16;
+    }
+  }
   if (preferences.basis.includes("meaning") && item.tags.includes(preferences.wish)) score += 10;
   score += Math.round(soundFit * 0.45);
   if (preferences.basis.includes("sound")) {
@@ -2075,6 +2828,7 @@ async function generateNames() {
           supportReasons: scored.reasons,
           displayGiven: item.given,
           fullName: `${surname}${item.given}`,
+          displaySource: sourceForItem(item, preferences),
           season,
           zodiac
         };
@@ -2130,6 +2884,11 @@ function baziSupportText(item, preferences) {
   return `生辰八字按公历推演：${profile.summary}此名含${elementText}意象，用作民俗参考。`;
 }
 
+function sourceForItem(item, preferences = null) {
+  if (preferences?.basis?.includes("classic") && item.literarySource) return item.literarySource;
+  return item.displaySource || item.literarySource || item.source;
+}
+
 function supportText(item, preferences) {
   const selected = preferences.basis.map((basis) => basisLabels[basis]).join("、");
   const elementText = item.elements?.join("、") || item.element;
@@ -2152,7 +2911,7 @@ function supportText(item, preferences) {
     : "";
   const baziPart = baziSupportText(item, preferences);
   const yijingPart = yijingSupportText(item, preferences);
-  return `本次依据包含${selected}。${calendarPart}${generationPart}${dialectPart}${elementPart}${seasonPart}${baziPart}${yijingPart}${item.source}`;
+  return `本次依据包含${selected}。${calendarPart}${generationPart}${dialectPart}${elementPart}${seasonPart}${baziPart}${yijingPart}`;
 }
 
 function clearGeneratedResults() {
@@ -2193,13 +2952,17 @@ function renderResults(preferences) {
         <article class="name-card">
           <div class="name-top">
             <div class="name-title">
-              <strong>${item.fullName}</strong>
+              <strong>${renderNameWithPinyin(item)}</strong>
               <span>${item.sourceType === "poetry" ? "诗词意象" : item.sourceType === "classic" ? "典籍取意" : item.sourceType === "season" ? "节气生肖" : "寓意取向"} · ${preferences.region}</span>
             </div>
             <div class="score">${item.score}</div>
           </div>
           <div class="tag-row">${tags.map((tag) => `<span>${tag}</span>`).join("")}</div>
           <div class="reason-grid">
+            <div class="reason">
+              <b>出处</b>
+              <p>${sourceForItem(item, preferences)}</p>
+            </div>
             <div class="reason">
               <b>支撑依据</b>
               <p>${supportText(item, preferences)}</p>
@@ -2218,8 +2981,8 @@ function renderResults(preferences) {
             </div>
           </div>
           <div class="card-actions">
-            <button type="button" class="outline" data-action="explain" data-name="${item.fullName}">看对比</button>
-            <button type="button" class="save-name ${saved ? "saved" : ""}" data-action="save" data-name="${item.fullName}">
+            <button type="button" class="outline" data-action="explain" data-name="${escapeAttribute(item.fullName)}">看对比</button>
+            <button type="button" class="save-name ${saved ? "saved" : ""}" data-action="save" data-name="${escapeAttribute(item.fullName)}">
               ${saved ? "已收藏" : "收藏候选"}
             </button>
           </div>
@@ -2293,10 +3056,10 @@ function renderFavorites() {
       (item) => `
       <div class="compare-item">
         <div>
-          <strong>${item.fullName}</strong>
+          <strong>${renderNameWithPinyin(item)}</strong>
           <span>${item.tags.slice(0, 2).join(" · ")} · ${item.element}</span>
         </div>
-        <button type="button" data-remove="${item.fullName}">移除</button>
+        <button type="button" data-remove="${escapeAttribute(item.fullName)}">移除</button>
       </div>
     `
     )
