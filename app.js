@@ -733,6 +733,7 @@ const literaryNameSeeds = [
 ];
 
 const form = document.querySelector("#namingForm");
+const surnameInput = document.querySelector("#surname");
 const resultsSection = document.querySelector("#resultsSection");
 const generateBtn = document.querySelector("#generateBtn");
 const resetPreferencesBtn = document.querySelector("#resetPreferencesBtn");
@@ -783,6 +784,21 @@ let isGenerating = false;
 let activeChoiceSelect = null;
 let activeChoiceTrigger = null;
 const lunarYearCache = new Map();
+
+const singleSurnames = new Set([...(
+  "赵钱孙李周吴郑王冯陈褚卫蒋沈韩杨朱秦尤许何吕施张孔曹严华金魏陶姜戚谢邹喻柏水窦章云苏潘葛奚范彭郎鲁韦昌马苗凤花方俞任袁柳酆鲍史唐费廉岑薛雷贺倪汤滕殷罗毕郝邬安常乐于时傅皮卞齐康伍余元卜顾孟平黄和穆萧尹姚邵湛汪祁毛禹狄米贝明臧计伏成戴谈宋庞熊纪舒屈项祝董梁杜阮蓝闵席季麻强贾路娄危江童颜郭梅盛林刁钟徐邱骆高夏蔡田胡凌霍虞万支柯昝管卢莫经房裘缪干解应宗丁宣邓郁单杭洪包诸左石崔吉龚程邢裴陆荣翁荀羊於惠甄曲家封芮羿储靳汲邴糜松井段富巫乌焦巴弓牧隗山谷车侯宓蓬全郗班仰秋仲伊宫宁仇栾暴甘斜厉戎祖武符刘景詹束龙叶幸司韶郜黎蓟薄印宿白怀蒲台从鄂索咸籍赖卓蔺屠蒙池乔阴郁胥能苍双闻莘党翟谭贡劳逄姬申扶堵冉宰郦雍却璩桑桂濮牛寿通边扈燕冀浦尚农温别庄晏柴瞿阎充慕连茹习宦艾鱼容向古易慎戈廖庾终暨居衡步都耿满弘匡国文寇广禄阙东欧殳沃利蔚越夔隆师巩厍聂晁勾敖融冷訾辛阚那简饶空曾毋沙乜养鞠须丰巢关蒯相查后荆红游竺权逯盖益桓公"
+)]);
+const compoundSurnames = new Set([
+  "万俟", "司马", "上官", "欧阳", "夏侯", "诸葛", "闻人", "东方", "赫连", "皇甫",
+  "尉迟", "公羊", "澹台", "公冶", "宗政", "濮阳", "淳于", "单于", "太叔", "申屠",
+  "公孙", "仲孙", "轩辕", "令狐", "钟离", "宇文", "长孙", "慕容", "鲜于", "闾丘",
+  "司徒", "司空", "亓官", "司寇", "仉督", "子车", "颛孙", "端木", "巫马", "公西",
+  "漆雕", "乐正", "壤驷", "公良", "拓跋", "夹谷", "宰父", "谷梁", "晋楚", "闫法",
+  "汝鄢", "涂钦", "段干", "百里", "东郭", "南门", "呼延", "归海", "羊舌", "微生",
+  "岳帅", "缑亢", "况后", "有琴", "梁丘", "左丘", "东门", "西门", "商牟", "佘佴",
+  "伯赏", "南宫", "墨哈", "谯笪", "年爱", "阳佟", "第五", "言福"
+]);
+["闫", "肖", "付"].forEach((surname) => singleSurnames.add(surname));
 
 const today = new Date();
 const baseYear = today.getFullYear();
@@ -842,6 +858,11 @@ document.querySelectorAll(".basis").forEach((button) => {
     const hasWuxing = getSelectedBasis().includes("wuxing");
     wuxingPanel.hidden = !hasWuxing;
   });
+});
+
+surnameInput.addEventListener("input", () => {
+  const normalized = normalizeSurname(surnameInput.value);
+  if (surnameInput.value !== normalized) surnameInput.value = normalized;
 });
 
 toggleGeneration.addEventListener("click", () => {
@@ -1119,7 +1140,7 @@ function readPreferencesFromForm() {
   const calendarType = getActiveValue('[data-group="calendarType"]') || "solar";
   const lunarBirthday = calendarType === "lunar" ? getLunarBirthdayValue() : null;
   return {
-    surname: document.querySelector("#surname").value.trim(),
+    surname: normalizeSurname(surnameInput.value),
     gender: getActiveValue('[data-group="gender"]') || "neutral",
     length: getActiveValue('[data-group="length"]') || "2",
     basis: getSelectedBasis(),
@@ -1169,7 +1190,7 @@ function resetPreferences() {
   closeChoicePicker();
   unlockPreferences();
 
-  document.querySelector("#surname").value = "";
+  surnameInput.value = "";
   setActiveButton('[data-group="gender"]', "neutral");
   setActiveButton('[data-group="length"]', "2");
 
@@ -1215,6 +1236,21 @@ function splitChars(value) {
 
 function firstChar(value) {
   return [...(value || "").replace(/\s+/g, "")][0] || "";
+}
+
+function normalizeSurname(value) {
+  return [...(value || "").replace(/\s+/g, "").replace(/[^\u4e00-\u9fff]/gu, "")]
+    .slice(0, 2)
+    .join("");
+}
+
+function validateSurname(surname) {
+  if (!surname) return "请先输入姓氏";
+  if (!/^[\u4e00-\u9fff]{1,2}$/u.test(surname)) return "姓氏仅支持中文汉字";
+  if (surname.length > 2) return "姓氏最多不超过2个汉字";
+  if (surname.length === 1 && singleSurnames.has(surname)) return "";
+  if (surname.length === 2 && compoundSurnames.has(surname)) return "";
+  return "请输入常见百家姓姓氏";
 }
 
 function padNumber(value) {
@@ -2781,9 +2817,11 @@ async function generateNames() {
   if (isGenerating) return;
   const preferences = lockedPreferences ? clonePreferences(lockedPreferences) : readPreferencesFromForm();
   const surname = preferences.surname;
+  if (!lockedPreferences) surnameInput.value = surname;
 
-  if (!surname) {
-    toast("请先输入姓氏");
+  const surnameError = validateSurname(surname);
+  if (surnameError) {
+    toast(surnameError);
     return;
   }
 

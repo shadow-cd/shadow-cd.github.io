@@ -58,7 +58,7 @@ button {
   max-width: 430px;
   min-height: 100svh;
   margin: 0 auto;
-  padding: calc(14px + env(safe-area-inset-top)) 14px calc(94px + env(safe-area-inset-bottom));
+  padding: calc(14px + env(safe-area-inset-top)) 14px calc(72px + env(safe-area-inset-bottom));
   background:
     linear-gradient(180deg, #1c2421 0, #202a26 116px, var(--paper) 117px, var(--paper) 100%),
     var(--paper);
@@ -944,6 +944,18 @@ textarea {
   color: #39423d;
   font-size: 13px;
   line-height: 1.55;
+}
+
+.site-footnote {
+  display: flex;
+  min-height: 28px;
+  margin: 0;
+  align-items: center;
+  justify-content: center;
+  color: #857b6d;
+  font-size: 11px;
+  line-height: 1;
+  text-align: center;
 }
 
 .bottom-action {
