@@ -732,6 +732,190 @@ const literaryNameSeeds = [
   }
 ];
 
+literarySeedCharacters.push(
+  { char: "嘉", element: "木", sourceType: "classic", source: "嘉有美善、嘉许之义。", tags: ["仁爱", "书卷气", "清雅"], meaning: "美善可亲，品行值得嘉许。", tone: 1, strokes: 14, gender: "neutral", zodiac: ["兔", "羊"], season: ["春"] },
+  { char: "树", element: "木", sourceType: "classic", source: "树有立身、成长与成材之义。", tags: ["远志", "大气", "清朗"], meaning: "立身有根，向上成材。", tone: 4, strokes: 9, gender: "neutral", zodiac: ["虎", "兔"], season: ["春"] },
+  { char: "攸", element: "土", sourceType: "classic", source: "攸为文言语词，带从容古雅之气。", tags: ["书卷气", "清雅", "温润"], meaning: "从容安定，气质古雅。", tone: 1, strokes: 7, gender: "neutral", zodiac: ["牛", "羊"], season: ["秋"] },
+  { char: "静", element: "金", sourceType: "classic", source: "静取安静笃定、静而有守。", tags: ["清雅", "温润", "平安"], meaning: "沉静自持，内心笃定。", tone: 4, strokes: 14, gender: "female", zodiac: ["兔", "羊"], season: ["秋", "冬"] },
+  { char: "姝", element: "金", sourceType: "classic", source: "姝有美好端雅之义。", tags: ["清雅", "温润", "书卷气"], meaning: "端雅美好，明净有仪。", tone: 1, strokes: 9, gender: "female", zodiac: ["兔", "羊"], season: ["春"] },
+  { char: "令", element: "火", sourceType: "classic", source: "令取美善、端正之义。", tags: ["仁爱", "书卷气", "清雅"], meaning: "端正有礼，举止得体。", tone: 4, strokes: 5, gender: "neutral", zodiac: ["蛇", "马"], season: ["夏"] },
+  { char: "仪", element: "木", sourceType: "classic", source: "仪取礼仪、仪范之义。", tags: ["书卷气", "清雅", "仁爱"], meaning: "有礼有度，仪态从容。", tone: 2, strokes: 5, gender: "female", zodiac: ["兔", "羊"], season: ["春", "秋"] },
+  { char: "柔", element: "木", sourceType: "classic", source: "柔取柔和而有韧性。", tags: ["温润", "清雅", "仁爱"], meaning: "温柔有度，柔而不弱。", tone: 2, strokes: 9, gender: "female", zodiac: ["兔", "羊"], season: ["春"] },
+  { char: "猗", element: "土", sourceType: "classic", source: "猗为诗经常见语气字，古雅有余韵。", tags: ["清雅", "书卷气", "少见不生僻"], meaning: "清雅有余韵，带古典诗意。", tone: 1, strokes: 11, gender: "female", zodiac: ["兔", "羊"], season: ["春"] },
+  { char: "琼", element: "木", sourceType: "classic", source: "琼为美玉，取温润珍美。", tags: ["清雅", "书卷气", "温润"], meaning: "如玉温润，品性珍美。", tone: 2, strokes: 12, gender: "female", zodiac: ["龙", "蛇"], season: ["秋"] },
+  { char: "华", element: "水", sourceType: "classic", source: "华取光华、才华之义。", tags: ["大气", "清朗", "书卷气"], meaning: "有才华，也有明亮气象。", tone: 2, strokes: 6, gender: "neutral", zodiac: ["龙", "马"], season: ["夏"] },
+  { char: "音", element: "土", sourceType: "classic", source: "音取德音、雅音之义。", tags: ["仁爱", "清雅", "书卷气"], meaning: "言语有信，声名温厚。", tone: 1, strokes: 9, gender: "female", zodiac: ["兔", "羊"], season: ["秋"] },
+  { char: "青", element: "金", sourceType: "poetry", source: "青取青云、青春与清正之意。", tags: ["清朗", "远志", "大气"], meaning: "朝气清正，志向高远。", tone: 1, strokes: 8, gender: "neutral", zodiac: ["龙", "马"], season: ["春"] },
+  { char: "起", element: "木", sourceType: "poetry", source: "起有兴起、奋发与云起之象。", tags: ["远志", "清朗", "大气"], meaning: "顺势而起，向上生长。", tone: 3, strokes: 10, gender: "neutral", zodiac: ["虎", "龙"], season: ["春"] },
+  { char: "泉", element: "水", sourceType: "poetry", source: "泉取清泉有源、润物不息。", tags: ["清朗", "清雅", "温润"], meaning: "清澈有源，生机不息。", tone: 2, strokes: 9, gender: "neutral", zodiac: ["鼠", "猪"], season: ["春", "冬"] },
+  { char: "圆", element: "土", sourceType: "poetry", source: "圆取圆融、清圆之美。", tags: ["温润", "清雅", "平安"], meaning: "圆融自洽，清润从容。", tone: 2, strokes: 10, gender: "female", zodiac: ["牛", "羊"], season: ["秋"] },
+  { char: "疏", element: "金", sourceType: "poetry", source: "疏取疏朗、通透之意。", tags: ["清雅", "清朗", "书卷气"], meaning: "疏朗有致，清醒通透。", tone: 1, strokes: 12, gender: "female", zodiac: ["兔", "羊"], season: ["冬"] },
+  { char: "影", element: "土", sourceType: "poetry", source: "影取月影、花影的含蓄诗意。", tags: ["清雅", "温润", "诗意"], meaning: "含蓄有光，气质灵动。", tone: 3, strokes: 15, gender: "female", zodiac: ["兔", "羊"], season: ["秋", "冬"] },
+  { char: "暗", element: "火", sourceType: "poetry", source: "暗取幽微含蓄、不事张扬。", tags: ["清雅", "温润", "诗意"], meaning: "含蓄内敛，自有幽香。", tone: 4, strokes: 13, gender: "female", zodiac: ["兔", "羊"], season: ["冬"] },
+  { char: "香", element: "水", sourceType: "poetry", source: "香取芬芳远播、品性有馨。", tags: ["清雅", "温润", "仁爱"], meaning: "品性芬芳，温和有余韵。", tone: 1, strokes: 9, gender: "female", zodiac: ["兔", "羊"], season: ["春"] },
+  { char: "浅", element: "水", sourceType: "poetry", source: "浅取清浅明净的水色。", tags: ["清雅", "清朗", "温润"], meaning: "明净自然，清而不冷。", tone: 3, strokes: 8, gender: "female", zodiac: ["鼠", "猪"], season: ["冬"] },
+  { char: "水", element: "水", sourceType: "classic", source: "水取润物、通达、利万物而不争。", tags: ["温润", "仁爱", "清雅"], meaning: "通达包容，润物不争。", tone: 3, strokes: 4, gender: "neutral", zodiac: ["鼠", "猪"], season: ["冬"] },
+  { char: "止", element: "火", sourceType: "classic", source: "止取知所止、守分寸之义。", tags: ["书卷气", "仁爱", "聪慧"], meaning: "知进退，守分寸，心有定力。", tone: 3, strokes: 4, gender: "neutral", zodiac: ["牛", "龙"], season: ["秋"] },
+  { char: "笃", element: "木", sourceType: "classic", source: "笃取笃实、笃行之义。", tags: ["书卷气", "仁爱", "远志"], meaning: "踏实坚定，所学见于行动。", tone: 3, strokes: 9, gender: "male", zodiac: ["牛", "龙"], season: ["秋"] },
+  { char: "致", element: "火", sourceType: "classic", source: "致取专注、抵达之义。", tags: ["远志", "书卷气", "大气"], meaning: "专注笃定，终能抵达远方。", tone: 4, strokes: 10, gender: "male", zodiac: ["马", "龙"], season: ["夏"] },
+  { char: "弘", element: "水", sourceType: "classic", source: "弘取弘大、弘毅之义。", tags: ["大气", "远志", "仁爱"], meaning: "胸襟弘阔，能担重任。", tone: 2, strokes: 5, gender: "male", zodiac: ["龙", "马"], season: ["冬"] },
+  { char: "毅", element: "木", sourceType: "classic", source: "毅取坚毅有守。", tags: ["远志", "大气", "仁爱"], meaning: "坚定果决，持守不移。", tone: 4, strokes: 15, gender: "male", zodiac: ["虎", "龙"], season: ["秋"] },
+  { char: "日", element: "火", sourceType: "classic", source: "日取光明、日日更新。", tags: ["清朗", "远志", "大气"], meaning: "日日向新，心中有光。", tone: 4, strokes: 4, gender: "neutral", zodiac: ["蛇", "马"], season: ["夏"] },
+  { char: "新", element: "金", sourceType: "classic", source: "新取更新、日新之义。", tags: ["清朗", "现代", "远志"], meaning: "常新常进，不困于旧。", tone: 1, strokes: 13, gender: "neutral", zodiac: ["鸡", "龙"], season: ["春"] },
+  { char: "质", element: "火", sourceType: "classic", source: "质取质朴、文质相济。", tags: ["书卷气", "仁爱", "清朗"], meaning: "质朴有本，文采有度。", tone: 4, strokes: 8, gender: "male", zodiac: ["牛", "龙"], season: ["秋"] },
+  { char: "哲", element: "火", sourceType: "classic", source: "哲取明哲、智慧通达。", tags: ["聪慧", "书卷气", "大气"], meaning: "明理通达，判断有度。", tone: 2, strokes: 10, gender: "male", zodiac: ["蛇", "马"], season: ["夏"] },
+  { char: "志", element: "火", sourceType: "classic", source: "志取志向、守志之义。", tags: ["远志", "大气", "书卷气"], meaning: "志向清楚，持守不移。", tone: 4, strokes: 7, gender: "male", zodiac: ["马", "龙"], season: ["夏"] }
+);
+
+literaryNameSeeds.push(
+  { given: "嘉树", source: "取自屈原《九章·橘颂》“后皇嘉树，橘徕服兮”。", meaning: "以嘉木喻美好品格，寓意扎根生长、端正成材。", tags: ["书卷气", "大气", "仁爱"], element: "木", elements: ["木"], gender: "neutral" },
+  { given: "秉德", source: "取自屈原《九章·橘颂》“秉德无私，参天地兮”。", meaning: "秉持德行与公心，寓意持守原则、坦荡可靠。", tags: ["书卷气", "仁爱", "大气"], element: "木", elements: ["木"], gender: "male" },
+  { given: "维桢", source: "取自《诗经·大雅·文王》“王国克生，维周之桢”。", meaning: "桢为支柱之木，寓意有担当、有根基、能成栋梁。", tags: ["书卷气", "大气", "远志"], element: "木", elements: ["土", "木"], gender: "male" },
+  { given: "攸宁", source: "取自《诗经·小雅·斯干》“君子攸宁”。", meaning: "有所安居、内心安宁，名字温和而有定力。", tags: ["书卷气", "平安", "温润"], element: "土", elements: ["土", "火"], gender: "neutral" },
+  { given: "静姝", source: "取自《诗经·邶风·静女》“静女其姝”。", meaning: "沉静端雅，寓意从容自持、明净美好。", tags: ["清雅", "温润", "书卷气"], element: "金", elements: ["金"], gender: "female" },
+  { given: "令仪", source: "取自《诗经·小雅·湛露》“岂弟君子，莫不令仪”。", meaning: "令仪指美好的仪范，寓意有礼有度、举止从容。", tags: ["书卷气", "清雅", "仁爱"], element: "木", elements: ["火", "木"], gender: "female" },
+  { given: "柔嘉", source: "取自《诗经·大雅·抑》“敬尔威仪，无不柔嘉”。", meaning: "温柔而美善，寓意柔和有原则、亲切有分寸。", tags: ["温润", "清雅", "仁爱"], element: "木", elements: ["木"], gender: "female" },
+  { given: "清猗", source: "取自《诗经·魏风·伐檀》“河水清且涟猗”。", meaning: "水色清澈、涟漪有致，名字清雅灵动。", tags: ["清雅", "清朗", "书卷气"], element: "水", elements: ["水", "土"], gender: "female" },
+  { given: "琼华", source: "取自《诗经·齐风·著》“尚之以琼华乎而”。", meaning: "琼华为美玉光华，寓意品性温润、才华明亮。", tags: ["清雅", "书卷气", "大气"], element: "木", elements: ["木", "水"], gender: "female" },
+  { given: "德音", source: "取自《诗经·郑风·有女同车》“彼美孟姜，德音不忘”。", meaning: "德音指美好的品德与声誉，寓意言行温厚、令人信赖。", tags: ["仁爱", "书卷气", "温润"], element: "木", elements: ["木", "土"], gender: "female" },
+  { given: "青云", source: "取自王勃《滕王阁序》“穷且益坚，不坠青云之志”。", meaning: "青云喻高远志向，寓意处境变化而志气不坠。", tags: ["远志", "大气", "清朗"], element: "金", elements: ["金", "水"], gender: "male" },
+  { given: "云起", source: "取自王维《终南别业》“行到水穷处，坐看云起时”。", meaning: "云起自然而有生机，寓意从容应变、顺势向上。", tags: ["清朗", "自由", "远志"], element: "木", elements: ["水", "木"], gender: "neutral" },
+  { given: "清泉", source: "取自王维《山居秋暝》“明月松间照，清泉石上流”。", meaning: "清泉有源、流动不息，寓意心性澄明、生机长久。", tags: ["清雅", "清朗", "温润"], element: "水", elements: ["水"], gender: "neutral" },
+  { given: "锦书", source: "取自李清照《一剪梅》“云中谁寄锦书来”。", meaning: "锦书承载思念与文意，寓意有情有信、知书明理。", tags: ["书卷气", "温润", "清雅"], element: "金", elements: ["金"], gender: "female" },
+  { given: "星河", source: "取自李清照《渔家傲》“星河欲转千帆舞”。", meaning: "星河辽阔而明亮，寓意眼界开阔、心中有光。", tags: ["大气", "自由", "清朗"], element: "水", elements: ["火", "水"], gender: "neutral" },
+  { given: "清圆", source: "取自周邦彦《苏幕遮》“水面清圆，一一风荷举”。", meaning: "荷叶清润圆融，寓意清雅自洽、从容舒展。", tags: ["清雅", "温润", "书卷气"], element: "水", elements: ["水", "土"], gender: "female" },
+  { given: "风荷", source: "取自周邦彦《苏幕遮》“水面清圆，一一风荷举”。", meaning: "风中荷叶舒展有致，寓意清正、灵动而有生命力。", tags: ["清雅", "自由", "诗意"], element: "木", elements: ["木"], gender: "female" },
+  { given: "兰舟", source: "取自柳永《雨霖铃》“留恋处，兰舟催发”。", meaning: "兰舟兼具清雅与行远之意，寓意温润从容、敢于启程。", tags: ["清雅", "自由", "远志"], element: "木", elements: ["木", "水"], gender: "female" },
+  { given: "疏影", source: "取自林逋《山园小梅》“疏影横斜水清浅”。", meaning: "梅影疏朗有致，寓意清醒独立、气质雅正。", tags: ["清雅", "清朗", "书卷气"], element: "金", elements: ["金", "土"], gender: "female" },
+  { given: "暗香", source: "取自林逋《山园小梅》“暗香浮动月黄昏”。", meaning: "幽香含蓄而悠长，寓意不张扬而自有品格。", tags: ["清雅", "温润", "书卷气"], element: "火", elements: ["火", "水"], gender: "female" },
+  { given: "清浅", source: "取自林逋《山园小梅》“疏影横斜水清浅”。", meaning: "清水浅映，寓意明净自然、坦荡通透。", tags: ["清雅", "清朗", "温润"], element: "水", elements: ["水"], gender: "female" },
+  { given: "慎思", source: "取自《礼记·中庸》“博学之，审问之，慎思之，明辨之，笃行之”。", meaning: "审慎思考，寓意明辨有度、不轻率盲从。", tags: ["聪慧", "书卷气", "仁爱"], element: "水", elements: ["金", "水"], gender: "neutral" },
+  { given: "笃行", source: "取自《礼记·中庸》“博学之，审问之，慎思之，明辨之，笃行之”。", meaning: "笃实行动，寓意所学所信都能落实于行。", tags: ["远志", "书卷气", "仁爱"], element: "木", elements: ["木", "水"], gender: "male" },
+  { given: "诚明", source: "取自《礼记·中庸》“自诚明，谓之性；自明诚，谓之教”。", meaning: "内心真诚、处事明达，寓意品格与智慧相互成就。", tags: ["仁爱", "聪慧", "书卷气"], element: "火", elements: ["金", "火"], gender: "neutral" },
+  { given: "若水", source: "取自《道德经》第八章“上善若水”。", meaning: "以水喻德，寓意包容通达、润物而不争。", tags: ["仁爱", "温润", "书卷气"], element: "水", elements: ["木", "水"], gender: "neutral" },
+  { given: "知止", source: "取自《礼记·大学》“知止而后有定”。", meaning: "知道边界与目标，寓意有判断、有定力、懂进退。", tags: ["聪慧", "仁爱", "书卷气"], element: "火", elements: ["火"], gender: "neutral" },
+  { given: "安仁", source: "取自《论语·里仁》“仁者安仁，知者利仁”。", meaning: "安于仁道，寓意内心稳定、待人宽厚。", tags: ["仁爱", "温润", "书卷气"], element: "土", elements: ["土", "木"], gender: "neutral" },
+  { given: "弘毅", source: "取自《论语·泰伯》“士不可以不弘毅，任重而道远”。", meaning: "胸襟弘阔、意志坚毅，寓意能担责任、行稳致远。", tags: ["大气", "远志", "仁爱"], element: "木", elements: ["水", "木"], gender: "male" },
+  { given: "日新", source: "取自《礼记·大学》“苟日新，日日新，又日新”。", meaning: "日日自省、不断更新，寓意保持生机与进取。", tags: ["清朗", "远志", "书卷气"], element: "火", elements: ["火", "金"], gender: "neutral" },
+  { given: "文质", source: "取自《论语·雍也》“文质彬彬，然后君子”。", meaning: "文采与质朴相济，寓意内外兼修、端方有度。", tags: ["书卷气", "仁爱", "大气"], element: "火", elements: ["木", "火"], gender: "male" },
+  { given: "明哲", source: "取自《诗经·大雅·烝民》“既明且哲，以保其身”。", meaning: "明理而有智慧，寓意通达审慎、判断有度。", tags: ["聪慧", "书卷气", "大气"], element: "火", elements: ["火"], gender: "male" },
+  { given: "致远", source: "取自诸葛亮《诫子书》“非淡泊无以明志，非宁静无以致远”。", meaning: "专注笃定而志向长远，寓意沉着积累、终有所至。", tags: ["远志", "书卷气", "大气"], element: "火", elements: ["火", "土"], gender: "male" },
+  { given: "宁静", source: "取自诸葛亮《诫子书》“非淡泊无以明志，非宁静无以致远”。", meaning: "内心宁定清静，寓意不受浮躁牵引、从容自持。", tags: ["平安", "温润", "书卷气"], element: "火", elements: ["火", "金"], gender: "female" },
+  { given: "明志", source: "取自诸葛亮《诫子书》“非淡泊无以明志，非宁静无以致远”。", meaning: "明晰志向并持守本心，寓意目标清楚、意志坚定。", tags: ["远志", "清朗", "书卷气"], element: "火", elements: ["火"], gender: "male" }
+);
+
+function expandCoherentNameGroup(group) {
+  return group.entries.map(([given, meaning, extraTags = []]) => ({
+    given,
+    gender: group.gender,
+    sourceType: group.sourceType || "meaning",
+    source: `“${given}”取${meaning}`,
+    meaning,
+    tags: joinUnique([...group.tags, ...extraTags]),
+    coherentSeed: true
+  }));
+}
+
+const coherentNameSeeds = [
+  {
+    gender: "neutral",
+    tags: ["书卷气", "温润"],
+    entries: [
+      ["知安", "明理有度，内心安定。", ["聪慧", "平安"]], ["知远", "明辨方向，眼界与志向都在远方。", ["聪慧", "远志"]],
+      ["知礼", "知晓礼度，待人有敬意、有分寸。", ["仁爱"]], ["允和", "公允可信，性情平和。", ["仁爱", "平安"]],
+      ["允安", "守信端正，安然笃定。", ["仁爱", "平安"]], ["允宁", "可信有度，内心安宁。", ["仁爱", "平安"]],
+      ["予安", "懂得给予，也能带给人安定感。", ["仁爱", "平安", "现代"]], ["予宁", "宽和善意，心绪安宁从容。", ["仁爱", "平安", "现代"]],
+      ["安然", "安稳坦然，面对变化仍守本心。", ["平安", "现代"]], ["安宁", "平稳安定，身心自在。", ["平安"]],
+      ["宁远", "内心宁定，眼界长远。", ["平安", "远志"]], ["书宁", "知书明理，气质安静笃定。", ["聪慧", "清雅"]],
+      ["书言", "腹有学养，表达有物有信。", ["聪慧", "清朗"]], ["修言", "修养内在，也谨慎真诚地表达。", ["仁爱", "聪慧"]],
+      ["修然", "自我砥砺，同时坦然从容。", ["仁爱", "清朗"]], ["清和", "心性清明，待人平和温厚。", ["清朗", "仁爱"]],
+      ["清越", "气质清朗，精神舒展通达。", ["清朗", "自由"]], ["清晏", "清明安然，气象平和。", ["清雅", "平安"]],
+      ["清朗", "清澈坦荡，神采明朗。", ["清朗", "大气"]], ["明澈", "心中明亮，思路澄澈。", ["聪慧", "清朗"]],
+      ["明朗", "性情坦荡，气象光明开阔。", ["清朗", "大气"]], ["星澜", "心有星光，也有从容开阔的水势。", ["清朗", "自由", "现代"]],
+      ["星遥", "仰望星光，志向高远。", ["清朗", "远志"]], ["星野", "星空与原野相映，眼界自由开阔。", ["自由", "大气", "现代"]],
+      ["云澈", "如云舒卷，心性澄澈。", ["自由", "清朗"]], ["云归", "行有远方，心有归处。", ["自由", "平安"]],
+      ["沐安", "受温柔润泽，一生安然。", ["平安", "清朗", "现代"]], ["沐宁", "清润自在，内心安宁。", ["平安", "清朗", "现代"]],
+      ["沐言", "受教修身，言语真诚有度。", ["仁爱", "清朗", "现代"]], ["沐清", "清润自持，心境澄明。", ["清朗", "清雅"]],
+      ["初宁", "守住初心，安宁坚定。", ["平安", "清朗", "现代"]], ["祺安", "吉祥安泰，生活顺遂。", ["平安"]],
+      ["祺宁", "吉安顺遂，心境宁和。", ["平安"]], ["熙和", "光明和乐，待人温厚。", ["平安", "清朗"]],
+      ["晏清", "安然清明，处事从容。", ["平安", "清雅"]], ["晏宁", "晴和安宁，气质不急不躁。", ["平安", "清雅"]]
+    ]
+  },
+  {
+    gender: "male",
+    tags: ["大气", "书卷气"],
+    entries: [
+      ["承岳", "有担当，也有山岳般稳固的根基。", ["仁爱", "远志"]], ["承远", "承接责任，目光放得长远。", ["仁爱", "远志"]],
+      ["承钧", "能担重任，处事持衡有度。", ["仁爱", "远志"]], ["承泽", "承续善意，以润泽回馈他人。", ["仁爱", "温润"]],
+      ["承宇", "胸有担当，气度开阔稳重。", ["远志"]], ["景澄", "向高处看，内心清澄明达。", ["清朗", "聪慧"]],
+      ["景岳", "仰止高山，立身稳健有格局。", ["远志"]], ["景川", "光景开阔，如江川行稳致远。", ["清朗", "自由"]],
+      ["修齐", "修养自身，端正有序。", ["仁爱", "聪慧"]], ["修文", "修身明理，涵养文德。", ["仁爱", "聪慧"]],
+      ["修衡", "自省修身，处事持中有分寸。", ["仁爱"]], ["云舟", "胸怀云天，敢于启程远行。", ["自由", "远志"]],
+      ["云川", "云天江川相接，气象舒展辽阔。", ["自由", "清朗"]], ["星野", "心有星光，眼界如原野开阔。", ["自由", "清朗", "现代"]],
+      ["星洲", "星光照水洲，明亮而有立足之地。", ["清朗", "自由"]], ["昭远", "心志昭明，目光长远。", ["清朗", "远志"]],
+      ["昭岳", "光明坦荡，立身如山岳坚定。", ["清朗", "远志"]], ["昭明", "光明磊落，判断清楚。", ["清朗", "聪慧"]],
+      ["昊然", "胸怀如天宇开阔，处世坦然。", ["自由", "清朗"]], ["昊宇", "气度高远，胸襟开阔。", ["远志"]],
+      ["煜衡", "内有光明，外有持衡之度。", ["清朗", "仁爱"]], ["煜城", "光明坚定，有守护与担当。", ["清朗", "仁爱"]],
+      ["煜川", "光明照川，志向舒展通达。", ["清朗", "自由"]], ["维岳", "维系担当，立身如山岳稳重。", ["仁爱", "远志"]],
+      ["维钧", "有担当，也能持中守衡。", ["仁爱"]], ["允诚", "公允守信，真诚可靠。", ["仁爱"]],
+      ["怀德", "心中有德，待人厚道有原则。", ["仁爱"]], ["怀远", "胸怀远方，也不失温厚本心。", ["远志", "仁爱"]],
+      ["行远", "脚踏实地，持续走向远方。", ["远志"]], ["明峻", "明达磊落，品格峻整有度。", ["清朗", "仁爱"]],
+      ["明钧", "心性明亮，处事稳重持衡。", ["聪慧", "仁爱"]], ["砚舟", "有书斋沉静，也有行舟远志。", ["远志", "清雅"]],
+      ["砚川", "文气沉静，胸襟如江川开阔。", ["清雅", "自由"]], ["珩岳", "如佩玉端方，如山岳稳健。", ["仁爱", "远志"]],
+      ["珩远", "有礼有节，志向长远。", ["远志", "仁爱"]], ["琮岳", "礼玉端方，山岳稳重。", ["仁爱", "远志"]],
+      ["钧衡", "能担分量，也能持中平衡。", ["仁爱"]], ["铭远", "铭记本心，志向深远。", ["远志", "仁爱"]],
+      ["锦程", "前程明亮，步履有章法。", ["远志", "清朗"]], ["泽远", "心有润泽，眼界长远。", ["仁爱", "远志"]],
+      ["泽宇", "温厚润泽，气度开阔。", ["仁爱", "温润"]], ["泽川", "润泽如水，胸襟如川。", ["仁爱", "自由"]],
+      ["泓川", "水深而清，气象开阔通达。", ["清朗", "自由"]], ["澄岳", "心性澄明，立身稳健。", ["清朗", "远志"]],
+      ["岱川", "山川相映，根基稳而眼界阔。", ["自由", "远志"]], ["峻熙", "品格峻整，气象和乐光明。", ["清朗", "仁爱"]],
+      ["宇衡", "胸襟开阔，处事有尺度。", ["仁爱", "远志"]], ["宇澄", "气度开阔，内心澄明。", ["清朗", "聪慧"]]
+    ]
+  },
+  {
+    gender: "female",
+    tags: ["清雅", "温润", "书卷气"],
+    entries: [
+      ["若宁", "温和自持，内心安宁坚定。", ["平安"]], ["若岚", "如山岚轻润，含蓄而有灵气。", ["自由"]],
+      ["若溪", "如溪水清润，自在而有方向。", ["清朗", "自由"]], ["若微", "温柔细腻，不张扬而有光。", ["诗意"]],
+      ["若晴", "从容明朗，如晴日舒展。", ["清朗"]], ["若芷", "温雅如香草，品性清芬。", ["仁爱"]],
+      ["若桐", "温和挺拔，如梧桐向上生长。", ["远志"]], ["栖月", "心有归处，也保有月色般的清明。", ["平安", "诗意"]],
+      ["栖桐", "安然有所栖，品格如良木高洁。", ["平安", "远志"]], ["月舒", "月色清明，心境舒展从容。", ["自由", "诗意"]],
+      ["月宁", "心中有光，安宁笃定。", ["平安", "诗意"]], ["月岚", "月色映山岚，清润而有层次。", ["诗意"]],
+      ["明棠", "明净舒展，如海棠有生机而不艳俗。", ["清朗"]], ["晴岚", "晴光与山岚相映，明丽而含蓄。", ["清朗", "诗意"]],
+      ["晴溪", "晴日溪水，清亮自在。", ["清朗", "自由"]], ["晓岚", "晓色初开，山岚清润。", ["清朗", "诗意"]],
+      ["晓晴", "破晓见晴，寓意明朗与希望。", ["清朗", "平安"]], ["晓棠", "晨光映花木，明丽而有生机。", ["清朗"]],
+      ["晓月", "拂晓月色，清雅而有余韵。", ["诗意"]], ["昕月", "晨光与月色相接，温柔明净。", ["清朗", "诗意"]],
+      ["昕宁", "晨光初起，心境安宁。", ["清朗", "平安"]], ["晗月", "天将明时月色未尽，含蓄有光。", ["清朗", "诗意"]],
+      ["晗溪", "晨光照溪，清润明亮。", ["清朗", "自由"]], ["晗露", "晨光与清露相映，清新温柔。", ["清朗", "诗意"]],
+      ["映雪", "光映白雪，寓意勤学、明净与坚韧。", ["聪慧", "清朗"]], ["映月", "月光相映，明净柔和。", ["诗意"]],
+      ["书瑶", "知书明理，如美玉温润有光。", ["聪慧"]], ["书雅", "有学养，也有端雅从容的气质。", ["聪慧"]],
+      ["诗涵", "有诗意，也有包容润泽的内在。", ["聪慧"]], ["诗雅", "诗意清正，气质端雅。", ["聪慧"]],
+      ["诗岚", "诗意与山岚相合，清润有画面。", ["诗意"]], ["诗月", "文心如月，清明有余韵。", ["聪慧", "诗意"]],
+      ["思雅", "善于思考，举止端雅有度。", ["聪慧"]], ["思宁", "思虑明晰，内心安宁。", ["聪慧", "平安"]],
+      ["思悦", "心有思辨，也保有明朗喜悦。", ["聪慧", "平安"]], ["思淇", "思路清润，如淇水有源。", ["聪慧", "清朗"]],
+      ["恬宁", "恬淡安宁，柔和而有定力。", ["平安"]], ["恬雅", "安静从容，气质端雅。", ["平安"]],
+      ["怡宁", "和悦安宁，亲切而笃定。", ["平安"]], ["怡然", "心境和悦，处世坦然。", ["平安"]],
+      ["怡清", "性情和悦，心境清明。", ["清朗"]], ["悦宁", "明朗喜悦，内心安宁。", ["平安"]],
+      ["悦然", "心有喜悦，待人自然坦荡。", ["平安", "现代"]], ["予溪", "宽和给予，如溪水清润有生机。", ["仁爱", "自由"]],
+      ["予晴", "善意温暖，气质如晴日明朗。", ["仁爱", "清朗"]], ["予岚", "宽和含蓄，如山岚清润。", ["仁爱", "诗意"]],
+      ["沐晴", "沐浴晴光，明朗自在。", ["清朗", "现代"]], ["沐岚", "清润如雨后山岚，含蓄有灵气。", ["诗意", "现代"]],
+      ["沐溪", "清润自在，如溪水有源。", ["清朗", "自由", "现代"]], ["芮宁", "草木初生，内心安宁坚定。", ["平安", "现代"]],
+      ["芮安", "轻盈有生机，一生安然。", ["平安", "现代"]], ["芷宁", "香草清芬，心境安宁。", ["平安", "仁爱"]],
+      ["芷若", "香草意象相承，清雅柔韧。", ["仁爱"]], ["芷晴", "香草清芬，气质明朗。", ["清朗", "仁爱"]],
+      ["芷岚", "香草与山岚相映，清润有层次。", ["诗意"]], ["蕙宁", "蕙质清芬，安宁自持。", ["平安", "仁爱"]],
+      ["筠宁", "如竹有节，内心安宁。", ["平安", "仁爱"]], ["筠溪", "竹意清正，溪水清润。", ["清朗", "仁爱"]],
+      ["菡宁", "荷意清雅，心境安宁。", ["平安"]], ["菡清", "荷叶清润，品性清正。", ["清朗"]],
+      ["琪宁", "如玉温润，内心安宁。", ["平安"]], ["琪安", "珍美温润，一生安然。", ["平安"]],
+      ["瑾宁", "品格如玉，心境宁定。", ["平安", "仁爱"]], ["琬宁", "温润端雅，安宁自持。", ["平安"]],
+      ["琬清", "如玉温润，心性清明。", ["清朗"]], ["珂宁", "玉声清越，内心安宁。", ["平安", "清朗"]],
+      ["珂安", "如玉明净，一生安然。", ["平安"]], ["玥宁", "珍美温润，安宁笃定。", ["平安"]],
+      ["玥晴", "温润有光，气质晴朗。", ["清朗"]], ["雪宁", "心性明净，安宁坚定。", ["平安", "清朗"]],
+      ["雪晴", "雪后初晴，寓意澄明与新生。", ["清朗", "平安"]], ["霏宁", "细雨轻柔，心境安宁。", ["平安", "诗意"]],
+      ["霏月", "微雨月色，含蓄清雅有余韵。", ["诗意"]]
+    ]
+  }
+].flatMap(expandCoherentNameGroup);
+
 const form = document.querySelector("#namingForm");
 const surnameInput = document.querySelector("#surname");
 const resultsSection = document.querySelector("#resultsSection");
@@ -1474,17 +1658,7 @@ document.querySelector("#makePoll").addEventListener("click", async () => {
     toast("先收藏几个候选名");
     return;
   }
-  const lines = names.map((item, index) => {
-    return [
-      `${index + 1}. ${formatNameWithPinyin(item)}`,
-      `寓意：${item.meaning}`,
-      `出处：${sourceForItem(item)}`,
-      `五行：${item.element}`,
-      `音律：${item.tone}${item.writing || ""}`,
-      `提醒：${reminderText(item)}`
-    ].join("\n");
-  });
-  pollText.value = `帮宝宝选个名字，你更喜欢哪一个？\n\n${lines.join("\n\n")}`;
+  pollText.value = buildPollText(names);
   try {
     await navigator.clipboard.writeText(pollText.value);
   } catch (error) {
@@ -1785,7 +1959,11 @@ function renderWheel(list, part, values, suffix) {
 function centerActiveWheelItems(lists = [solarYearList, solarMonthList, solarDayList, solarHourList, solarMinuteList]) {
   lists.forEach((list) => {
     const active = list.querySelector(".active");
-    if (active) active.scrollIntoView({ block: "center" });
+    if (!active) return;
+    const listRect = list.getBoundingClientRect();
+    const activeRect = active.getBoundingClientRect();
+    const centeredTop = list.scrollTop + activeRect.top - listRect.top - (list.clientHeight - activeRect.height) / 2;
+    list.scrollTop = Math.max(0, centeredTop);
   });
 }
 
@@ -1797,7 +1975,7 @@ function renderSolarPicker() {
   renderWheel(solarHourList, "hour", range(0, 23), "时");
   renderWheel(solarMinuteList, "minute", range(0, 55, 5), "分");
   solarPickerPreview.textContent = formatSolarDisplay(formatSolarIso());
-  requestAnimationFrame(centerActiveWheelItems);
+  requestAnimationFrame(() => centerActiveWheelItems());
 }
 
 function setSolarPickerFromValue(value) {
@@ -1809,11 +1987,12 @@ function setSolarPickerFromValue(value) {
     solarPickerState.hour = Number(matched[4]);
     solarPickerState.minute = Number(matched[5]);
   } else {
-    solarPickerState.year = baseYear;
-    solarPickerState.month = today.getMonth() + 1;
-    solarPickerState.day = today.getDate();
-    solarPickerState.hour = today.getHours();
-    solarPickerState.minute = Math.floor(today.getMinutes() / 5) * 5;
+    const current = new Date();
+    solarPickerState.year = current.getFullYear();
+    solarPickerState.month = current.getMonth() + 1;
+    solarPickerState.day = current.getDate();
+    solarPickerState.hour = current.getHours();
+    solarPickerState.minute = Math.floor(current.getMinutes() / 5) * 5;
   }
   normalizeSolarPickerState();
 }
@@ -2844,38 +3023,212 @@ const namePinyinMap = {
   寻: "xún",
   观: "guān",
   临: "lín",
-  归: "guī"
+  归: "guī",
+  嘉: "jiā",
+  树: "shù",
+  攸: "yōu",
+  静: "jìng",
+  姝: "shū",
+  令: "lìng",
+  仪: "yí",
+  柔: "róu",
+  猗: "yī",
+  琼: "qióng",
+  华: "huá",
+  音: "yīn",
+  青: "qīng",
+  起: "qǐ",
+  泉: "quán",
+  圆: "yuán",
+  疏: "shū",
+  影: "yǐng",
+  暗: "àn",
+  香: "xiāng",
+  浅: "qiǎn",
+  水: "shuǐ",
+  止: "zhǐ",
+  笃: "dǔ",
+  致: "zhì",
+  弘: "hóng",
+  毅: "yì",
+  日: "rì",
+  新: "xīn",
+  质: "zhì",
+  哲: "zhé",
+  志: "zhì"
 };
 
+const pinyinToneMarks = {
+  ā: ["a", 1], á: ["a", 2], ǎ: ["a", 3], à: ["a", 4],
+  ē: ["e", 1], é: ["e", 2], ě: ["e", 3], è: ["e", 4],
+  ī: ["i", 1], í: ["i", 2], ǐ: ["i", 3], ì: ["i", 4],
+  ō: ["o", 1], ó: ["o", 2], ǒ: ["o", 3], ò: ["o", 4],
+  ū: ["u", 1], ú: ["u", 2], ǔ: ["u", 3], ù: ["u", 4],
+  ǖ: ["v", 1], ǘ: ["v", 2], ǚ: ["v", 3], ǜ: ["v", 4], ü: ["v", 0]
+};
+
+function normalizePinyinSyllable(pinyin) {
+  return [...(pinyin || "").toLowerCase()].map((letter) => pinyinToneMarks[letter]?.[0] || letter).join("").replace(/[^a-zv]/g, "");
+}
+
+function toneFromPinyin(pinyin) {
+  for (const letter of [...(pinyin || "")]) {
+    const tone = pinyinToneMarks[letter]?.[1];
+    if (tone) return tone;
+  }
+  const numberedTone = Number((pinyin || "").match(/[1-4]$/)?.[0]);
+  return numberedTone || 0;
+}
+
+const mandarinToneNames = {
+  1: "阴平",
+  2: "阳平",
+  3: "上声",
+  4: "去声"
+};
+
+function mandarinToneName(tone) {
+  return mandarinToneNames[tone] || "声调待核";
+}
+
+function capitalizePinyin(pinyin) {
+  const value = String(pinyin || "");
+  return value ? `${value[0].toUpperCase()}${value.slice(1)}` : "";
+}
+
+function splitPinyinSyllable(pinyin) {
+  const base = normalizePinyinSyllable(pinyin);
+  const initials = ["zh", "ch", "sh", "b", "p", "m", "f", "d", "t", "n", "l", "g", "k", "h", "j", "q", "x", "r", "z", "c", "s", "y", "w"];
+  const initial = initials.find((value) => base.startsWith(value)) || "";
+  return { base, initial, final: base.slice(initial.length) || base };
+}
+
+function surnamePronunciations(surname) {
+  return [...(surname || "")].map((char) => {
+    const pinyin = pinyinForSurnameChar(char);
+    const parts = splitPinyinSyllable(pinyin);
+    return {
+      char,
+      pinyin,
+      tone: toneFromPinyin(pinyin) || surnameToneMap[char] || 0,
+      ...parts
+    };
+  });
+}
+
+function givenPronunciations(chars) {
+  return chars.map((item) => {
+    const pinyin = pinyinForNameChar(item.char);
+    const parts = splitPinyinSyllable(pinyin);
+    return {
+      char: item.char,
+      pinyin,
+      tone: toneFromPinyin(pinyin) || item.tone || 0,
+      ...parts
+    };
+  });
+}
+
 function getSurnameTone(surname) {
-  const first = [...(surname || "")][0];
-  return surnameToneMap[first] || 0;
+  return surnamePronunciations(surname).at(-1)?.tone || 0;
+}
+
+function analyzePhonology(chars, surname) {
+  const surnameParts = surnamePronunciations(surname);
+  const givenParts = givenPronunciations(chars);
+  const fullParts = [...surnameParts, ...givenParts];
+  const fullTones = fullParts.map((part) => part.tone).filter(Boolean);
+  let score = 0;
+  let hardReject = false;
+
+  for (let index = Math.max(1, surnameParts.length); index < fullParts.length; index += 1) {
+    const previous = fullParts[index - 1];
+    const current = fullParts[index];
+    if (previous.tone && current.tone) score += previous.tone === current.tone ? -2 : 2;
+    if (previous.base && current.base && previous.base === current.base) {
+      score -= 14;
+      hardReject = true;
+    } else if (previous.final && current.final && previous.final === current.final) {
+      score -= 3;
+    }
+  }
+
+  if (givenParts.length === 2) {
+    const [first, second] = givenParts;
+    if (first.tone && second.tone && first.tone !== second.tone) score += 3;
+    if (first.tone === 3 && second.tone === 3) score -= 5;
+    if (first.tone === 4 && second.tone === 4) score -= 4;
+    if (first.initial && second.initial && first.initial !== second.initial) score += 2;
+    if (first.final && second.final && first.final !== second.final) score += 3;
+    if (first.base && second.base && first.base === second.base) hardReject = true;
+  }
+
+  const audibleTones = fullTones.slice(-3);
+  if (audibleTones.length === 3) {
+    const distinctTones = new Set(audibleTones).size;
+    if (distinctTones === 3) score += 5;
+    if (distinctTones === 1) {
+      score -= 10;
+      hardReject = true;
+    }
+    const firstMove = Math.sign(audibleTones[1] - audibleTones[0]);
+    const secondMove = Math.sign(audibleTones[2] - audibleTones[1]);
+    if (firstMove && secondMove && firstMove !== secondMove) score += 2;
+  }
+
+  const surnameLast = surnameParts.at(-1);
+  const givenFirst = givenParts[0];
+  if (surnameLast?.base && givenFirst?.base && surnameLast.base === givenFirst.base) hardReject = true;
+
+  const tonePattern = fullParts.map((part) => part.tone || "?").join("-");
+  const toneNamePattern = fullParts.map((part) => mandarinToneName(part.tone)).join(" - ");
+  const pinyinReading = fullParts.map((part) => capitalizePinyin(part.pinyin)).filter(Boolean).join(" ");
+  const readingPattern = fullParts.map((part) => `${part.char}${part.pinyin ? `（${part.pinyin}）` : ""}`).join("、");
+  let rhythmText = "声调信息不足，先结合可确认的声母、韵母关系判断连读是否自然。";
+
+  if (givenParts.length === 1) {
+    const changed = surnameLast?.tone && givenFirst?.tone && surnameLast.tone !== givenFirst.tone;
+    rhythmText = changed ? "姓与名单字声调有转折，短音节收束清楚。" : "单字名节奏简短，需结合姓氏多次连读确认停顿。";
+  } else if (givenParts.length === 2) {
+    const [first, second] = givenParts;
+    const internalTone = first.tone === second.tone ? "名字内部声调相同，节奏偏平" : "名字内部声调有转换，节奏有起伏";
+    const articulation = first.initial !== second.initial && first.final !== second.final
+      ? "两字声母、韵母均有区分，连读边界清楚。"
+      : first.base === second.base
+        ? "两字音节重复，连读容易黏连。"
+        : "两字有部分近音，建议用日常语速复读确认。";
+    rhythmText = `${internalTone}；${articulation}`;
+    if (first.tone === 3 && second.tone === 3) rhythmText += "连续上声在普通话中会发生变调，前一字通常读成近似阳平，需按真实语速确认。";
+    if (first.tone === 4 && second.tone === 4) rhythmText += "连续去声落势较强，听感更利落，也要留意是否显得过硬。";
+  }
+
+  const finalTone = givenParts.at(-1)?.tone || 0;
+  const endingText = {
+    1: "尾字为阴平，收音平稳清亮。",
+    2: "尾字为阳平，收音自然上扬，听感较亲和。",
+    3: "尾字为上声，收音含蓄稳重。",
+    4: "尾字为去声，收音利落有力。"
+  }[finalTone] || "";
+
+  return {
+    score,
+    hardReject,
+    acceptable: !hardReject && score >= -5,
+    tonePattern,
+    toneNamePattern,
+    pinyinReading,
+    readingPattern,
+    label: `读音为${pinyinReading || readingPattern}，声调为${toneNamePattern}（${tonePattern}）。${rhythmText}${endingText}`
+  };
 }
 
 function soundFitScore(item, preferences) {
-  const tones = item.chars?.map((char) => char.tone).filter(Boolean) || [];
-  if (!tones.length) return 0;
-
-  const surnameTone = getSurnameTone(preferences.surname);
-  let score = 0;
-
-  if (surnameTone) {
-    score += surnameTone !== tones[0] ? 4 : -3;
-    const fullToneSet = new Set([surnameTone, ...tones]);
-    score += fullToneSet.size >= Math.min(3, tones.length + 1) ? 3 : -1;
-  }
-
-  if (tones.length > 1) {
-    score += tones[0] !== tones[1] ? 4 : -3;
-    if (tones[tones.length - 1] === 1 || tones[tones.length - 1] === 2) score += 1;
-  }
-
-  return score;
+  return (item.phonology || analyzePhonology(item.chars || [], preferences.surname)).score;
 }
 
 function uniqueCharacters() {
   const seen = new Set();
-  return [...nameCharacters, ...supplementalNameCharacters].filter((item) => {
+  return [...nameCharacters, ...supplementalNameCharacters, ...literarySeedCharacters].filter((item) => {
     if (seen.has(item.char)) return false;
     seen.add(item.char);
     return true;
@@ -2908,38 +3261,71 @@ function dominantElement(chars) {
 }
 
 function toneLabel(chars, surname) {
-  const surnameChar = [...(surname || "")][0] || "";
-  const surnameTone = getSurnameTone(surname);
-  const surnamePart = surnameTone ? `姓氏“${surnameChar}”约${surnameTone}声，` : "";
+  return analyzePhonology(chars, surname).label;
+}
 
-  if (chars.length === 1) {
-    const connect = surnameTone && surnameTone !== chars[0].tone ? "姓与名单字声调有变化，" : "";
-    return `${surnamePart}单字${chars[0].tone}声，${connect}短促清楚，适合连读后再听整体收束。`;
+const commonNamingCharacters = new Set([..."安宁怡悦涵萱宇轩辰泽晨曦昕晴晓然若思语书文雅诗瑶玥琪瑾瑜梓沐清一诺可欣嘉宸熙乐依桐羽航浩睿博铭钰锦妍婧静姝远舒兰华"]);
+const nameReadingNotes = {
+  行: "“行”有多音语境，此名读作 xíng，正式使用时可主动说明。",
+  乐: "“乐”可读 lè 或 yuè，此名按 lè 解读，需确认家庭偏好的读音。",
+  予: "“予”有 yǔ、yú 两种常见读法，此名读作 yǔ。",
+  和: "“和”存在多种读音，此名读作 hé。",
+  柏: "“柏”在姓氏和名字中可能有不同读法，需结合家庭习惯确认。"
+};
+
+function commonalityAssessment(chars, given) {
+  const common = chars.filter((item) => commonNamingCharacters.has(item.char));
+  const distinctive = chars.filter((item) => item.tags.includes("少见不生僻"));
+  if (given.length === 1) {
+    return { level: "偏高", text: "单字名组合空间较小，重名风险通常高于双字名" };
   }
-
-  const [first, second] = chars;
-  const changed = first.tone !== second.tone;
-  const surnameChanged = surnameTone ? surnameTone !== first.tone : true;
-  const ending = second.tone === 1 || second.tone === 2 ? "尾音上扬，听感更明亮。" : "尾音收稳，听感更沉着。";
-  return `${surnamePart}名中${first.tone}声接${second.tone}声，${surnameChanged ? "姓与名首有起伏，" : "姓与名首声调接近，需复读确认，"}${changed ? "名字内部也有变化。" : "名字内部偏平顺。"}${ending}`;
+  if (common.length === chars.length) {
+    return { level: "中等偏高", text: "两字都属于常见取名用字，接受度较高，重名概率也会相应上升" };
+  }
+  if (common.length === 1) {
+    return { level: "中等", text: "常用字与辨识度较高的字搭配，熟悉度和独特性相对均衡" };
+  }
+  if (distinctive.length) {
+    return { level: "中等偏低", text: "组合辨识度较高，重名压力相对较小，但首次识读成本略高" };
+  }
+  return { level: "中等偏低", text: "两字组合不属于高频套用搭配，辨识度相对较好" };
 }
 
 function writingLabel(chars) {
   const total = chars.reduce((sum, item) => sum + item.strokes, 0);
-  const structure = chars.map((item) => `${item.char}${item.strokes}画`).join("、");
-  if (total <= 14) return `${structure}，整体笔画轻，低年级书写压力小。`;
-  if (total <= 24) return `${structure}，笔画轻重适中，正式场景辨识度稳定。`;
-  return `${structure}，字形偏厚重，适合看重格局感，但幼年书写要多确认。`;
+  const strokeText = chars.map((item) => `“${item.char}”${item.strokes}画`).join("、");
+  if (chars.length === 1) {
+    const density = total <= 8 ? "笔画简洁，书写负担较小" : total <= 14 ? "笔画适中，辨识度与书写效率较平衡" : "笔画偏多，正式感较强，但幼年书写需要适应";
+    return `${strokeText}。${density}。`;
+  }
+
+  const difference = Math.abs(chars[0].strokes - chars[1].strokes);
+  const balance = difference <= 3
+    ? "两字笔画接近，视觉重心较均衡"
+    : chars[0].strokes < chars[1].strokes
+      ? "笔画由轻入重，视觉层次逐步展开"
+      : "前字较实、后字较轻，收尾相对利落";
+  const density = total <= 16
+    ? "总笔画偏轻，日常书写较省力"
+    : total <= 26
+      ? "总笔画适中，兼顾辨识度与书写效率"
+      : "总笔画偏多，名字更显厚重，幼年书写需要适应";
+  return `${strokeText}，共${total}画，相差${difference}画；${balance}，${density}。`;
 }
 
 function riskLabel(chars, given) {
   const rare = chars.filter((item) => item.tags.includes("少见不生僻")).map((item) => item.char);
   const heavy = chars.filter((item) => item.strokes >= 15).map((item) => item.char);
-  const notes = [];
-  if (given.length === 1) notes.push("单字名建议重点关注重名风险。");
-  if (rare.length) notes.push(`“${rare.join("、")}”字形有记忆点，但不属于高频常用字，建议确认长辈读写接受度。`);
-  if (heavy.length) notes.push(`“${heavy.join("、")}”笔画稍重，需看姓氏整体是否过密。`);
-  return notes.join("") || "建议把全名连续读三遍，确认没有突兀谐音或拗口停顿。";
+  const commonality = commonalityAssessment(chars, given);
+  const readingNotes = chars.map((item) => nameReadingNotes[item.char]).filter(Boolean);
+  const notes = [
+    `重名情况：${commonality.level}。${commonality.text}；重名等级仅供相对比较，实际请以当地户籍查询结果为准。`
+  ];
+  if (rare.length) notes.push(`识读方面：“${rare.join("、")}”有辨识度，但不属于高频常用字，建议确认长辈和日常社交场景的接受度。`);
+  if (heavy.length) notes.push(`书写方面：“${heavy.join("、")}”笔画偏多，需结合姓氏观察全名是否显得过密。`);
+  notes.push(...readingNotes);
+  notes.push("建议用普通语速连续读三遍，并分别与“同学、老师、先生、女士”等称谓连读，检查谐音和停顿。");
+  return notes.join("");
 }
 
 function buildNameItem(chars, preferences) {
@@ -2947,6 +3333,7 @@ function buildNameItem(chars, preferences) {
   const tags = joinUnique(chars.flatMap((item) => item.tags));
   const sourceType = combineSourceType(chars);
   const elements = joinUnique(chars.map((item) => item.element));
+  const phonology = analyzePhonology(chars, preferences.surname);
   const source = chars.length === 1
     ? chars[0].source
     : `${chars.map((item) => item.source).join(" ")}两字合看，兼取${tags.slice(0, 2).join("与")}之意。`;
@@ -2963,7 +3350,8 @@ function buildNameItem(chars, preferences) {
     source,
     tags,
     meaning,
-    tone: toneLabel(chars, preferences.surname),
+    tone: phonology.label,
+    phonology,
     writing: writingLabel(chars),
     risk: riskLabel(chars, given),
     chars,
@@ -2976,106 +3364,166 @@ function characterMetaMap() {
   return new Map([...nameCharacters, ...supplementalNameCharacters, ...literarySeedCharacters].map((item) => [item.char, item]));
 }
 
+function findCharacterMeta(char) {
+  return characterMetaMap().get(char) || null;
+}
+
+function literarySourceType(seed) {
+  return /《(?:论语|礼记|道德经|诫子书|滕王阁序|濂溪诗序)/u.test(seed.source) ? "classic" : "poetry";
+}
+
+function candidateFromSeed(seed, preferences, literary = false) {
+  const charMap = characterMetaMap();
+  const chars = [...seed.given].map((char) => {
+    const meta = charMap.get(char) || {
+      char,
+      element: seed.element || "土",
+      sourceType: seed.sourceType || "meaning",
+      source: seed.source,
+      tags: seed.tags,
+      meaning: seed.meaning,
+      tone: toneFromPinyin(pinyinForNameChar(char)) || 2,
+      strokes: 8,
+      gender: seed.gender || "neutral",
+      zodiac: [],
+      season: []
+    };
+    return { ...meta };
+  });
+  const item = buildNameItem(chars, preferences);
+  return {
+    ...item,
+    element: seed.element || item.element,
+    elements: seed.elements || item.elements,
+    gender: seed.gender || item.gender,
+    sourceType: literary ? literarySourceType(seed) : (seed.sourceType || "meaning"),
+    source: seed.source,
+    displaySource: seed.source,
+    literarySource: literary ? seed.source : "",
+    literarySeed: literary,
+    coherentSeed: true,
+    phraseSeed: true,
+    tags: joinUnique([...seed.tags, ...item.tags]),
+    meaning: seed.meaning,
+    risk: item.risk
+  };
+}
+
 function literarySeedCandidates(preferences) {
   if (!preferences.basis.includes("classic")) return [];
+  return literaryNameSeeds.map((seed) => candidateFromSeed(seed, preferences, true));
+}
 
+function coherentSeedCandidates(preferences) {
+  return coherentNameSeeds.map((seed) => candidateFromSeed(seed, preferences, false));
+}
+
+function dedupeCandidates(candidatesToDedupe) {
+  const byGiven = new Map();
+  candidatesToDedupe.forEach((candidate) => {
+    const current = byGiven.get(candidate.given);
+    if (!current || (candidate.literarySeed && !current.literarySeed)) byGiven.set(candidate.given, candidate);
+  });
+  return [...byGiven.values()];
+}
+
+function isGenderCompatible(candidateGender, selectedGender) {
+  return selectedGender === "neutral" || candidateGender === "neutral" || candidateGender === selectedGender;
+}
+
+function generationCandidates(preferences) {
   const charMap = characterMetaMap();
-  return literaryNameSeeds.map((seed) => {
-    const chars = [...seed.given].map((char) => {
-      const meta = charMap.get(char) || {
-        char,
-        element: seed.element,
-        sourceType: "classic",
-        source: seed.source,
-        tags: seed.tags,
-        meaning: `${char}字取自${seed.source.replace(/^取自/, "")}`,
-        tone: 2,
-        strokes: 8,
-        gender: seed.gender || "neutral",
-        zodiac: [],
-        season: []
-      };
-      return {
-        ...meta,
-        sourceType: ["classic", "poetry"].includes(meta.sourceType) ? meta.sourceType : "classic"
-      };
-    });
-    const item = buildNameItem(chars, preferences);
+  const position = preferences.generationPosition === "first" ? 0 : 1;
+  const definitions = [...literaryNameSeeds, ...coherentNameSeeds]
+    .filter((seed) => isGenderCompatible(seed.gender || "neutral", preferences.gender));
+  const matchingSeeds = definitions
+    .filter((seed) => [...seed.given][position] === preferences.generationChar)
+    .map((seed) => candidateFromSeed(seed, preferences, literaryNameSeeds.includes(seed)))
+    .map((item) => ({ ...item, generationSeed: true }));
+
+  const generationMeta = {
+    ...(charMap.get(preferences.generationChar) || {}),
+    char: preferences.generationChar,
+    element: charMap.get(preferences.generationChar)?.element || (preferences.element === "auto" ? "土" : preferences.element),
+    sourceType: "meaning",
+    source: `“${preferences.generationChar}”为家族字辈，承续家风与排行。`,
+    tags: joinUnique([...(charMap.get(preferences.generationChar)?.tags || []), "仁爱", "书卷气"]),
+    meaning: "承接家族排行与祝愿。",
+    tone: charMap.get(preferences.generationChar)?.tone || toneFromPinyin(pinyinForNameChar(preferences.generationChar)) || 2,
+    strokes: charMap.get(preferences.generationChar)?.strokes || 8,
+    gender: "neutral",
+    zodiac: charMap.get(preferences.generationChar)?.zodiac || [],
+    season: charMap.get(preferences.generationChar)?.season || []
+  };
+
+  const companions = [];
+  const seenCompanions = new Set();
+  definitions.forEach((seed) => {
+    const companion = [...seed.given][position === 0 ? 1 : 0];
+    if (!companion || companion === preferences.generationChar || seenCompanions.has(companion)) return;
+    const meta = charMap.get(companion);
+    if (!meta || !isGenderCompatible(meta.gender || "neutral", preferences.gender)) return;
+    seenCompanions.add(companion);
+    companions.push(meta);
+  });
+
+  const constructed = companions.map((companion) => {
+    const pair = position === 0 ? [generationMeta, companion] : [companion, generationMeta];
+    const item = buildNameItem(pair, preferences);
     return {
       ...item,
-      element: seed.element || item.element,
-      elements: seed.elements || item.elements,
-      gender: seed.gender || item.gender,
-      sourceType: "poetry",
-      source: seed.source,
-      displaySource: seed.source,
-      literarySource: seed.source,
-      literarySeed: true,
-      tags: joinUnique([...seed.tags, ...item.tags]),
-      meaning: seed.meaning,
-      risk: `${item.risk} 典籍诗词出处明确，建议家人重点听读全名音律。`
+      generationSeed: true,
+      phraseSeed: true,
+      coherentSeed: true,
+      gender: companion.gender || "neutral",
+      source: `“${preferences.generationChar}”为家族字辈，“${companion.char}”取${completeSentence(companion.meaning)}`,
+      displaySource: `“${preferences.generationChar}”为家族字辈，“${companion.char}”取${completeSentence(companion.meaning)}`,
+      meaning: `以“${preferences.generationChar}”承续家风，以“${companion.char}”寄托${completeSentence(companion.meaning)}`
     };
   });
+
+  return dedupeCandidates([...matchingSeeds, ...constructed]);
 }
 
 function buildGeneratedCandidates(preferences) {
   const chars = uniqueCharacters();
   const allowSingle = preferences.length === "1" || preferences.length === "all";
   const allowDouble = preferences.length === "2" || preferences.length === "all" || Boolean(preferences.generationChar);
-  const generated = preferences.generationChar ? [] : literarySeedCandidates(preferences);
+  const generated = [];
+
+  if (preferences.generationChar) return generationCandidates(preferences);
 
   if (allowSingle && !preferences.generationChar) {
     chars.forEach((item) => generated.push(buildNameItem([item], preferences)));
   }
 
   if (allowDouble) {
-    if (preferences.generationChar) {
-      const generationMeta = {
-        char: preferences.generationChar,
-        element: preferences.element === "auto" ? "土" : preferences.element,
-        sourceType: "meaning",
-        source: `“${preferences.generationChar}”按家族字辈入名，重在承续家风。`,
-        tags: ["仁爱", "平安", "书卷气"],
-        meaning: "承接家族排行与祝愿。",
-        tone: 2,
-        strokes: 8,
-        gender: "neutral",
-        zodiac: [],
-        season: []
-      };
-
-      chars
-        .filter((item) => item.char !== preferences.generationChar)
-        .forEach((item) => {
-          const pair = preferences.generationPosition === "first" ? [generationMeta, item] : [item, generationMeta];
-          generated.push(buildNameItem(pair, preferences));
-        });
-      return generated;
-    }
-
-    chars.forEach((first) => {
-      chars.forEach((second) => {
-        if (first.char === second.char) return;
-        generated.push(buildNameItem([first, second], preferences));
-      });
-    });
+    generated.push(...literarySeedCandidates(preferences), ...coherentSeedCandidates(preferences));
   }
 
-  return generated;
+  return dedupeCandidates(generated);
 }
 
 function scoreCandidate(item, preferences) {
-  let score = 70;
+  let score = 56;
   const reasons = [];
   const candidateLength = preferences.generationChar ? 2 : item.given.length;
   const elements = item.elements || [item.element];
   const soundFit = soundFitScore(item, preferences);
 
-  if (preferences.gender !== "neutral" && item.gender === preferences.gender) score += 5;
-  if (preferences.gender !== "neutral" && item.gender !== "neutral" && item.gender !== preferences.gender) score -= 22;
+  if (preferences.gender !== "neutral" && item.gender === preferences.gender) score += 10;
+  if (preferences.gender !== "neutral" && item.gender === "neutral") score += 2;
+  if (preferences.gender !== "neutral" && item.gender !== "neutral" && item.gender !== preferences.gender) score -= 100;
 
-  if (preferences.length !== "all" && candidateLength === Number(preferences.length)) score += 8;
+  if (preferences.length !== "all" && candidateLength === Number(preferences.length)) score += 6;
   if (preferences.length !== "all" && candidateLength !== Number(preferences.length)) score -= 40;
+
+  if (candidateLength === 2 && item.phraseSeed) {
+    score += 14;
+    reasons.push(item.literarySeed ? "典籍原句意象" : "双字语义协调");
+  } else if (candidateLength === 2 && !preferences.generationChar) {
+    score -= 100;
+  }
 
   if (preferences.basis.includes("wuxing")) {
     if (preferences.element === "auto") {
@@ -3092,19 +3540,19 @@ function scoreCandidate(item, preferences) {
 
   if (preferences.basis.includes("classic")) {
     if (item.literarySource) {
-      score += 34;
-      reasons.push("典籍诗词出处明确");
+      score += 42;
+      reasons.push("典籍诗词出处与原句明确");
     } else if (["classic", "poetry"].includes(item.sourceType)) {
-      score += 8;
+      score += 2;
     } else {
-      score -= 16;
+      score -= 10;
     }
   }
   if (preferences.basis.includes("meaning") && item.tags.includes(preferences.wish)) score += 10;
-  score += Math.round(soundFit * 0.45);
+  score += soundFit;
+  if (item.phonology?.acceptable) reasons.push("普通话连读协调");
   if (preferences.basis.includes("sound")) {
-    const tones = item.chars?.map((char) => char.tone) || [];
-    score += (new Set(tones).size > 1 ? 8 : 3) + soundFit;
+    score += 12 + Math.round(soundFit * 0.8);
   }
   if (preferences.basis.includes("shape")) {
     const totalStrokes = item.chars?.reduce((sum, char) => sum + char.strokes, 0) || 0;
@@ -3146,7 +3594,7 @@ function scoreCandidate(item, preferences) {
     if (item.given.includes(char)) score += 18;
   });
 
-  if (preferences.generationChar) score += 10;
+  if (preferences.generationChar && item.generationSeed) score += 10;
 
   preferences.avoids.forEach((char) => {
     if (item.given.includes(char)) score -= 100;
@@ -3155,6 +3603,7 @@ function scoreCandidate(item, preferences) {
   if (/([^\u4e00-\u9fa5])/.test(item.given)) score -= 100;
 
   return {
+    rawScore: score,
     score: Math.max(0, Math.min(98, score)),
     reasons
   };
@@ -3219,7 +3668,7 @@ function renderGeneratingState(preferences, delay) {
     preferences.basis.includes("bazi") ? "推演生辰八字与五行偏弱" : "",
     preferences.basis.includes("yijing") ? "校验周易卦象与名义" : "",
     preferences.generationChar ? "校对家族字辈位置" : "",
-    preferences.likes.length || preferences.avoids.length ? "筛选喜欢字与忌用字" : "",
+    preferences.likes.length || preferences.avoids.length ? "核对喜欢字与忌用字" : "",
     preferences.region !== "普通话优先" ? "检查地区连读提醒" : ""
   ].filter(Boolean);
 
@@ -3288,10 +3737,23 @@ function selectDiverseResults(items, preferences, size) {
     pool = items;
   }
 
+  if (preferences.gender !== "neutral") {
+    const genderDirectedPool = pool.filter((item) => item.gender === preferences.gender);
+    if (genderDirectedPool.length >= size) pool = genderDirectedPool;
+  }
+
+  if (preferences.basis.includes("classic") && preferences.length !== "1") {
+    const literaryPool = pool.filter((item) => item.literarySeed);
+    if (literaryPool.length >= size) pool = literaryPool;
+  }
+
   const ranked = pool
     .map((item) => ({
       ...item,
-      pickScore: item.score + Math.random() * 24 + Math.random() * 8
+      pickScore: (item.rawScore || item.score)
+        + (preferences.basis.includes("classic") && item.literarySeed ? 48 : 0)
+        + (preferences.gender !== "neutral" && item.gender === preferences.gender ? 8 : 0)
+        + Math.random() * 8
     }))
     .sort((a, b) => b.pickScore - a.pickScore);
 
@@ -3354,21 +3816,25 @@ async function generateNames() {
   try {
     await wait(delay);
     const matchedResults = buildGeneratedCandidates(preferences)
+      .filter((item) => isGenderCompatible(item.gender, preferences.gender))
+      .filter((item) => item.phonology?.acceptable !== false)
       .map((item) => {
         const scored = scoreCandidate(item, preferences);
         return {
           ...item,
           score: scored.score,
+          rawScore: scored.rawScore,
           supportReasons: scored.reasons,
           displayGiven: item.given,
           fullName: `${surname}${item.given}`,
           displaySource: sourceForItem(item, preferences),
+          namingPreferences: clonePreferences(preferences),
           season,
           zodiac
         };
       })
-      .filter((item) => item.score > 35)
-      .sort((a, b) => b.score - a.score);
+      .filter((item) => item.rawScore > 35)
+      .sort((a, b) => b.rawScore - a.rawScore);
 
     lastResults = selectDiverseResults(matchedResults, preferences, 6);
     if (lastResults.length) {
@@ -3423,13 +3889,234 @@ function sourceForItem(item, preferences = null) {
   return item.displaySource || item.literarySource || item.source;
 }
 
+function itemCharacters(item) {
+  return item.chars?.length
+    ? item.chars
+    : [...(item.displayGiven || item.given || "")].map((char) => findCharacterMeta(char)).filter(Boolean);
+}
+
+function sentenceFragment(value) {
+  return String(value || "")
+    .trim()
+    .replace(/[。！？；;]+$/u, "")
+    .replace(/\s+/g, " ");
+}
+
+function coreMeaningPhrase(item) {
+  let meaning = sentenceFragment(item.meaning);
+  if (meaning.includes("寓意")) meaning = meaning.split("寓意").at(-1).replace(/^[：:，,\s]+/u, "");
+  if (meaning.length > 34) {
+    const tags = joinUnique(item.tags || []).slice(0, 3);
+    return tags.length ? tags.join("、") : meaning.slice(0, 34);
+  }
+  return meaning || joinUnique(item.tags || []).slice(0, 3).join("、");
+}
+
+const styleDescriptions = {
+  书卷气: "富有书卷气",
+  清朗: "清朗明净",
+  温润: "温润从容",
+  大气: "开阔大方",
+  现代: "简洁现代",
+  少见不生僻: "有辨识度而不生僻",
+  清雅: "清雅端正",
+  平安: "安宁吉祥",
+  聪慧: "聪慧明达",
+  远志: "志向开阔",
+  仁爱: "温厚仁善",
+  自由: "舒展自在",
+  诗意: "富有诗意"
+};
+
+const wishDescriptions = {
+  平安: "一生平稳、内心安定",
+  聪慧: "思路清明、善于判断",
+  远志: "胸怀远志、行动坚定",
+  仁爱: "待人温厚、心有善意",
+  自由: "眼界开阔、精神舒展",
+  清雅: "清正自持、从容有度"
+};
+
+function phonologyQuality(item) {
+  const score = item.phonology?.score ?? 0;
+  if (score >= 10) return "音律舒展";
+  if (score >= 5) return "节奏清楚";
+  return "读音平稳";
+}
+
+function genderLabel(gender) {
+  if (gender === "female") return "女孩";
+  if (gender === "male") return "男孩";
+  return "中性";
+}
+
+function nameOverviewText(item) {
+  const styles = joinUnique(item.tags || [])
+    .map((tag) => styleDescriptions[tag])
+    .filter(Boolean)
+    .slice(0, 2);
+  const descriptors = joinUnique([phonologyQuality(item), ...styles]).join("、");
+  return `${item.fullName || item.given}是一个${descriptors}的${genderLabel(item.gender)}名字，核心寓意为“${coreMeaningPhrase(item)}”。`;
+}
+
+const conciseMeaningOverrides = {
+  清: "清明澄澈、坦荡自持",
+  朗: "明亮舒展、开朗大方",
+  静: "沉静自持、内心笃定",
+  姝: "端雅美好、明净有仪"
+};
+
+function conciseCharacterMeaning(meta) {
+  if (conciseMeaningOverrides[meta.char]) return conciseMeaningOverrides[meta.char];
+  const raw = sentenceFragment((meta.meaning || meta.source || "").replaceAll("{char}", meta.char))
+    .replace(new RegExp(`^${meta.char}字`), "")
+    .trim();
+  const clauses = raw.split(/[，；。]/u).map((part) => part.trim()).filter(Boolean);
+  const naturalClauses = clauses.filter((part) => !/(适合|名字|希望|愿孩子|方向|用于)/u.test(part));
+  return (naturalClauses.length ? naturalClauses : clauses).slice(0, 2).join("、") || "品性端正";
+}
+
+function semanticRelationText(item) {
+  const chars = itemCharacters(item);
+  if (chars.length < 2) return completeSentence(chars[0]?.meaning || item.meaning);
+  const [first, second] = chars;
+  return joinSentences(
+    `“${first.char}”侧重${conciseCharacterMeaning(first)}，“${second.char}”侧重${conciseCharacterMeaning(second)}`,
+    `两字合看，${sentenceFragment(item.meaning)}`
+  );
+}
+
+function sourceAnalysisText(item, preferences = null) {
+  const source = sourceForItem(item, preferences);
+  const given = item.displayGiven || item.given || "";
+  if (item.literarySource) {
+    const quote = source.match(/“([^”]+)”/u)?.[1] || "";
+    const context = quote.includes(given)
+      ? `原句中的“${given}”构成鲜明意象，用作名字时取“${coreMeaningPhrase(item)}”之意`
+      : `“${given}”承接原句中两字的相邻意象，用作名字时取“${coreMeaningPhrase(item)}”之意`;
+    return joinSentences(source, context);
+  }
+  if (item.generationSeed) {
+    return joinSentences(source, semanticRelationText(item));
+  }
+  if (item.phraseSeed) {
+    return semanticRelationText(item);
+  }
+  return completeSentence(source);
+}
+
+function characterMeaningDetails(item) {
+  return itemCharacters(item).map((meta) => {
+    const pinyin = pinyinForNameChar(meta.char);
+    const tone = toneFromPinyin(pinyin) || meta.tone || 0;
+    const source = sentenceFragment((meta.source || "").replaceAll("{char}", meta.char))
+      .replace(/^“[^”]+”/u, "")
+      .replace(new RegExp(`^${meta.char}`), "")
+      .trim();
+    const meaning = sentenceFragment((meta.meaning || "").replaceAll("{char}", meta.char));
+    const semanticText = source
+      ? source.startsWith("取") && !source.startsWith("取自")
+        ? `字义侧重${source.slice(1)}`
+        : `字义${source}`
+      : `字义侧重${meaning}`;
+    const extendedText = meaning && meaning !== source ? `用于名字时强调${meaning}` : "";
+    return {
+      char: meta.char,
+      pinyin,
+      toneName: mandarinToneName(tone),
+      text: joinSentences(semanticText, extendedText)
+    };
+  });
+}
+
+function overallMeaningText(item, preferences) {
+  const wish = wishDescriptions[preferences?.wish] || "品格端正、生活顺遂";
+  const styles = (preferences?.styles || [])
+    .map((style) => styleDescriptions[style])
+    .filter(Boolean)
+    .slice(0, 2)
+    .join("、");
+  const direction = styles ? `并保留${styles}的整体气质` : "并兼顾名字的长期使用感受";
+  return joinSentences(item.meaning, `两字合看，寄托了家人希望孩子${wish}的愿望，${direction}`);
+}
+
+function phonologyAnalysisText(item) {
+  const analysis = item.phonology || { score: 0, label: item.tone || "" };
+  const conclusion = analysis.score >= 10
+    ? "声调起伏、音节边界和尾音收束较协调，普通话连读顺口度较好"
+    : analysis.score >= 5
+      ? "声调有变化，连读边界较清楚，整体属于稳妥耐听的组合"
+      : "整体可以连读，但节奏优势不算突出，建议结合家庭口音再次复核";
+  return joinSentences(analysis.label || item.tone, conclusion);
+}
+
+function genderTendencyText(item) {
+  const chars = itemCharacters(item);
+  const directedChars = chars.filter((char) => char.gender === item.gender).map((char) => `“${char.char}”`);
+  const tagText = joinUnique(item.tags || [])
+    .map((tag) => styleDescriptions[tag])
+    .filter(Boolean)
+    .slice(0, 2)
+    .join("、");
+  if (item.gender === "female") {
+    return `性别倾向偏女孩。${directedChars.length ? `${directedChars.join("、")}在字义和日常语感上更偏女性` : "整体意象柔和清雅"}，呈现${tagText || "温婉端雅"}的气质。性别气质不是硬性限制，仍可按家庭偏好使用。`;
+  }
+  if (item.gender === "male") {
+    return `性别倾向偏男孩。${directedChars.length ? `${directedChars.join("、")}在字义和日常语感上更偏男性` : "整体意象稳健开阔"}，呈现${tagText || "端正有力量"}的气质。性别气质不是硬性限制，仍可按家庭偏好使用。`;
+  }
+  return `性别倾向较中性，不依赖明显的男女用字标签，整体呈现${tagText || "清正耐看"}的气质，男孩或女孩都可以结合姓氏和家庭偏好判断。`;
+}
+
+function traditionalReferenceDisclaimer(preferences) {
+  const traditionalBasis = (preferences?.basis || []).filter((basis) => ["wuxing", "bazi", "season", "yijing"].includes(basis));
+  if (!traditionalBasis.length) return "";
+  const names = traditionalBasis.map((basis) => basisLabels[basis]).join("、");
+  return `${names}属于传统文化参考，不构成对性格、健康、学业或命运的预测；长期使用仍应以字义、读音、书写和家庭认同为主。`;
+}
+
+function conclusionText(item, preferences) {
+  const given = item.displayGiven || item.given || "";
+  const commonality = commonalityAssessment(itemCharacters(item), given);
+  const familyDirection = wishDescriptions[preferences?.wish] || "品格端正、生活顺遂";
+  const caveat = commonality.level === "中等偏高" || commonality.level === "偏高"
+    ? "若家庭更看重独特性，可重点比较同组中辨识度更高的候选"
+    : "若家庭更看重常用易认，可再与高频用字组合对照";
+  return `综合来看，${item.fullName || item.given}在整体寓意、普通话连读和笔画搭配上较为协调，适合希望孩子${familyDirection}的家庭。${caveat}，最终以全家长期叫读时自然、舒服为准。`;
+}
+
+function buildPollText(names) {
+  const lines = names.map((item, index) => {
+    const itemPreferences = item.namingPreferences || lockedPreferences || readPreferencesFromForm();
+    const characterLines = characterMeaningDetails(item)
+      .map((detail) => `  “${detail.char}”（${detail.pinyin || "读音待核"}，${detail.toneName}）：${detail.text}`)
+      .join("\n");
+    return [
+      `${index + 1}. ${formatNameWithPinyin(item)}`,
+      `综评：${nameOverviewText(item)}`,
+      `出处与取意：${sourceAnalysisText(item, itemPreferences)}`,
+      `字义：\n${characterLines}`,
+      `整体寓意：${overallMeaningText(item, itemPreferences)}`,
+      `音律：${phonologyAnalysisText(item)}`,
+      `字形：${item.writing || ""}`,
+      `性别气质：${genderTendencyText(item)}`,
+      `取名依据：${supportText(item, itemPreferences)}`,
+      `使用提醒：${reminderText(item, itemPreferences)}`,
+      `综合结论：${conclusionText(item, itemPreferences)}`
+    ].join("\n");
+  });
+  return `帮宝宝选个名字，你更喜欢哪一个？\n\n${lines.join("\n\n")}`;
+}
+
 function supportText(item, preferences) {
   const selected = preferences.basis.map((basis) => basisLabels[basis]).join("、");
   const elementPart = preferences.basis.includes("wuxing")
-    ? completeSentence(`五行按${preferences.element === "auto" ? "出生季节与平衡" : `补${preferences.element}`}处理，${elementSupportText(item)}`)
+    ? joinSentences(
+        `五行参考中，${elementSupportText(item)}`,
+        preferences.element === "auto" ? "结合出生时令取平衡之意" : `取补${preferences.element}之意`
+      )
     : "";
   const seasonPart = preferences.basis.includes("season") && item.season
-    ? `出生时令取${item.season}季气息作参考${item.zodiac ? `，生肖按公历年份粗略取${item.zodiac}作轻量辅助` : ""}。`
+    ? `出生时令取${item.season}季气息${item.zodiac ? `，并参考${item.zodiac}年生肖意象` : ""}。`
     : "";
   const calendarPart = preferences.birthday
     ? preferences.calendarType === "lunar"
@@ -3439,12 +4126,38 @@ function supportText(item, preferences) {
   const generationPart = preferences.generationChar
     ? `家族字辈取“${preferences.generationChar}”，置于${preferences.generationPosition === "first" ? "名首" : "名末"}。`
     : "";
+  const classicPart = preferences.basis.includes("classic")
+    ? `典籍取意侧重“${coreMeaningPhrase(item)}”。`
+    : "";
+  const meaningPart = preferences.basis.includes("meaning")
+    ? `整体寓意落在“${coreMeaningPhrase(item)}”，与家庭希望寄托相呼应。`
+    : "";
+  const soundPart = preferences.basis.includes("sound")
+    ? `音律方面，普通话读作${item.phonology?.pinyinReading || fullNamePinyin(item)}，声调为${item.phonology?.toneNamePattern || item.phonology?.tonePattern || "待核"}。`
+    : "";
+  const shapePart = preferences.basis.includes("shape")
+    ? `字形方面，${item.writing}`
+    : "";
   const dialectPart = preferences.region && preferences.region !== "普通话优先"
     ? `已标记${preferences.region}，建议重点听读全名，确认是否有连读谐音。`
     : "";
   const baziPart = baziSupportText(item, preferences, !preferences.basis.includes("wuxing"));
   const yijingPart = yijingSupportText(item, preferences);
-  return joinSentences(`本次依据包含${selected}`, calendarPart, generationPart, dialectPart, elementPart, seasonPart, baziPart, yijingPart);
+  return joinSentences(
+    `本名参考${selected}`,
+    classicPart,
+    meaningPart,
+    soundPart,
+    shapePart,
+    calendarPart,
+    generationPart,
+    dialectPart,
+    elementPart,
+    seasonPart,
+    baziPart,
+    yijingPart,
+    traditionalReferenceDisclaimer(preferences)
+  );
 }
 
 function completeSentence(value) {
@@ -3463,10 +4176,13 @@ function joinSentences(...parts) {
     .replace(/；。/g, "。");
 }
 
-function reminderText(item) {
+function reminderText(item, preferences = null) {
   const given = item.displayGiven || item.given || "";
   const notes = [item.risk || ""];
   if (given.length === 1 && !notes.join("").includes("单字名")) notes.push("单字名建议重点关注重名风险。");
+  if (preferences?.region && preferences.region !== "普通话优先") {
+    notes.push(`方言方面已标记${preferences.region}，建议请熟悉该口音的家人用自然语速复读，重点检查谐音和连读变音。`);
+  }
   return joinSentences(...notes);
 }
 
@@ -3493,12 +4209,23 @@ function elementSupportText(item) {
   return `名中五行参考为${elementText}。`;
 }
 
+function renderCharacterMeaningDetails(item) {
+  return characterMeaningDetails(item)
+    .map((detail) => `
+      <p class="detail-line">
+        <strong>“${escapeHtml(detail.char)}”</strong>
+        <span>（${escapeHtml(detail.pinyin || "读音待核")}，${escapeHtml(detail.toneName)}）</span>：${escapeHtml(detail.text)}
+      </p>
+    `)
+    .join("");
+}
+
 function clearGeneratedResults() {
   lastResults = [];
   resultsSection.innerHTML = `
     <div class="results-empty">
       <strong>生成一组候选名</strong>
-      <span>结果会展示名字、出处、五行、寓意、音律和提醒。</span>
+      <span>结果会展示名字综评、出处取意、逐字寓意、音形评价和使用提醒。</span>
     </div>
   `;
 }
@@ -3538,25 +4265,43 @@ function renderResults(preferences) {
           </div>
           <div class="tag-row">${tags.map((tag) => `<span>${tag}</span>`).join("")}</div>
           <div class="reason-grid">
-            <div class="reason">
-              <b>出处</b>
-              <p>${sourceForItem(item, preferences)}</p>
+            <div class="reason overview-reason">
+              <b>名字综评</b>
+              <p class="overview-copy">${escapeHtml(nameOverviewText(item))}</p>
             </div>
             <div class="reason">
-              <b>支撑依据</b>
-              <p>${supportText(item, preferences)}</p>
+              <b>出处与取意</b>
+              <p>${escapeHtml(sourceAnalysisText(item, preferences))}</p>
             </div>
             <div class="reason">
-              <b>寓意</b>
-              <p>${item.meaning}</p>
+              <b>字义与寓意</b>
+              <div class="detail-lines">
+                ${renderCharacterMeaningDetails(item)}
+                <p class="detail-line overall-meaning"><strong>整体寓意</strong>：${escapeHtml(overallMeaningText(item, preferences))}</p>
+              </div>
             </div>
             <div class="reason">
-              <b>音律与字形</b>
-              <p>${item.tone}${item.writing}</p>
+              <b>音形评价</b>
+              <div class="detail-lines">
+                <p class="detail-line"><strong>读音</strong>：${escapeHtml(phonologyAnalysisText(item))}</p>
+                <p class="detail-line"><strong>字形</strong>：${escapeHtml(item.writing)}</p>
+              </div>
             </div>
             <div class="reason">
-              <b>提醒</b>
-              <p>${reminderText(item)}</p>
+              <b>性别气质</b>
+              <p>${escapeHtml(genderTendencyText(item))}</p>
+            </div>
+            <div class="reason">
+              <b>取名依据</b>
+              <p>${escapeHtml(supportText(item, preferences))}</p>
+            </div>
+            <div class="reason">
+              <b>使用提醒</b>
+              <p>${escapeHtml(reminderText(item, preferences))}</p>
+            </div>
+            <div class="reason conclusion-reason">
+              <b>综合结论</b>
+              <p>${escapeHtml(conclusionText(item, preferences))}</p>
             </div>
           </div>
           <div class="card-actions">

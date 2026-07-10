@@ -822,6 +822,52 @@ textarea:focus {
   line-height: 1.55;
 }
 
+.overview-reason {
+  padding: 10px 11px;
+  border-top: 0;
+  border-left: 3px solid var(--gold);
+  background: rgba(239, 230, 211, 0.48);
+}
+
+.reason .overview-copy {
+  color: #303933;
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 1.65;
+}
+
+.detail-lines {
+  display: grid;
+  gap: 7px;
+}
+
+.reason .detail-line {
+  margin: 0;
+}
+
+.reason .detail-line strong {
+  display: inline;
+  margin: 0;
+  color: #303933;
+  font-size: inherit;
+}
+
+.reason .detail-line span {
+  color: #66736b;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.reason .overall-meaning {
+  padding-top: 7px;
+  border-top: 1px dashed #dfd1bb;
+}
+
+.conclusion-reason p {
+  color: #34473f;
+  font-weight: 650;
+}
+
 .card-actions {
   display: grid;
   grid-template-columns: 1fr 1fr;
