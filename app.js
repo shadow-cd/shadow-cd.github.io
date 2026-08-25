@@ -963,6 +963,8 @@ let lastResults = [];
 let resultRound = 0;
 let lastPreferenceKey = "";
 let shownResultNames = new Set();
+const selectionSessionSalt = createSelectionSessionSalt();
+let selectionRun = 0;
 let lockedPreferences = null;
 let isGenerating = false;
 let activeChoiceSelect = null;
@@ -3728,7 +3730,61 @@ function canUseCandidate(candidate, selected, preferences, level) {
   });
 }
 
-function selectDiverseResults(items, preferences, size) {
+function createSelectionSessionSalt() {
+  try {
+    const values = new Uint32Array(2);
+    if (globalThis.crypto?.getRandomValues) {
+      globalThis.crypto.getRandomValues(values);
+      return `${values[0].toString(36)}-${values[1].toString(36)}`;
+    }
+  } catch (_) {
+    // Older WebViews can fall back to Math.random without affecting availability.
+  }
+  return `${Math.floor(Math.random() * 0xffffffff).toString(36)}-${Date.now().toString(36)}`;
+}
+
+function entropyUnit(key) {
+  let hash = 2166136261;
+  for (let index = 0; index < key.length; index += 1) {
+    hash ^= key.charCodeAt(index);
+    hash = Math.imul(hash, 16777619);
+  }
+  hash += hash << 13;
+  hash ^= hash >>> 7;
+  hash += hash << 3;
+  hash ^= hash >>> 17;
+  hash += hash << 5;
+  return ((hash >>> 0) + 1) / 4294967297;
+}
+
+function selectionEntropy(preferences) {
+  selectionRun += 1;
+  return `${selectionSessionSalt}:${selectionRun}:${preferenceKey(preferences)}`;
+}
+
+function weightedDiversityOrder(pool, entropy) {
+  const bestScore = Math.max(...pool.map((item) => item.rawScore || item.score || 0));
+  const qualityFloor = bestScore - 22;
+  const strongPool = pool.filter((item) => (item.rawScore || item.score || 0) >= qualityFloor);
+  const candidatesForLottery = strongPool.length >= 6 ? strongPool : pool;
+  const floorScore = Math.min(...candidatesForLottery.map((item) => item.rawScore || item.score || 0));
+  const scoreRange = Math.max(1, bestScore - floorScore);
+
+  return candidatesForLottery
+    .map((item) => {
+      const score = item.rawScore || item.score || 0;
+      const qualityWeight = 1 + ((score - floorScore) / scoreRange) * 2;
+      const unit = entropyUnit(`${entropy}:${item.fullName}:${item.given}`);
+      return {
+        ...item,
+        // Exponential-race sampling: higher quality is more likely, not permanently fixed at the top.
+        pickScore: -Math.log(unit) / qualityWeight
+      };
+    })
+    .sort((a, b) => a.pickScore - b.pickScore);
+}
+
+function selectDiverseResults(items, preferences, size, entropy) {
   if (items.length <= size) return items;
 
   let pool = items.filter((item) => !shownResultNames.has(item.fullName));
@@ -3747,15 +3803,7 @@ function selectDiverseResults(items, preferences, size) {
     if (literaryPool.length >= size) pool = literaryPool;
   }
 
-  const ranked = pool
-    .map((item) => ({
-      ...item,
-      pickScore: (item.rawScore || item.score)
-        + (preferences.basis.includes("classic") && item.literarySeed ? 48 : 0)
-        + (preferences.gender !== "neutral" && item.gender === preferences.gender ? 8 : 0)
-        + Math.random() * 8
-    }))
-    .sort((a, b) => b.pickScore - a.pickScore);
+  const ranked = weightedDiversityOrder(pool, entropy);
 
   const selected = [];
   [2, 1, 0].forEach((level) => {
@@ -3836,7 +3884,7 @@ async function generateNames() {
       .filter((item) => item.rawScore > 35)
       .sort((a, b) => b.rawScore - a.rawScore);
 
-    lastResults = selectDiverseResults(matchedResults, preferences, 6);
+    lastResults = selectDiverseResults(matchedResults, preferences, 6, selectionEntropy(preferences));
     if (lastResults.length) {
       resultRound += 1;
     } else if (!wasLocked) {

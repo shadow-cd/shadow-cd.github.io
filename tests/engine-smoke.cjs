@@ -200,6 +200,27 @@ const samples = {
   meaning: verifyCase("女孩寓意", preferences({ surname: "周", gender: "female", basis: ["wuxing", "sound", "meaning"] }))
 };
 
+const diversityInput = preferences({ surname: "王", basis: ["wuxing", "sound", "meaning"] });
+const diversityPool = rankedCandidates(diversityInput);
+const independentGroups = new Set();
+for (let index = 0; index < 16; index += 1) {
+  engine.resetRounds();
+  const group = engine.selectDiverseResults(diversityPool, diversityInput, 6, `independent-session-${index}:round-1`);
+  assert.equal(group.length, 6, "独立会话随机抽样未生成完整候选组");
+  assert.ok(group.every((item) => item.phonology.acceptable), "独立会话随机抽样混入音律未通过项");
+  independentGroups.add(group.map((item) => item.fullName).join("|"));
+}
+assert.ok(independentGroups.size >= 3, "独立会话的同条件结果缺少足够多样性");
+
+engine.resetRounds();
+const firstRound = engine.selectDiverseResults(diversityPool, diversityInput, 6, "same-session:round-1");
+const secondRound = engine.selectDiverseResults(diversityPool, diversityInput, 6, "same-session:round-2");
+assert.equal(
+  firstRound.filter((item) => secondRound.some((next) => next.fullName === item.fullName)).length,
+  0,
+  "同一会话换组后复用了上一批候选"
+);
+
 const fullDoublePool = rankedCandidates(preferences({ surname: "林", gender: "neutral" }));
 assert.ok(fullDoublePool.every((item) => item.phraseSeed), "双字候选池仍存在任意单字拼接");
 assert.ok(fullDoublePool.every((item) => !engine.fullNamePinyin(item).includes("?")), "双字候选池存在缺失拼音");
